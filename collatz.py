@@ -9,7 +9,10 @@ figured out why.  Pretty neat.
 import time
 
 def collatz(number):
-    if number % 2 == 0:
+    if number <= 0:
+        raise Exception("Number must be greater than 0")
+
+    elif number % 2 == 0:
         ans = number // 2
         print(ans)
         return ans
@@ -19,12 +22,10 @@ def collatz(number):
         print(ans)
         return ans
 
-try:
-    number = int(input('Enter any number: '))
+while True:
+
+    number = int(input('Enter a positive non-zero integer: '))
 
     while number != 1:
         number = collatz(number)
         time.sleep(0.3)
-
-except:
-    print('Error: please enter an integer')
