@@ -10,22 +10,35 @@ import time
 
 def collatz(number):
     if number <= 0:
-        raise Exception("Number must be greater than 0")
+        raise Exception("Number must be a positive integer")
+
+    elif type(number) != int:
+        raise Exception("Number must be an integer")
 
     elif number % 2 == 0:
         ans = number // 2
-        print(ans)
         return ans
 
     else:
-        ans = (number * 3) + 1 
-        print(ans)
+        ans = (number * 3) + 1
         return ans
 
 while True:
 
-    number = int(input('Enter a positive non-zero integer: '))
+    number = input('Enter a positive integer, or type q to quit: ')
 
-    while number != 1:
-        number = collatz(number)
-        time.sleep(0.3)
+    if number == 'q':
+        print('Program closed')
+        break
+
+    try:
+        
+        number = int(number)
+
+        while number != 1:
+            number = collatz(number)
+            print(number)
+            time.sleep(0.2)
+
+    except:
+        print("Error: Invalid Input")
