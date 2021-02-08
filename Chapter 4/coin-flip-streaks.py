@@ -26,13 +26,18 @@ for experimentNumber in range(100):
         else:
             flip_list.append('H')
     
-    for i in range(100):
-        # read the current value
-        # store current value, current_value
-        # compare to previous value (skip this for first value, maybe using range())
-        # if the previous value is the same, add 1 to current_streak
-        # if current_streak is 5, add the streak to streak_count (but only once?)
-        # if current streak is > 5, do nothing.  The streak doesn't need to be counted again
-        # if the previous value is different, do nothing
-        # basically only one if statement is needed (when streak count == 5)
+    current_streak = 0
+
+    for i in range(1, 100):
+        current_value = flip_list[i]
+        previous_value = flip_list[i-1]
+
+        if previous_value == current_value:
+            current_streak += 1
+
+            if current_streak == 5:
+                streak_count += 1
+
+        else:
+            current_streak = 0
 
