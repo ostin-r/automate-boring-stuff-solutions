@@ -11,8 +11,9 @@ of how often these streaks occur in a random set.
 import random
 
 streak_count = 0
+expt_repeat = 1000
 
-for experimentNumber in range(100):
+for experimentNumber in range(expt_repeat):
 
     flip_list = []
 
@@ -41,3 +42,7 @@ for experimentNumber in range(100):
         else:
             current_streak = 0
 
+streak_percentage = streak_count / expt_repeat
+
+print(streak_count)
+print(streak_percentage)
