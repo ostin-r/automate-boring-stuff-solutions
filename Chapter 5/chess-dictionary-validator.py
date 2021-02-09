@@ -17,6 +17,8 @@ board = {'1h': 'bking', '6c': 'wqueen', '2g': 'bbishop', '5h': 'bqueen', '3e': '
 locs   = list(board.keys())
 pieces = list(board.values())
 
+valid_board = 'bking' and 'wking' in board.values()
+
 for pos in locs:
     
     if int(pos[0]) > 8 or int(pos[0]) < 1:
@@ -25,7 +27,13 @@ for pos in locs:
     if pos[1] > 'h':
         valid_board = False
 
-for piece_type in pieces:
-    print(piece_type)
+# check for duplicate pieces
+count = {}
+
+for character in pieces:
+    count.setdefault(character, 0)
+    count[character] += 1
+
+print(count)
 
 print(valid_board)
