@@ -27,13 +27,25 @@ for pos in locs:
     if pos[1] > 'h':
         valid_board = False
 
-# check for duplicate pieces
-count = {}
+piece_count = {}
 
 for character in pieces:
-    count.setdefault(character, 0)
-    count[character] += 1
+    piece_count.setdefault(character, 0)
+    piece_count[character] += 1
 
-print(count)
+if piece_count.get('wqueen', 0) > 1 or piece_count.get('bqueen', 0) > 1:
+    valid_board = False
+
+if piece_count.get('wbishop', 0) > 2 or piece_count.get('bbishop', 0) > 2:
+    valid_board = False
+
+if piece_count.get('wknight', 0) > 2 or piece_count.get('knight', 0) > 2:
+    valid_board = False
+
+if piece_count.get('wrook', 0) > 2 or piece_count.get('brook', 0) > 2:
+    valid_board = False
+
+if piece_count.get('wpawn', 0) > 8 or piece_count.get('bpawn', 0) > 8:
+    valid_board = False
 
 print(valid_board)
