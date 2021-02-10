@@ -11,7 +11,7 @@ Valid board criteria:
 - BONUS: make the dictionary able to detect if bishops are duplicates based on board location
 '''
 
-board = {'1h': 'bking', '6c': 'wqueen', '2g': 'bbishop', '5h': 'bqueen', '3e': 'wking'}
+board = {'1h': 'bking', '6c': 'wqueen', '2g': 'wbishop', '5h': 'bqueen', '3e': 'wking', '2f':'wbishop'}
 
 locs   = list(board.keys())
 pieces = list(board.values())
@@ -47,7 +47,7 @@ if piece_count.get('wrook', 0) > 2 or piece_count.get('brook', 0) > 2:
 if piece_count.get('wpawn', 0) > 8 or piece_count.get('bpawn', 0) > 8:
     valid_board = False
 
-# generate a list of the black squares
+# BONUS IMPLEMENTATION
 x = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 y = ['1', '2', '3', '4', '5', '6', '7', '8']
 
@@ -65,8 +65,15 @@ for i in range(1, len(x), 2):
 
         black_squares.append(x[i] + y[j])
 
+if piece_count.get('wbishop', 0) > 1:
 
+    position = []
 
-print(black_squares)
+    for piece in pieces:
+
+        if piece == 'wbishop':
+
+            position.append(pieces.index(piece))
+            
 
 print(valid_board)
