@@ -11,7 +11,6 @@ Valid board criteria:
 - BONUS: make the dictionary able to detect if bishops are duplicates based on board location
 '''
 
-valid_board = True
 board = {'1h': 'bking', '6c': 'wqueen', '2g': 'bbishop', '5h': 'bqueen', '3e': 'wking'}
 
 locs   = list(board.keys())
@@ -39,7 +38,7 @@ if piece_count.get('wqueen', 0) > 1 or piece_count.get('bqueen', 0) > 1:
 if piece_count.get('wbishop', 0) > 2 or piece_count.get('bbishop', 0) > 2:
     valid_board = False
 
-if piece_count.get('wknight', 0) > 2 or piece_count.get('knight', 0) > 2:
+if piece_count.get('wknight', 0) > 2 or piece_count.get('bknight', 0) > 2:
     valid_board = False
 
 if piece_count.get('wrook', 0) > 2 or piece_count.get('brook', 0) > 2:
@@ -47,5 +46,27 @@ if piece_count.get('wrook', 0) > 2 or piece_count.get('brook', 0) > 2:
 
 if piece_count.get('wpawn', 0) > 8 or piece_count.get('bpawn', 0) > 8:
     valid_board = False
+
+# generate a list of the black squares
+x = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+y = ['1', '2', '3', '4', '5', '6', '7', '8']
+
+black_squares = []
+
+for i in range(0, len(x), 2):
+
+    for j in range(0, len(y), 2):
+
+        black_squares.append(x[i] + y[j])
+
+for i in range(1, len(x), 2):
+
+    for j in range(1, len(y), 2):
+
+        black_squares.append(x[i] + y[j])
+
+
+
+print(black_squares)
 
 print(valid_board)
