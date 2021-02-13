@@ -36,4 +36,5 @@ After a bunch of self directed projects, I think it is about time that I started
   
 - Project 1: [print-table.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%206/print-table.py)
   - Takes a list of lists and prints them in a neat right-justified format
+  - Learned some important methods to be used with strings and user input validation
   - ***Bonus feature*** I added the ability for the function to put a title above the table in the format '-----title-----' (to the correct width of the table)
