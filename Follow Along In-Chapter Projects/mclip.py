@@ -21,4 +21,4 @@ if keyphrase in TEXT:
     pyperclip.copy(TEXT[keyphrase])
     print('Text for ' + keyphrase + ' added to clipboard.' )
 else:
-    print('There is no text for' + keyphrase)
+    print('There is no text for ' + keyphrase)
