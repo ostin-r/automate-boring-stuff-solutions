@@ -15,17 +15,26 @@ class MyZombie:
         return color_count
 
     def turn(self, gameState):
+        #colors = self.count_colors(results)
+        shotguns = 0
 
-        results = zombiedice.roll()
-        
-        colors = self.count_colors(results)
+        while shotguns < 2:
+            results = zombiedice.roll()
+
+            if results is None:
+                return
+
+            shotguns += results['shotgun']
+
+        else:
+            return
 
 zombies = (
     zombiedice.examples.RandomCoinFlipZombie(name='Random'),
     zombiedice.examples.RollsUntilInTheLeadZombie(name='Until Leading'),
     zombiedice.examples.MinNumShotgunsThenStopsZombie(name='Stop at 2 Shotguns', minShotguns=2),
     zombiedice.examples.MinNumShotgunsThenStopsZombie(name='Stop at 1 Shotgun', minShotguns=1),
-    MyZombie(name='My Zombie Bot')
+    MyZombie(name='Austin Bot')
 )
 
 zombiedice.runTournament(zombies=zombies, numGames=1000)
