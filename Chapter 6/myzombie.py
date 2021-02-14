@@ -10,8 +10,6 @@ class MyZombie:
 
         results = zombiedice.roll()
 
-        color_count = {}
-
     def count_colors(results):
 
         color_count = {}
