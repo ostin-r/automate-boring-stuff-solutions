@@ -6,6 +6,9 @@ class MyZombie:
 
     def count_colors(self, results):
 
+        if results is None:
+            return
+
         color_count = {}
 
         for color, icon in results['rolls']:
@@ -20,14 +23,18 @@ class MyZombie:
 
         while shotguns < 2:
             results = zombiedice.roll()
+            colors  = self.count_colors(results)
 
             if results is None:
                 return
 
             shotguns += results['shotgun']
 
-        else:
+        if colors.get('red', 0) == 3:  # try an extra roll if no red die in cup
+            results = zombiedice.roll()
             return
+
+            
 
 zombies = (
     zombiedice.examples.RandomCoinFlipZombie(name='Random'),
@@ -37,5 +44,5 @@ zombies = (
     MyZombie(name='Austin Bot')
 )
 
-zombiedice.runTournament(zombies=zombies, numGames=1000)
+zombiedice.runTournament(zombies=zombies, numGames=100)
 #zombiedice.runWebGui(zombies=zombies, numGames=1000)
