@@ -1,16 +1,10 @@
 import zombiedice
 
 class MyZombie:
-    def __init__(self, name, minShotguns=2):
-        # All zombies must have a name:
+    def __init__(self, name):
         self.name = name
-        self.minShotguns = minShotguns
 
-    def turn(self, gameState):
-
-        results = zombiedice.roll()
-
-    def count_colors(results):
+    def count_colors(self, results):
 
         color_count = {}
 
@@ -19,6 +13,12 @@ class MyZombie:
             color_count[color] += 1
             
         return color_count
+
+    def turn(self, gameState):
+
+        results = zombiedice.roll()
+        
+        colors = self.count_colors(results)
 
 zombies = (
     zombiedice.examples.RandomCoinFlipZombie(name='Random'),
