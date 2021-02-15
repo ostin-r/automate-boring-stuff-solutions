@@ -32,7 +32,7 @@ After a bunch of self directed projects, I think it is about time that I started
 - Project 2: [fantasy-inventory.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%205/fantasy-inventory.py)
   - A basic dictionary exercise, more use of .items(), .setdefault(), and other basic dictionary functions.  This project was very short as the templates were provided.
   
-  **Chapter 6:**
+**Chapter 6:**
   
 - Project 1: [print-table.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%206/print-table.py)
   - Takes a list of lists and prints them in a neat right-justified format
