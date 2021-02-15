@@ -20,9 +20,11 @@ class MyZombie:
     def turn(self, gameState):
         #colors = self.count_colors(results)
         shotguns = 0
+        turn_count = 0
 
         while shotguns < 2:
             results = zombiedice.roll()
+            turn_count += 1
             colors  = self.count_colors(results)
 
             if results is None:
@@ -30,10 +32,9 @@ class MyZombie:
 
             shotguns += results['shotgun']
 
-        if colors.get('red', 0) == 3:  # try an extra roll if no red die in cup
+        if colors.get('red', 0) == 3 and turn_count < 5:  # try an extra roll if no red die in cup
             results = zombiedice.roll()
             return
-
             
 
 zombies = (
@@ -44,5 +45,5 @@ zombies = (
     MyZombie(name='Austin Bot')
 )
 
-zombiedice.runTournament(zombies=zombies, numGames=100)
+zombiedice.runTournament(zombies=zombies, numGames=1000)
 #zombiedice.runWebGui(zombies=zombies, numGames=1000)
