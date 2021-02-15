@@ -3,14 +3,14 @@ My solutions to problems posed in "Automate The Boring Stuff with Python"
 
 After a bunch of self directed projects, I think it is about time that I started following a book on the important components of coding in python.  This was prompted by my overzealous attempt to take on multiple projects that were too big for me to handle.  This file will be used as a short description of each project, bonus features that I may have added, and notes about what I learned from each project.
 
-**Chapter 3:**
+**Chapter 3: Functions**
 
 - Project 1:  [collatz.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%203/collatz.py)  
   - Used the collatz sequence to make a function that takes any positive integer as an argument and prints the collatz sequence (which always converges to 1, eventually).  
   - My first time learning about and using 'try' and 'except' statements.  
   - ***Bonus feature***:  I made it so the user can continue to test sequence with different integers and quit the program by typing in 'q' and pressing enter.
 
-**Chapter 4:**
+**Chapter 4: Lists**
 
 - Project 1: [comma-code.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%204/comma-code.py)  
   - A simple program that turns a list into a string with commas in between each item and ', and' before the last item.  This was mostly review and a nice warm up to using lists.
@@ -22,7 +22,7 @@ After a bunch of self directed projects, I think it is about time that I started
   - Simply printing an image with characters and the list data type in a 2x2 format.  This problem was quite mind bending at first, but once I wrapped my head around how the loop was working with the list I got it down.  Working with multi-dimensional systems can be difficult at first.
   
   
-**Chapter 5:**
+**Chapter 5: Dictionaries & Structuring Data**
 
 - Project 1: [chess-dictionary-validator.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%205/chess-dictionary-validator.py)
   - Checks a dictionary of locations (keys) and piece types (items) of a chess board in a dictionary and returns "True" if the board is valid
@@ -32,7 +32,7 @@ After a bunch of self directed projects, I think it is about time that I started
 - Project 2: [fantasy-inventory.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%205/fantasy-inventory.py)
   - A basic dictionary exercise, more use of .items(), .setdefault(), and other basic dictionary functions.  This project was very short as the templates were provided.
   
-**Chapter 6:**
+**Chapter 6: Manipulating Strings**
   
 - Project 1: [print-table.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%206/print-table.py)
   - Takes a list of lists and prints them in a neat right-justified format
