@@ -3,7 +3,7 @@ Austin Richards 2/16/21
 
 date-detection.py recognizes dates in the dd/mm/yyyy format
 '''
-import re, pyperclip
+import re, pyperclip, copy
 
 text = pyperclip.paste()
 
@@ -24,4 +24,10 @@ for date in date_regex.findall(text):
     months.append(date[1])
     years.append(date[2])
 
-# TODO: check if dates are valid
+print(days, months, years)
+
+# TODO: Detect valid months, and days within those months
+
+for i in range(len(years)):
+    if int(years[i]) < 1000 or int(years[i]) > 2999:
+        years[i], months[i], days[i] = [0, 0, 0]
