@@ -19,8 +19,17 @@ email_regex = re.compile(r'''(
     \.[a-zA-Z]{2,4}
     )''', re.VERBOSE)
 
+date_regex = re.compile(r'''
+    (\d{2}|\d)
+    (-|\.|/)
+    (\d{2}|\d)
+    (-|\.|/)
+    (\d{2})
+    ''', re.VERBOSE)
+
 text = str(pyperclip.paste())
 matches = []
+date_match = []
 
 for group in phone_regex.findall(text):
     phoneNum = '-'.join([group[1], group[3], group[5]])
@@ -39,3 +48,13 @@ if len(matches) > 0:
     print('\n'.join(matches))
 else:
     print('No phone numbers or emails found.')
+
+date_text = re.sub(r'\d\d(\d\d)', r'\1', text)
+
+for dates in date_regex.findall(date_text):
+
+    date_string = dates[0] + '/' + dates[2] + '/' + dates[4]
+    date_match.append(date_string)
+
+if len(date_match) == 0:
+    print('No dates found')
