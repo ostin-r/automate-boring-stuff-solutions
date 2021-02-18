@@ -60,10 +60,6 @@ def detect_date(text):
                 if int(days[i]) > 28:
                     years[i], months[i], days[i] = [0, 0, 0]
 
-    for i in range(len(years)):
-        if int(years[i]) < 1000 or int(years[i]) > 2999:
-            years[i], months[i], days[i] = [0, 0, 0]
-
     valid_days = [day for day in days if int(day) != 0]
     valid_months = [month for month in months if int(month) != 0]
     valid_years = [year for year in years if int(year) != 0]
