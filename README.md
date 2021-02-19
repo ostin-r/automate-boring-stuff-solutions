@@ -53,3 +53,7 @@ After a bunch of self directed projects, I think it is about time that I started
   - Turns out my bonus feature from the follow along project was a good warm up.  This program detects dates from text provided by the clipboard.
   - I made it so it can detect multiple dates with .findall() and then checks wether those dates are valid (assuming the author's assumption that the dates are in the format dd/mm/yyyy and only span years 1000 to 2999).  It seems like the author wanted it to be a bit simpler and only detect one date, but I think making it detect all dates made it a fun challenge.
   - Learned about list comprehension in order to delete invalid values.  I did this in a bit of a roundabout way where I just replaced invalid dates with "0" while in the loop, then used list comprehension to delete any 0s.  If I went deeper into this I would probably figure out how to use del, .remove() or .pop(), but I had the added complexity of having three lists that needed to correspond to eachother.  So if I wanted to delete an invalid day I needed to figure out it's index and delete the corresponding "month".  That being said, learning about list comprehension was pretty fun.
+
+- Project 2: [detect-password-strength.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%207/detect-password-strength.py)
+  - A quick exercise with more regular expression fun
+  - Tests a password for 8 characters, one lower case letter, one upper case letter, and one number.  Returns 'strong' if it passes all of these tests.
