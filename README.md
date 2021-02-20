@@ -57,3 +57,9 @@ After a bunch of self directed projects, I think it is about time that I started
 - Project 2: [detect-password-strength.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%207/detect-password-strength.py)
   - A quick exercise with more regular expression fun
   - Tests a password for 8 characters, one lower case letter, one upper case letter, and one number.  Returns 'strong' if it passes all of these tests.
+
+- Project 3: [regex-strip.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%207/regex-strip.py)
+  - A function that mimics the .strip() method for strings by using regular expressions
+  - learned how to insert a variable into a regex statement.  This proved to be more difficult than expected and I ended up taking a few steps back and learning about strings in regex.
+  - Overall a really fun simple project that only took ~30 lines of code to accomplish
+  - **Limitations:** The function I wrote can only pick up repetitions of a *single* character.  Example: it can strip '----austin----' down to 'austin', but cannot strip 'ababababAUSTINabababa' down to 'AUSTIN'.  For some reason the '+' regex operation wasn't working with repeats like 'ab' or the like.  I may come back and fix this. 
