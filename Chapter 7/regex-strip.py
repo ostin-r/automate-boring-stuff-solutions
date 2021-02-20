@@ -8,7 +8,7 @@ and trailing characters.
 '''
 import re
 
-def re_strip(text, delete_character='a'):
+def re_strip(text, delete_character=' '):
 
     # TODO: go deeper into the types of strings that can be passed to regex
 
@@ -18,12 +18,16 @@ def re_strip(text, delete_character='a'):
     pre_text = pre_re.search(text)
     end_text = end_re.search(text)
 
-    cut_pre = len(pre_text.group())
-    cut_end = len(end_text.group())
-
+    if pre_text is not None:
+        cut_pre = len(pre_text.group())
+        text = text[cut_pre:]
     
+    if end_text is not None:
+        cut_end = len(end_text.group())
+        text = text[:(len(text) - cut_end)]
 
-    
+    return text
 
-
-re_strip('aaa AVOCADO aaa')
+text = '---austin-----------'
+text = re_strip(text, delete_character='-')
+print(text)
