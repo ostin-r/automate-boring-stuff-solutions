@@ -62,3 +62,14 @@ After a bunch of self directed projects, I think it is about time that I started
   - A function that mimics the .strip() method for strings by using regular expressions
   - learned how to insert a variable into a regex statement.  This proved to be more difficult than expected and I ended up taking a few steps back and learning about strings in regex.
   - **Limitations:** The function I wrote cannot strip a specific string in order.  For example, 'bananas-austin-abanasab' will still strip to '-austin-' if 'bananas' is passed as the strip argument, because regex is matching any character in 'bananas'.  I think this could be fixed by making a loop that generates a regex expression such as 'b.*a.*n.*a.*....' and uses this in the regex before continuing with the rest of the function.
+
+**Chapter 8: Input Validation with PyInputPlus**
+- Project 1: [sandwich-maker.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%208/sandwich-maker.py)
+  - A really fun introduction to pyinputplus by making a program that asks users for sandwich preferences and then gives them a final cost
+  - Learned about the importance of data validation and how to use PyInputPlus to take a lot of weight off of my own code writing
+  - It was difficult getting a final cost together at the end, because all of the sandwich componenets were stored in different variables.  If I were to start this project again, I would make a list where all of the ingredients are located.  This would make the get_cost() function much easier & quicker to use.
+
+- Project 2: [minimal-multiply-quiz](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%208/minimal-multiply-quiz.py)
+  - This project is paired with the follow along project [multiply-quiz.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/follow-along/multiplication-quiz.py)
+  - minimal-multiply-quiz.py does the same thing as the follow along project, but without using pyinputplus (spoiler alert: pyinputplus does a lot of work for you in the background)
+  - The thing that I missed the most from pyinputplus was the "timeout" key word argument.  Implementing timeout functionality took most of the development time while I wrapped my head around how to fit it into the loops.
