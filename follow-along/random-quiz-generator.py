@@ -23,15 +23,35 @@ capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
    'Nashville', 'Texas': 'Austin', 'Utah': 'Salt Lake City', 'Vermont':
    'Montpelier', 'Virginia': 'Richmond', 'Washington': 'Olympia', 'West Virginia': 'Charleston', 'Wisconsin': 'Madison', 'Wyoming': 'Cheyenne'}
 
-for quizNum in range(1):
+for quizNum in range(2):
     
     quizFile = open('quiz-{}.txt'.format(quizNum + 1), 'w')
 
     ansFile  = open('ans-{}.txt'.format(quizNum + 1), 'w')
 
-    quizHeader = 'Name:\n\nDate:\n\nPeriod:\n\nState Capitols Quiz (form {})'.format(quizNum + 1)
+    quizHeader = 'Name:\n\nDate:\n\nPeriod:\n\nState Capitols Quiz (form {})\n'.format(quizNum + 1)
     quizFile.write(quizHeader)
 
-    # TODO: Shuffle the order of the states.
+    states = list(capitals.keys())
+    random.shuffle(states)
 
-    # TODO: Loop through all 50 states, making a question for each
+    for questionNum in range(50):
+
+        correctAnswer = capitals[states[questionNum]]
+        wrongAnswers = list(capitals.values())
+        del wrongAnswers[wrongAnswers.index(correctAnswer)]
+        wrongAnswers = random.sample(wrongAnswers, 3)
+
+        answerOptions = wrongAnswers + [correctAnswer]
+        random.shuffle(answerOptions)
+
+        quizFile.write('{0}. What is the capital of {1}\n'.format(questionNum + 1, states[questionNum]))
+        
+        for i in range(4):
+            quizFile.write('{0}. {1}\n'.format('ABCD'[i], answerOptions[i]))
+        
+        quizFile.write('\n')
+        ansFile.write('{0} : {1}\n'.format(questionNum + 1, 'ABCD'[answerOptions.index(correctAnswer)]))
+
+quizFile.close()
+ansFile.close()
