@@ -74,5 +74,10 @@ After a bunch of self directed projects, I think it is about time that I started
   - minimal-multiply-quiz.py does the same thing as the follow along project, but without using pyinputplus (spoiler alert: pyinputplus does a lot of work for you in the background)
   - The thing that I missed the most from pyinputplus was the "timeout" key word argument.  Implementing timeout functionality took most of the development time while I wrapped my head around how to fit it into the loops.
 
-  **Chapter 9: Reading and Writing Files**
-  - Project 1: []
+**Chapter 9: Reading and Writing Files**
+- Project 1: [mcb.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%209/mcb.py)
+  - A multi-clipboard program that allows the user to save multiple pieces of using the shelve module
+  - Learned how to use and modify shelf objects in order to save important python parameters
+  - Added features to clear and delete specific saved items.  Once I figured out problems with using the command line format of the program, this was a quick solution.
+
+
