@@ -73,3 +73,6 @@ After a bunch of self directed projects, I think it is about time that I started
   - This project is paired with the follow along project [multiply-quiz.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/follow-along/multiplication-quiz.py)
   - minimal-multiply-quiz.py does the same thing as the follow along project, but without using pyinputplus (spoiler alert: pyinputplus does a lot of work for you in the background)
   - The thing that I missed the most from pyinputplus was the "timeout" key word argument.  Implementing timeout functionality took most of the development time while I wrapped my head around how to fit it into the loops.
+
+  **Chapter 9: Reading and Writing Files**
+  - Project 1: []
