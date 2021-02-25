@@ -6,8 +6,6 @@ usage (vscode):
 python mcb.py save <keyword> - saves clipboard to keyword
 python mcb.py <keyword> - retrieves text from keyword to clipboard
 python mcb.py list - copies all keywords to the clipboard
-python mcb.py delete <keyword> - deletes the keyword and associated text
-python mcb.py clear - deletes the entire multi-clipboard storage
 '''
 import shelve, pyperclip, sys
 
