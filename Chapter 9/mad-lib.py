@@ -9,34 +9,42 @@ import pyinputplus as pyip
 from pathlib import Path
 
 madLib_blank = open(Path.cwd() / 'Chapter 9' / 'mad-lib-blank.txt')
-blank_contents = madLib_blank.read()
-print(blank_contents)
+contents = madLib_blank.read()
 
-# TODO: use regex (loop) to identify the next word that needs to be replaced and update the contents
-'''
-create a list, (or string?) with the types of speech we want to search for
-put that list into a regex 
-loop through all items in re.findall()
-    if item == 'ADJECTIVE'
-        prompt user to enter an adjective
-        replace in new string with re.sub()
-    elif item == 'VERB':
-        prompt user to enter a verb
-        replace in new string using re.sub()
-'''
 keyword_regex = re.compile(r'''
     ADJECTIVE|
-    VERB|
     ADVERB|
+    \ VERB|
     PRONOUN|
+    \ NOUN
     INTERJECTION|
-    NOUN|
     ''', re.VERBOSE)
 
-mo = keyword_regex.search(blank_contents)
-try:
-    print(mo.group())
-except:
-    print('no match')
+for word in keyword_regex.findall(contents):
+    
+    if word == 'ADJECTIVE':
+        user_input = pyip.inputStr(prompt='Enter an adjective: ')
+        contents = re.sub('ADJECTIVE', user_input, contents, count=1)
 
+    elif word == 'VERB':
+        user_input = pyip.inputStr(prompt='Enter a verb: ')
+        contents = re.sub('VERB', user_input, contents, count=1)
+
+    elif word == 'ADVERB':
+        user_input = pyip.inputStr(prompt='Enter an adverb: ')
+        contents = re.sub('ADVERB', user_input, contents, count=1)   
+
+    elif word == 'NOUN':
+        user_input = pyip.inputStr(prompt='Enter a noun: ')
+        contents = re.sub('VERB', user_input, contents, count=1)
+
+    elif word == 'PRONOUN':
+        user_input = pyip.inputStr(prompt='Enter a pronoun: ')
+        contents = re.sub('PRONOUN', user_input, contents, count=1)
+
+    elif word == 'INTERJECTION':
+        user_input = pyip.inputStr(prompt='Enter an interjection: ')
+        contents = re.sub('INTERJECTION', user_input, contents, count=1)
+
+print(contents)
 # TODO: after looping through all blank word types, write the newly filled contents to a new .txt file
