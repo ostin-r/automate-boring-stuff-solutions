@@ -13,21 +13,18 @@ contents = madLib_blank.read()
 
 keyword_regex = re.compile(r'''
     ADJECTIVE|
-    ADVERB|
-    \ VERB|
-    PRONOUN|
-    \ NOUN|
-    INTERJECTION|
+    NOUN|
+    ADVERB|  # match adverb before verb to avoid replacing just the 'verb' in 'adverb'
+    VERB|
+    INTERJECTION
     ''', re.VERBOSE)
 
-keywords = ['ADJECTIVE', 'ADVERB', 'VERB', 'PRONOUN', 'NOUN', 'INTERJECTION']
+keywords = ['ADJECTIVE', 'ADVERB', 'VERB', 'NOUN', 'INTERJECTION']
 
 for word in keyword_regex.findall(contents):
-    #statement  = 'Enter a ' + word + ': '
-    #user_input = pyip.inputStr(prompt=statement)
-    print(word)
-    print(type(word))
-    contents   = re.sub(word, '*', contents, count=1)
+    statement  = 'Enter a ' + word.lower() + ': '
+    user_input = pyip.inputStr(prompt=statement)
+    contents   = re.sub(word, user_input, contents, count=1)
 
 print(contents)
 # TODO: after looping through all blank word types, write the newly filled contents to a new .txt file
