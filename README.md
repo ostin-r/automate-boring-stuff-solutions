@@ -81,4 +81,23 @@ After a bunch of self directed projects, I think it is about time that I started
   - Learned how to use and modify shelf objects in order to save important python parameters
   - Added features to clear and delete specific saved items.  Once I figured out problems with using the command line format of the program, this was a quick solution.
 
+- Project 2: [mad-lib.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%209/mad-lib.py)
+  - mad-lib.py will search for mad-lib-blank.txt and replace any all-caps parts of speech with user supplied input.  It will then put the results into madLib-X.txt where X is a version number.
+  - I learned a lot during this project.  While this is only about 30 lines of code, I had to go through it slowly and break it into chunks since I had combine my knowledge of regex and file i/o.  In addition, I'm pretty proud of myself for condensing a massive train of if statments into a much smaller 4-line solution (actual code below).
+        '''
+        for word in keyword_regex.findall(contents):
+
+        if word == 'ADJECTIVE':
+           user_input = pyip.inputStr(prompt='Enter an adjective: ')
+           contents = re.sub('ADJECTIVE', user_input, contents, count=1)
+
+        elif word == 'VERB':
+          user_input = pyip.inputStr(prompt='Enter a verb: ')
+          contents = re.sub('VERB', user_input, contents, count=1)
+
+        elif word == 'ADVERB':
+            user_input = pyip.inputStr(prompt='Enter an adverb: ')
+            contents = re.sub('ADVERB', user_input, contents, count=1)  
+        '''
+
 
