@@ -30,7 +30,7 @@ After a bunch of self directed projects, I think it is about time that I started
   - ***Bonus feature***: I noticed the author of ATBS overlooked one criteria of validity for a chess board!  Bishops are the only pieces that cannot exist on the same color.  This was a pretty difficult feature to implement and it probably doubled my project time (worth it, though!).  I made it so the function can detect if you have placed both of your bishops on white or both on black spaces.  I also added a feature that prints a message to the user stating why the board is invalid, and simply states "Pass" if it is valid.
   
 - Project 2: [fantasy-inventory.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%205/fantasy-inventory.py)
-  - A basic dictionary exercise, more use of <items()>, <setdefault()>, and other basic dictionary functions.  This project was very short as the templates were provided.
+  - A basic dictionary exercise, more use of '<items()>', '<setdefault()>', and other basic dictionary functions.  This project was very short as the templates were provided.
   
 **Chapter 6: Manipulating Strings**
   
