@@ -26,5 +26,4 @@ for word in keyword_regex.findall(contents):
     user_input = pyip.inputStr(prompt=statement)
     contents   = re.sub(word, user_input, contents, count=1)
 
-print(contents)
 # TODO: after looping through all blank word types, write the newly filled contents to a new .txt file
