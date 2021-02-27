@@ -19,11 +19,10 @@ keyword_regex = re.compile(r'''
     INTERJECTION
     ''', re.VERBOSE)
 
-keywords = ['ADJECTIVE', 'ADVERB', 'VERB', 'NOUN', 'INTERJECTION']
-
 for word in keyword_regex.findall(contents):
     statement  = 'Enter a ' + word.lower() + ': '
     user_input = pyip.inputStr(prompt=statement)
     contents   = re.sub(word, user_input, contents, count=1)
 
 # TODO: after looping through all blank word types, write the newly filled contents to a new .txt file
+madLib = open('madLib-1.txt', 'w')
