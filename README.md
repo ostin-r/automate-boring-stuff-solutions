@@ -83,7 +83,8 @@ After a bunch of self directed projects, I think it is about time that I started
 
 - Project 2: [mad-lib.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%209/mad-lib.py)
   - mad-lib.py will search for mad-lib-blank.txt and replace any all-caps parts of speech with user supplied input.  It will then put the results into madLib-X.txt where X is a version number.
-  - I learned a lot during this project.  While this is only about 30 lines of code, I had to go through it slowly and break it into chunks since I had combine my knowledge of regex and file i/o.  In addition, I'm pretty proud of myself for condensing a massive train of if statments into a much smaller 4-line solution (actual code below).
+  - I learned a lot during this project.  While this is only about 30 lines of code, I had to go through it slowly and break it into chunks since I had combine my knowledge of regex and file i/o.  In addition, I'm pretty proud of myself for condensing a massive train of if statments into a much smaller 4-line solution (actual code below).  I've found that the more lines something takes to complete, the more skeptical of my approach to the problem.  The solution here is much more simple and beautiful.
+      I changed this code:
         
         for word in keyword_regex.findall(contents):
 
