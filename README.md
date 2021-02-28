@@ -30,7 +30,7 @@ After a bunch of self directed projects, I think it is about time that I started
   - ***Bonus feature***: I noticed the author of ATBS overlooked one criteria of validity for a chess board!  Bishops are the only pieces that cannot exist on the same color.  This was a pretty difficult feature to implement and it probably doubled my project time (worth it, though!).  I made it so the function can detect if you have placed both of your bishops on white or both on black spaces.  I also added a feature that prints a message to the user stating why the board is invalid, and simply states "Pass" if it is valid.
   
 - Project 2: [fantasy-inventory.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%205/fantasy-inventory.py)
-  - A basic dictionary exercise, more use of '''items''', '<setdefault()>', and other basic dictionary functions.  This project was very short as the templates were provided.
+  - A basic dictionary exercise, more use of items(), setdefault(), and other basic dictionary functions.  This project was very short as the templates were provided.
   
 **Chapter 6: Manipulating Strings**
   
@@ -81,4 +81,30 @@ After a bunch of self directed projects, I think it is about time that I started
   - Learned how to use and modify shelf objects in order to save important python parameters
   - Added features to clear and delete specific saved items.  Once I figured out problems with using the command line format of the program, this was a quick solution.
 
+- Project 2: [mad-lib.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%209/mad-lib.py)
+  - mad-lib.py will search for mad-lib-blank.txt and replace any all-caps parts of speech with user supplied input.  It will then put the results into madLib-X.txt where X is a version number.
+  - I actually had to go through a mini Software Development Life Cycle because I was merging multiple new concepts for myself (regex and file i/o).
+  - I'm pretty proud of myself for condensing a massive train of if statments into a much smaller 4-line solution (actual code below).  I've found that the more lines something takes to complete, the more skeptical of my approach to the problem.  The solution here is much more simple and beautiful.
+      I changed this code:
+        
+        for word in keyword_regex.findall(contents):
 
+          if word == 'ADJECTIVE':
+            user_input = pyip.inputStr(prompt='Enter an adjective: ')
+            contents = re.sub('ADJECTIVE', user_input, contents, count=1)
+
+          elif word == 'VERB':
+            user_input = pyip.inputStr(prompt='Enter a verb: ')
+            contents = re.sub('VERB', user_input, contents, count=1)
+
+          elif word == 'ADVERB':
+            user_input = pyip.inputStr(prompt='Enter an adverb: ')
+            contents = re.sub('ADVERB', user_input, contents, count=1)
+            
+          # Continues for different parts of speech...
+      Into the following:
+        
+        for word in keyword_regex.findall(contents):
+          statement  = 'Enter a ' + word.lower() + ': '
+          user_input = pyip.inputStr(prompt=statement)
+          contents   = re.sub(word, user_input, contents, count=1)
