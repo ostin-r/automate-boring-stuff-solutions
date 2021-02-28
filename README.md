@@ -108,3 +108,7 @@ After a bunch of self directed projects, I think it is about time that I started
           statement  = 'Enter a ' + word.lower() + ': '
           user_input = pyip.inputStr(prompt=statement)
           contents   = re.sub(word, user_input, contents, count=1)
+
+- Project 3: [regex-search.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%209/regex-search.py)
+  - Learned more about file writing, learned how to use glob() function to find any file ending in '.txt'
+  - This project took a few hours because I am just learning file io.  I am amazed at how little code this is, while still yielding such useful results.  What a fun small project!
