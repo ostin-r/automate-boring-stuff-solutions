@@ -4,13 +4,14 @@ contains the function backup_zip() which will copy a file,
 zip it, and then increment the name
 '''
 import zipfile, os
-import pathlib as path
+from pathlib import Path as path
 
 
 def backup_zip(folder):
 
     folder = os.path.abspath(folder)
 
+    # make the zip filename if it doesn't already exist.  If it does, increment.
     i = 1
     while True:
         zip_filename = os.path.basename(folder) + '_' + str(i) + '.zip'
@@ -21,6 +22,7 @@ def backup_zip(folder):
     print('creating {}...'.format(zip_filename))
     backupZip = zipfile.ZipFile(zip_filename, 'w')
 
+    # zip each file and write them to backupZip (zipfile object)
     for foldername, subfolders, filenames in os.walk(folder):
 
         print('adding files in {}'.format(str(foldername)))
@@ -29,4 +31,19 @@ def backup_zip(folder):
         for filename in filenames:
             new_base = os.path.basename(folder) + '_'
 
-backup_zip(path.Path.cwd() / 'follow-along')
+            if filename.startswith(new_base) and filename.endswith('.zip'):
+                continue
+
+            backupZip.write(os.path.join(foldername, filename))
+
+    backupZip.close()
+    print('Done')
+
+os.chdir('follow-along') # pick directory where you want backup to go
+backup_zip(path.cwd())   # specify the directory you want backed up
+
+# check that it worked
+zip_check = zipfile.ZipFile(path.cwd() / 'follow-along_1.zip')
+for name in zip_check.namelist():
+    print(name)
+zip_check.close()
