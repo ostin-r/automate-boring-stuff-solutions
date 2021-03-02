@@ -20,14 +20,14 @@ for filename in os.listdir('.'):
 
     mo = date_regex.search(filename)
 
-    if mo == None:
+    if mo is None:
         continue
 
     before_part = mo.group(1)
-    month_part  = mo.group(2)
-    day_part    = mo.group(4)
-    year_part   = mo.group(6)
-    end_part    = mo.group(8)
+    month_part = mo.group(2)
+    day_part = mo.group(4)
+    year_part = mo.group(6)
+    end_part = mo.group(8)
 
     euro_name = before_part + day_part + '-' + month_part + '-' + year_part + end_part
 
