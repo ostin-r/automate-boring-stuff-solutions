@@ -14,17 +14,19 @@ def backup_zip(folder):
     i = 1
     while True:
         zip_filename = os.path.basename(folder) + '_' + str(i) + '.zip'
-
-        if os.path.exists(zip_filename):
-            print('file already exists')
+        if not os.path.exists(zip_filename):
             break
-
         i += 1
 
-        print('creating {}...'.format(zip_filename))
-        #backupZip = zipfile.ZipFile(zip_filename, 'w')
+    print('creating {}...'.format(zip_filename))
+    backupZip = zipfile.ZipFile(zip_filename, 'w')
 
-        for foldername, subfolder, filename in os.walk(folder):
-            print(filename.basename + '\n')
+    for foldername, subfolders, filenames in os.walk(folder):
+
+        print('adding files in {}'.format(str(foldername)))
+        backupZip.write(foldername)
+
+        for filename in filenames:
+            new_base = os.path.basename(folder) + '_'
 
 backup_zip(path.Path.cwd() / 'follow-along')
