@@ -9,18 +9,18 @@ from pathlib import Path as path
 
 def backup_zip(folder):
 
-    folder = os.path.abspath(folder)
+    folder = os.path.abspath(folder) # sets the folder to absolute path
 
     # make the zip filename if it doesn't already exist.  If it does, increment.
     i = 1
     while True:
-        zip_filename = os.path.basename(folder) + '_' + str(i) + '.zip'
-        if not os.path.exists(zip_filename):
+        zip_filename = os.path.basename(folder) + '_' + str(i) + '.zip' # creates an incremented filename
+        if not os.path.exists(zip_filename): # if it doesn't exist, break and make it. Else, increment
             break
         i += 1
 
     print('creating {}...'.format(zip_filename))
-    backupZip = zipfile.ZipFile(zip_filename, 'w')
+    backupZip = zipfile.ZipFile(zip_filename, 'w') # create a zipfile object with name folder_x.zip
 
     # zip each file and write them to backupZip (zipfile object)
     for foldername, subfolders, filenames in os.walk(folder):
@@ -40,10 +40,3 @@ def backup_zip(folder):
     print('Done')
 
 backup_zip('Chapter 9')
-'''
-# check that it worked
-zip_check = zipfile.ZipFile(path.cwd() / 'follow-along_1.zip')
-for name in zip_check.namelist():
-    print(name)
-zip_check.close()
-'''
