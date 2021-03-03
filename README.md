@@ -110,5 +110,15 @@ After a bunch of self directed projects, I think it is about time that I started
           contents   = re.sub(word, user_input, contents, count=1)
 
 - Project 3: [regex-search.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%209/regex-search.py)
+  - A program that takes a user-supplied regex expression and searches all .txt files.  Any files that contain a match are printed to the user.
   - Learned more about file writing, learned how to use glob() function to find any file ending in '.txt'
   - This project took a few hours because I am just learning file io.  I am amazed at how little code this is, while still yielding such useful results.  What a fun small project!
+
+**Chapter 10: Organizing Files**
+- Follow along notes: Before talking about my projects for this chapter, I first want to explain that I had quite some difficulty with Al's program for backing up and zipping files from a directory.  His way took me quite some time to understand.  Luckily, I found an example of zipping files on [GeeksForGeeks](https://www.geeksforgeeks.org/working-zip-files-python/) which was much simpler.  The reason this version was so much easier to figure out is that it broke the problem into two functions: one to get the filepaths and then one take the files in each path and zip them in an appropriately named folder.  I merged Al's features with the GeeksForGeeks solution by adding the incrementing name for the backup.
+
+- Project 1 [selective-copy.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2010/selective-copy.py)
+  - After wrestling with the follow-along project, this problem was straight-forward and enjoyable.  selective-copy.py copies all files that match and puts them in the desired folder.
+  - I learned how to write zip files using the 'with' statement to handle any exceptions without creating bugs with writing, and make code more readable. 
+
+
