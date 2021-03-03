@@ -15,12 +15,13 @@ def select_copy(source, dest, ext):
     ext_regex = re.compile('\.{}$'.format(ext))
 
     # TODO: walk through the specified source path and copy any files that match into destination
-    for root, dirs, files in os.walk(source):
+    for path, dirs, files in os.walk(source):
         
         for file in files:
 
             if ext_regex.search(file) is not None:
-                #shutil.copy(???)
-                pass
+                new_source = os.path.join(path, file)
+                shutil.copy(new_source, dest)
 
-select_copy('.', 'Chapter 9', 'py')
+select_copy('Chapter 8', 'project_copies', 'py')
+# copies all .py files in Chapter 8 to project_copies folder
