@@ -7,21 +7,32 @@ files with a certain extension.
 '''
 import re, os, shutil
 
+def get_all_paths(directory):
+
+    file_paths = []
+
+    for path, dirs, files in os.walk(directory):
+
+        for filename in files:
+            filepath = os.path.join(path, filename)
+            file_paths.append(filepath)
+
+    return file_paths
+
+
 def select_copy(source, dest, ext):
 
     source = os.path.abspath(source)
     dest = os.path.abspath(dest)
     
     ext_regex = re.compile('\.{}$'.format(ext))
+    file_paths = get_all_paths(source)
 
-    # TODO: walk through the specified source path and copy any files that match into destination
-    for path, dirs, files in os.walk(source):
-        
-        for file in files:
+    for file in file_paths:
+        if ext_regex.search(file) is not None:
+            source = os.path.join(source, file)
+            shutil.copy(source, dest)
 
-            if ext_regex.search(file) is not None:
-                new_source = os.path.join(path, file)
-                shutil.copy(new_source, dest)
 
-select_copy('Chapter 8', 'project_copies', 'py')
+select_copy('Chapter 9', '.', 'py')
 # copies all .py files in Chapter 8 to project_copies folder
