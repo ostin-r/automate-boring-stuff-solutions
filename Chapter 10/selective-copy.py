@@ -35,4 +35,3 @@ def select_copy(source, dest, ext):
 
 
 select_copy('Chapter 9', '.', 'py')
-# copies all .py files in Chapter 8 to project_copies folder
