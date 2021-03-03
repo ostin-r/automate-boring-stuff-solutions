@@ -39,11 +39,11 @@ def backup_zip(folder):
     backupZip.close()
     print('Done')
 
-os.chdir('follow-along') # pick directory where you want backup to go
-backup_zip(path.cwd())   # specify the directory you want backed up
-
+backup_zip('Chapter 9')
+'''
 # check that it worked
 zip_check = zipfile.ZipFile(path.cwd() / 'follow-along_1.zip')
 for name in zip_check.namelist():
     print(name)
 zip_check.close()
+'''
