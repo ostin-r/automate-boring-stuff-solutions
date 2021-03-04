@@ -30,5 +30,5 @@ for file in filepath:
 
     if mo is not None:
         new_name = re.sub(mo.group(1), '', file)
-        #shutil.move()
-        print(new_name)
+        #shutil.move(file, new_name)
+        print('Renaming ' + file + ' to ' + new_name + '...')
