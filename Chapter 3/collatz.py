@@ -23,8 +23,8 @@ def collatz(number):
         ans = (number * 3) + 1
         return ans
 
-while True:
 
+while True:
     number = input('Enter a positive integer, or type q to quit: ')
 
     if number == 'q':
@@ -32,9 +32,7 @@ while True:
         break
 
     try:
-        
         number = int(number)
-
         while number != 1:
             number = collatz(number)
             print(number)
