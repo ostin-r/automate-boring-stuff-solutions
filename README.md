@@ -132,5 +132,5 @@ After a bunch of self directed projects, I think it is about time that I started
  
  **Chapter 11: Debugging**
  - This chapter was ridiculously fun.  I didn't realize there was a chapter on debugging and I thought I would have to learn it on my own, so it was nice to have it explained by the author.
- - Debugged a file provided by the author, [buggyCoinFlip.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2011/buggyCoinFlip.py) that had a few bugs present.
+ - Debugged a file provided by the author, [buggyCoinFlip.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2011/buggyCoinFlip.py) that had a few bugs present. (No major projects to post about for this chapter.)
  - Learned how to use logging and basic debugging features (Continue, Step Over, Step In, Step Out).  I feel that these two skills will really make my code writing more efficient.  I'm really excited to use this on more complicated programs.
