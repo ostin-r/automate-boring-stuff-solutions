@@ -10,6 +10,7 @@ os.makedirs('xkcd', exist_ok=True)
 
 i = 0
 
+#while not url.endswith('#'): # original author's code, but didn't want to download this much
 while i < 3:
     print(f'downloading page {url}...')
     res = requests.get(url)
