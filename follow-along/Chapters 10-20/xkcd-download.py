@@ -29,6 +29,7 @@ while i < 3:
 
         image_file = os.path.join('xkcd', os.path.basename(comic_url))
         
+        # changed up from the original follow-along to use the more readable "with" statement
         with open(image_file, 'wb') as file:
             for chunk in res.iter_content(100000):
                 file.write(chunk)
