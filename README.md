@@ -145,11 +145,11 @@ After a bunch of self directed projects, I think it is about time that I started
             imageFile.write(chunk)
         imageFile.close()
 
- Into this chunk of code:
+       Into this chunk of code:
  
         image_file = os.path.join('xkcd', os.path.basename(comic_url))
         with open(image_file, 'wb') as file:
             for chunk in res.iter_content(100000):
                 file.write(chunk)
                 
- I don't know if I made the code more efficient, however, I'm just happy I was able to understand the use of the 'with' statement and apply it to this code.
+       I don't know if I made the code more efficient, however, I'm just happy I was able to understand the use of the 'with' statement and apply it to this code.
