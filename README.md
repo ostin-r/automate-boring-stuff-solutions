@@ -138,3 +138,18 @@ After a bunch of self directed projects, I think it is about time that I started
 **Chapter 12: Web Scraping**
 - Before I talk about projects, a few notes of what I learned from this chapter:
   - This chapter really showed me how interesting and diverse programming can be when I learned about linguistics and how it relates to the development of Unicode.
+  - I had to exercise my true understanding of 'with' statements when I replaced one of the author's file writing statements with my own in [xkcd-download.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/follow-along/Chapters%2010-20/xkcd-download.py).  I changed the following:
+
+        imageFile = open(os.path.join('xkcd', os.path.basename(comicUrl)), 'wb')
+        for chunk in res.iter_content(100000):
+            imageFile.write(chunk)
+        imageFile.close()
+
+       Into this chunk of code:
+ 
+        image_file = os.path.join('xkcd', os.path.basename(comic_url))
+        with open(image_file, 'wb') as file:
+            for chunk in res.iter_content(100000):
+                file.write(chunk)
+                
+       I'm happy I was able to understand the use of the 'with' statement and apply it to this code.  That being said, I don't think my block of code is better or more efficient (unless an exception is raised, which is unlikely in this part of the code), it's just a different way to do the same thing that I wanted to try.
