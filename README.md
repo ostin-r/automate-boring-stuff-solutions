@@ -152,4 +152,4 @@ After a bunch of self directed projects, I think it is about time that I started
             for chunk in res.iter_content(100000):
                 file.write(chunk)
                 
-       I don't know if I made the code more efficient, however, I'm just happy I was able to understand the use of the 'with' statement and apply it to this code.
+       I'm happy I was able to understand the use of the 'with' statement and apply it to this code.  That being said, I don't think my block of code is better or more efficient (unless an exception is raised, which is unlikely in this part of the code), it's just a different way to do the same thing that I wanted to try.
