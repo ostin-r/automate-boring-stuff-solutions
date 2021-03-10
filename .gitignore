@@ -1,5 +1,4 @@
-settings.json
-launch.json
+*.json
 mcb.bak
 mcb.dir
 mcb.dat
