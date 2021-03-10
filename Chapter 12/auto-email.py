@@ -6,12 +6,13 @@ auto-email.py is a basic emailer that sends emails via the selenium python modul
 import sys
 from selenium import webdriver
 
-# TODO: Open a webbrowser, navigate to the login page
 chrome = webdriver.Chrome()
-chrome.get('https://gmail.com')
+chrome.get('https://accounts.google.com/signin')
 
-email = sys.argv[1]
-email_elem = chrome.find_by_css_selector(#identifierId)
-email_elem.send_keys(email)
+password = sys.argv[1]
+send_address = sys.argv[2]
+send_string = ''.join(sys.argv[3:])
 
-# TODO: Create + send an email
+user_elem = chrome.find_element_by_id('identifierId')
+
+chrome.quit()
