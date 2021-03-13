@@ -4,16 +4,18 @@ Austin Richards 3/11/21
 flickr-download will search flickr
 and download the first 10 images
 '''
-import requests, os, bs4, webbrowser
+import os, requests, bs4, logging
 
-# make directory for images to save
-search_item = 'desert'
-os.makedirs('flickr-' + search_item, exist_ok=True )
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s -  %(levelname)s -  %(message)s')
+#logging.disable(logging.CRITICAL)
 
-# get the webbpage
-print('Downloading webpage...')
-url = 'https://www.flickr.com/search/?text=' + search_item
-res = requests.get(url)
-res.raise_for_status()
+url = 'https://imgur.com/'
+os.chdir('Chapter 12')
+os.makedirs('imgur-test', exist_ok=True )
 
-soup = bs4.BeautifulSoup(res.text, 'html.parser')
+print(f'Downloading {url}...')
+page = requests.get(url)
+page.raise_for_status()
+
+soup = bs4.BeautifulSoup(page.text, 'lxml')
+print(soup.a)
