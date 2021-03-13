@@ -5,17 +5,26 @@ flickr-download will search flickr
 and download the first 10 images
 '''
 import os, requests, bs4, logging
+from selenium import webdriver
 
 logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s -  %(levelname)s -  %(message)s')
-#logging.disable(logging.CRITICAL)
+logging.disable(logging.CRITICAL)
 
-url = 'https://imgur.com/'
+# search flickr, make a directory for the images
+search_item = 'mountains'
+url = f'https://www.flickr.com/search/?text={search_item}' 
 os.chdir('Chapter 12')
-os.makedirs('imgur-test', exist_ok=True )
+os.makedirs(f'flickr-{search_item}', exist_ok=True )
 
-print(f'Downloading {url}...')
-page = requests.get(url)
-page.raise_for_status()
+# open chrome, find the image
+chrome = webdriver.Chrome()
+chrome.get(url)
+elems = chrome.find_element_by_class_name('overlay')
 
-soup = bs4.BeautifulSoup(page.text, 'lxml')
-print(soup.a)
+# click the image
+try:
+    print(elems)
+    elems.click()
+    url = chrome.current_url
+except:
+    print('Image not found')
