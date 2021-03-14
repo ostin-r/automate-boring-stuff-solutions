@@ -15,7 +15,6 @@ logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s -  %(levelname)s -
 url = 'https://play2048.co/'
 driver = webdriver.Chrome()
 driver.get(url)
-
 html_elem = driver.find_element_by_tag_name('html')
 
 while True:
