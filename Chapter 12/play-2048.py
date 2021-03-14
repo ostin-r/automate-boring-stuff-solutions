@@ -24,7 +24,8 @@ while True:
     html_elem.send_keys(Keys.LEFT)
 
     try:
-        game_over = driver.find_element_by_css_selector('body > div.container > div.game-container > div.game-message.game-over')
+        selector = 'body > div.container > div.game-container > div.game-message.game-over'
+        game_over = driver.find_element_by_css_selector(selector)
         break
     except:
         pass
