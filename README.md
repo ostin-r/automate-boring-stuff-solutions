@@ -153,3 +153,12 @@ After a bunch of self directed projects, I think it is about time that I started
                 file.write(chunk)
                 
        I'm happy I was able to understand the use of the 'with' statement and apply it to this code.  That being said, I don't think my block of code is better or more efficient (unless an exception is raised, which is unlikely in this part of the code), it's just a different way to do the same thing that I wanted to try.
+  - This chapter was the toughest in terms of practice projects.  I spent a lot of time figuring out webpage nuances and debugging my code.  I'm starting to feel more comfortable with logging and debugging.
+       
+- Project 1: [emailer-cl.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2012/emailer-cl.py)
+  - This is a modification of the follow along project on [Real Python](https://realpython.com/python-send-email/) to use command line arguments to send an email.  The author suggested that I do this project with the selenium module, however, google would not let me login to my account with the lack of security so I had to do this follow along.
+  - Learned how to set up a secure connection to my coding email, login, and send mail
+
+- Project 2: [play-2048.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2012/play-2048.py)
+  - This project is a bot that plays [2048](https://play2048.co/) by simply repeating up, right, down, left until the game is over
+  - Learned more about interacting with webbpages with the selenium module
