@@ -162,3 +162,7 @@ After a bunch of self directed projects, I think it is about time that I started
 - Project 2: [play-2048.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2012/play-2048.py)
   - This project is a bot that plays [2048](https://play2048.co/) by simply repeating up, right, down, left until the game is over
   - Learned more about interacting with webbpages with the selenium module
+
+- Project 3: [link-verify.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2012/link-verify.py)
+  - link-verify.py contains a function that takes a url as an argument and checks that every link on the page is valid
+  - Learned how different links present themselves within a webpage (ones that navigate within the same website vs. outside the website, there's probably some better terminology here...)
