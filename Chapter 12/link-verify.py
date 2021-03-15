@@ -12,7 +12,7 @@ def verify_links(url):
     '''
     checks that all links on a page are valid by downloading
     them with the requests module.  Returns True if all sites
-    are valid
+    are valid.
     '''
     try:
         res = requests.get(url)
