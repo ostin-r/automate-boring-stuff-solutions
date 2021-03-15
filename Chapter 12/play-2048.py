@@ -7,6 +7,7 @@ up, right, down, left until the game is over
 '''
 import logging
 from selenium import webdriver
+from contextlib import suppress
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 
@@ -23,9 +24,7 @@ while True:
     html_elem.send_keys(Keys.DOWN)
     html_elem.send_keys(Keys.LEFT)
 
-    try:
+    with suppress(NoSuchElementException):
         selector = 'body > div.container > div.game-container > div.game-message.game-over'
         game_over = driver.find_element_by_css_selector(selector)
         break
-    except NoSuchElementException:
-        pass
