@@ -4,7 +4,7 @@ Austin Richards 3/11/21
 flickr-download will search flickr
 and download the first 10 images
 '''
-import os, requests, bs4, webbrowser
+import os, requests, bs4, re
 import logging as log
 from contextlib import suppress
 
@@ -20,11 +20,9 @@ res.raise_for_status()
 soup = bs4.BeautifulSoup(res.text, 'html.parser')
 links = soup.select('img')
 
-'''
-i = 0
 for link in links:
-    while i < 3:
-        with suppress(KeyError):
-            print(link['srcset'][0])
-            i += 1
-'''
+    with suppress(KeyError):
+        log.debug( '\nDownloading image link: ' + link['srcset'] + '\n' )
+
+# TODO: Make a regex object that can sort through these massive links
+# TODO: maybe they can be indexed but I couldn't figure it out
