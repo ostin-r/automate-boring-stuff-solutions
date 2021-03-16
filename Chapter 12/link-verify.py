@@ -5,7 +5,7 @@ import requests, bs4
 import logging as log
 
 log.basicConfig(level=log.DEBUG, format='%(asctime)s: %(message)s')
-log.disable(log.CRITICAL)
+#log.disable(log.CRITICAL)
 
 
 def verify_links(url):
@@ -25,10 +25,12 @@ def verify_links(url):
 
             if new_url.startswith('/'):
                 new_url = url + new_url[1:]
+                log.debug('checking link: ' + new_url)
                 new_res = requests.get(new_url)
                 new_res.raise_for_status()
 
             elif new_url.startswith('https://'):
+                log.debug('checking link: ' + new_url)
                 new_res = requests.get(new_url)
                 new_res.raise_for_status()
 
@@ -38,6 +40,6 @@ def verify_links(url):
 
     return True
 
-url = 'https://www.google.com/'
+url = 'https://google.com'
 results = verify_links(url)
-print(results) #True
+print(results)
