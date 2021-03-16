@@ -161,7 +161,27 @@ After a bunch of self directed projects, I think it is about time that I started
 
 - Project 2: [play-2048.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2012/play-2048.py)
   - This project is a bot that plays [2048](https://play2048.co/) by simply repeating up, right, down, left until the game is over
-  - Learned more about interacting with webbpages with the selenium module
+  - Learned more about interacting with webbpages with the selenium module.  Also learned how to make the following try/except block:
+
+        while True:
+            # --snip-- (play game here)
+            try:
+                selector = 'body > div.container > div.game-container > div.game-message.game-over'
+                game_over = driver.find_element_by_css_selector(selector)
+                break
+            except NoSuchElementException:
+                pass
+                
+      And change it into this more readable block: (by importing suppress from contextlib)
+      
+        while True:
+            # --snip-- (play game here)
+            with suppress(NoSuchElementException):
+                selector = 'body > div.container > div.game-container > div.game-message.game-over'
+                game_over = driver.find_element_by_css_selector(selector)
+                break
+                
+      This block detects when the 2048 game page prints the "game over" message, and stops the code accordingly.  I thought this was a really cool tool to use, and I'm sure it will become useful later.
 
 - Project 3: [link-verify.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2012/link-verify.py)
   - link-verify.py contains a function that takes a url as an argument and checks that every link on the page is valid
