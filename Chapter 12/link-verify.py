@@ -25,11 +25,11 @@ def verify_links(url):
 
             if new_url.startswith('/'):
                 new_url = url + new_url[1:]
-                new_res = requests.get(url)
+                new_res = requests.get(new_url)
                 new_res.raise_for_status()
 
             elif new_url.startswith('https://'):
-                new_res = requests.get(url)
+                new_res = requests.get(new_url)
                 new_res.raise_for_status()
 
     except Exception as e:
@@ -38,6 +38,6 @@ def verify_links(url):
 
     return True
 
-url = 'https://google.com/'
+url = 'https://www.google.com/'
 results = verify_links(url)
 print(results) #True
