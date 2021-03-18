@@ -4,6 +4,7 @@ mcb.dir
 mcb.dat
 *.txt
 *.zip
+*.jpg
 buggyAdd.py
 *.png
 quickstart.py
