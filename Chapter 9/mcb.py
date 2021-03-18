@@ -1,6 +1,6 @@
 '''
 mcb.py is a multi-clipboard program by Al Sweigart, a follow along project in Ch. 9
-of automate the boring stuff
+of automate the boring stuff. I added a few features (delete, clear)
 
 usage (vscode):
 python mcb.py save <keyword> - saves clipboard to keyword
