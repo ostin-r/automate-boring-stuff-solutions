@@ -186,3 +186,10 @@ After a bunch of self directed projects, I think it is about time that I started
 - Project 3: [link-verify.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2012/link-verify.py)
   - link-verify.py contains a function that takes a url as an argument and checks that every link on the page is valid
   - Learned how different links present themselves within a webpage (ones that navigate within the same website vs. outside the website, there's probably some better terminology here...)
+
+- Project 4: [unsplash-download.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2012/unsplash-download.py)
+  - unsplash-download.py navigates to unsplash.com and downloads the first 3 images for the supplied search term
+  - This project was difficult for me.  I originally tried to do this project first, but ended up having to do the other 3 above to give my mind a rest (which I'm glad I did).  It was much easier after a few warm up projects.
+  - Learned how to better parse html with BeautifulSoup, and how to identify css selectors
+
+
