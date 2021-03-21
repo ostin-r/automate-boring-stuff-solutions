@@ -26,6 +26,6 @@ for row in range(2, sheet.max_row + 1):
     county_data[state][county]['pop'] += int(pop)
 
 print('Writing results...')
-with open('result-file.py', 'w') as file:
+with open('census2010.py', 'w') as file:
     file.write('all_data = ' + pprint.pformat(county_data))
 print('Done!')
