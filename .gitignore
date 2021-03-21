@@ -9,3 +9,4 @@ mcb.dat
 buggyAdd.py
 *.png
 quickstart.py
+*.pyc
