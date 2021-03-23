@@ -4,10 +4,11 @@ inserts 'm' blank rows at row 'n' (inbetween n and n+1)
 '''
 import os, re
 import openpyxl as xl
-from openpyxl.utils import get_column_letter, column_index_from_string
+from openpyxl.utils import get_column_letter
 import logging as log
 
 log.basicConfig(level=log.DEBUG, format='%(asctime)s: %(message)s')
+log.disable(log.CRITICAL)
 
 
 def insert_blanks(file, n, m):
@@ -23,6 +24,9 @@ def insert_blanks(file, n, m):
                 letter = get_column_letter(col)
                 loc = letter + str(row)
                 val = sheet[loc].value
+
+                if str(val).startswith('='):
+                    val = move_excel_function(val, m)
                 
                 new_loc = letter + str(row + m)
                 sheet[new_loc].value = val
@@ -37,18 +41,26 @@ def insert_blanks(file, n, m):
             sheet[loc].value = ''
             log.debug(f'blank value at {loc}')
 
-    wb.save('insertBlanksExample.xlsx')
+    print('saved new file')
+    wb.save('insertBlanks.xlsx')
+
 
 def move_excel_function(value, m):
     '''
-    moves a function excel and maintains relative reference for rows only
+    moves a function excel and maintains relative reference for rows
     '''
-    # TODO: match a location using regex ex. 'A1' 'B32', do the following:
-    # get the location of that location in the string (only need the row value)
-    # if a $ preceeds the row don't change it
-    # increase row by m
-    return
+    loc_regex = re.compile(r'([A-Z]+)(\$?)(\d+)')
+    locs = loc_regex.findall(value)
+    
+    for loc in locs:
+        if loc[1]: pass
+        old_loc = loc[0] + loc[2]
+        new_row = str(int(loc[2]) + m)
+        new_loc = loc[0] + new_row
+        value = value.replace(old_loc, new_loc, 1)
+
+    return value
 
 
 os.chdir('Chapter 13')
-insert_blanks('writeFormula.xlsx', 1, 2)
+insert_blanks('.xlsx', 1, 3)
