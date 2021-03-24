@@ -192,4 +192,9 @@ After a bunch of self directed projects, I think it is about time that I started
   - This project was difficult for me.  I originally tried to do this project first, but ended up having to do the other 3 above to give my mind a rest (which I'm glad I did).  It was much easier after a few warm up projects.
   - Learned how to better parse html with BeautifulSoup, and how to identify css selectors
 
-
+**Chapter 13: Working with Excel Spreadsheets**
+- Project 1: [blank_row_inserter.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2013/blank_row_inserter.py)
+  - This project takes an excel file and inserts 'm' blank rows at location 'n' (inbetween n and n+1)
+  - Learned how to move items within an excel file using python and save a copy
+  - ***Bonus Feature***: Finally!  I've been waiting for a good place to implement a bonus feature and this is the perfect spot.  I added a feature that can detect excel equations and maintain their relative reference after being moved from the blank insertion.  This feature ignores absolute references.  I decided to add this after running a few example excel files, some of which contained equations which were left completely incorrect in their references after copying.
+  - This project really put into perspective how far I've come on my programming path.  I'm excited to learn more.
