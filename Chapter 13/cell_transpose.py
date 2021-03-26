@@ -36,7 +36,7 @@ def transpose_all(file):
             sheet[col_letter + str(row)].value = new_value
 
     print('Saving file...')
-    wb.save('transcribe-example.xlsx')
+    wb.save('transpose-example.xlsx')
     print('Done!')
 
 
