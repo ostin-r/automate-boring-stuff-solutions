@@ -32,7 +32,7 @@ def transpose_all(file):
     for row in range(1, new_rows + 1):
         for col in range(1, new_cols + 1):
             col_letter = get_column_letter(col)
-            new_value = data[row - 1][col - 1]
+            new_value = data[row - 1][col - 1] # note that rows/cols are flipped 
             sheet[col_letter + str(row)].value = new_value
 
     print('Saving file...')
