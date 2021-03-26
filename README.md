@@ -198,3 +198,7 @@ After a bunch of self directed projects, I think it is about time that I started
   - Learned how to move items within an excel file using python and save a copy
   - ***Bonus Feature***: Finally!  I've been waiting for a good place to implement a bonus feature and this is the perfect spot.  I added a feature that can detect excel equations and maintain their relative reference after being moved from the blank insertion.  This feature ignores absolute references.  I decided to add this after running a few example excel files, some of which contained equations which were left completely incorrect in their references after copying.
   - This project really put into perspective how far I've come on my programming path.  I'm excited to learn more.
+
+- Project 2: [multiply_table_maker.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2013/multiply_table_maker.py)
+  - This project generates a simple multiplication table in an excel file
+  - More practice with openpyxl!
