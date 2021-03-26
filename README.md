@@ -202,3 +202,10 @@ After a bunch of self directed projects, I think it is about time that I started
 - Project 2: [multiply_table_maker.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2013/multiply_table_maker.py)
   - This project generates a simple multiplication table in an excel file
   - More practice with openpyxl!
+
+- Project 3: [cell_transpose.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2013/cell_transpose.py)
+  - A program that transposes all columns to rows in an excel file
+  - List comprehension practice, more practice with openpyxl and file writing
+  - Added more comments than usual on this one to clear up difficulties/confusion about transposing
+
+
