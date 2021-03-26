@@ -19,7 +19,7 @@ def transpose_all(file):
     new_rows = sheet.max_column # clear up the confusion of transposing...
     new_cols = sheet.max_row    # also important to get these numbers before cutting/pasting data
 
-    # 'cut' data into a list
+    # cut data into a list
     for col in range(1, sheet.max_column + 1):
         col_letter = get_column_letter(col)
 
@@ -28,7 +28,7 @@ def transpose_all(file):
             sheet[col_letter + str(row)].value = '' # cut
             data[col - 1].append(current_value)     # store in list
 
-    # 'paste' in new locations
+    # paste in new locations
     for row in range(1, new_rows + 1):
         for col in range(1, new_cols + 1):
             col_letter = get_column_letter(col)
