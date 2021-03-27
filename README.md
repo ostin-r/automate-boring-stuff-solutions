@@ -208,4 +208,8 @@ After a bunch of self directed projects, I think it is about time that I started
   - List comprehension practice, more practice with openpyxl and file writing
   - Added more comments than usual on this one to clear up difficulties/confusion about transposing
 
+- Projects 4 & 5: [txt_xlsx.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2013/txt_xlsx.py)
+  - This program contains two functions: txt_to_xlsx which takes the contents of multiple text files and puts each line in a new row of an excel file, and xlsx_to_txt which does the reverse (only puts the data into one text file, though).
+  - A nice refresher on file reading and writing and more practice with openpyxl
+
 
