@@ -38,8 +38,18 @@ def txt_to_xlsx(file_list, new_name):
 
 
 def xlsx_to_txt(file, new_name):
-    pass
+    wb = xl.load_workbook(file)
+    sheet = wb.active
+    new_name += '.txt'
+
+    with open(path(new_name), 'w') as file:
+        for row in range(1, sheet.max_row + 1):
+            data = sheet['A' + str(row)].value
+            if not data.endswith('\n'): data += '\n' # organize all lines with newline
+            file.write(data)
+
 
 os.chdir('Chapter 13')
 file_list = ['file-1.txt', 'file-2.txt']
 txt_to_xlsx(file_list, 'files1&2')
+xlsx_to_txt('files1&2.xlsx', 'files1&2')
