@@ -10,3 +10,4 @@ buggyAdd.py
 *.png
 quickstart.py
 *.pyc
+*.pickle
