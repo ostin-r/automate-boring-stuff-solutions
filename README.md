@@ -212,4 +212,8 @@ After a bunch of self directed projects, I think it is about time that I started
   - This program contains two functions: txt_to_xlsx which takes the contents of multiple text files and puts each line in a new row of an excel file, and xlsx_to_txt which does the reverse (only puts the data into one text file, though).
   - A nice refresher on file reading and writing and more practice with openpyxl
 
-
+**Chapter 14: Working with Google Spreadsheets**
+- Project 1 [download_forms.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2014/download_forms.py)
+  - Uses the ezsheets module to access the data acquired from a google form and extract the email addresses
+  - A very simple program that just required learning how to set up ezsheets so I could access the data in my gmail
+  - Learned how to use the ezsheets module and add APIs on my google account
