@@ -213,7 +213,13 @@ After a bunch of self directed projects, I think it is about time that I started
   - A nice refresher on file reading and writing and more practice with openpyxl
 
 **Chapter 14: Working with Google Spreadsheets**
-- Project 1 [download_forms.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2014/download_forms.py)
+- A quick note: the projects in this chapter were extremely easy.  The hard part of this chapter, and the part where I learned the most, is in setting up the google API.  In fact, I decided to start with this textbook when I realized I was in over my head trying to write an email program 2 months before reaching this chapter.  I didn't realize that there was a chapter that would help me with this problem, and I am now pleasantly surprised.
+
+- Project 1: [download_forms.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2014/download_forms.py)
   - Uses the ezsheets module to access the data acquired from a google form and extract the email addresses
   - A very simple program that just required learning how to set up ezsheets so I could access the data in my gmail
   - Learned how to use the ezsheets module and add APIs on my google account
+
+- Project 2: [sheets_convert.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2014/sheets_convert.py)
+  - Let me just say, this is a funny project suggestion by the author.  This project converts different spreadsheet file types by 'hijacking' google sheets into doing it for you.
+  - This project was pretty simple, I learned how to use basic methods of the ezsheets module
