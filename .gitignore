@@ -11,3 +11,4 @@ buggyAdd.py
 quickstart.py
 *.pyc
 *.pickle
+*.pdf
