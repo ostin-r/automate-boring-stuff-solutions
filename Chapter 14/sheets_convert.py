@@ -28,4 +28,4 @@ def convert_sheet(file, file_type=None):
 
 
 os.chdir('Chapter 14')
-convert_sheet('files1&2.xlsx', 'html')
+convert_sheet('files1&2.xlsx', 'pdf')
