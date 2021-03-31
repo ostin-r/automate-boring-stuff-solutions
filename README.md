@@ -221,5 +221,9 @@ After a bunch of self directed projects, I think it is about time that I started
   - Learned how to use the ezsheets module and add APIs on my google account
 
 - Project 2: [sheets_convert.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2014/sheets_convert.py)
-  - Let me just say, this is a funny project suggestion by the author.  This project converts different spreadsheet file types by 'hijacking' google sheets into doing it for you.
+  - Let me just say, this is a funny project suggestion by the author.  This project converts different spreadsheet file types by 'hijacking' google sheets into doing it for you
   - This project was pretty simple, I learned how to use basic methods of the ezsheets module
+
+- Project 3: [find_mistakes.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2014/find_mistakes.py)
+  - This project parses through a public google sheet posted by Al, and determines which row has a mathematical error (it's row 14399)
+  - Another quick project to get some more practice using ezsheets
