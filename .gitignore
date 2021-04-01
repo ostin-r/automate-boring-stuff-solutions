@@ -12,3 +12,4 @@ quickstart.py
 *.pyc
 *.pickle
 *.pdf
+*.docx
