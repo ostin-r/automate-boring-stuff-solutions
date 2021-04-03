@@ -7,7 +7,12 @@ the format text009.py and rename the file without the zeros
 import os, re, shutil
 
 def get_all_paths(directory, abs_path):
-
+    '''
+    get_all_paths will return the name of each file within a directory,
+    including sub-directories.
+    directory - the path that you want to return all files for
+    abspath - bool.  If true, it will give you absolute paths for every file
+    '''
     file_paths = []
 
     if abs_path:
