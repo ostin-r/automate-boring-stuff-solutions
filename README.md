@@ -230,5 +230,5 @@ After a bunch of self directed projects, I think it is about time that I started
 
 **Chapter 15: Working with PDF and Word Documents**
 - Project 1: [pdf_paranoia.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2015/pdf_paranoia.py)
-  - This project contains the function encrypt_pdfs() which walks through a specified file path and encrypts all unencrypted .pdf files and renames them with the suffix '<underscore>encrypted.pdf'.  It also contains decrypt_pdfs() which does the opposite and adds the suffix '<underscore>decrypted.pdf'
+  - This project contains the function encrypt_pdfs() which walks through a specified file path and encrypts all unencrypted .pdf files and renames them with the suffix 'encrypted.pdf'.  It also contains decrypt_pdfs() which does the opposite and adds the suffix 'decrypted.pdf'
   - Learned how to copy pdf files using the PyPDF2 module
