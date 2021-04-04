@@ -227,3 +227,8 @@ After a bunch of self directed projects, I think it is about time that I started
 - Project 3: [find_mistakes.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2014/find_mistakes.py)
   - This project parses through a public google sheet posted by Al, and determines which row has a mathematical error (it's row 14399)
   - Another quick project to get some more practice using ezsheets
+
+**Chapter 15: Working with PDF and Word Documents**
+- Project 1: [pdf_paranoia.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2015/pdf_paranoia.py)
+  - This project contains the function encrypt_pdfs() which walks through a specified file path and encrypts all unencrypted .pdf files and renames them with the suffix '<underscore>encrypted.pdf'.  It also contains decrypt_pdfs() which does the opposite and adds the suffix '<underscore>decrypted.pdf'
+  - Learned how to copy pdf files using the PyPDF2 module
