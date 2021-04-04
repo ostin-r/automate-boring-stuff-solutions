@@ -14,6 +14,7 @@ import logging as log
 from pathlib import Path
 
 log.basicConfig(level=log.DEBUG, format='%(asctime)s : %(message)s')
+log.disable(level=log.CRITICAL)
 
 
 def get_all_paths(directory):
@@ -37,7 +38,9 @@ def encrypt_pdfs(file_path, passcode):
     files = get_all_paths(file_path)
     files = [file for file in files if file.endswith('.pdf')] # only get pdf files
 
-    for file in files:
+    file_count = 0
+
+    for file in files: # If I wrote this again I would rename 'file' to 'path' for clarity
         # initialize filename, pdf reader and writer, encrypt the writer
         file_name = Path(file).name
         pdf_file = open(file, 'rb')
@@ -70,13 +73,63 @@ def encrypt_pdfs(file_path, passcode):
             pdf_file.close()
             os.unlink(file)
             print(f'{file_name} encrypted to {Path(new_filepath).name} successfully')
+
+            file_count += 1
         except PdfReadError:
             print('Error: file not encrypted correctly')
 
+    print(f'{file_count}/{len(files)} files encrypted.')
+
 
 def decrypt_pdfs(file_path, passcode):
-    #TODO: get all the .pdf file paths in the path
-    pass
+    # get all the .pdf file paths
+    file_path = os.path.abspath(file_path)
+    print(f'Going through files in {file_path}')
+    files = get_all_paths(file_path)
+    files = [file for file in files if file.endswith('.pdf')] # only get pdf files
+
+    file_count = 0
+
+    for file in files:
+        file_name = Path(file).name
+        pdf_file = open(file, 'rb')
+        pdf_reader = PyPDF.PdfFileReader(pdf_file)
+        pdf_writer = PyPDF.PdfFileWriter()
+
+        # skip files that are already decrypted
+        if not pdf_reader.isEncrypted:
+            print(f'{file_name} already decrypted')
+            continue
+
+        try:
+            pdf_reader.decrypt(passcode)
+            pdf_reader.getPage(0) # raise an exception if decryption didn't work
+            log.debug(f'Decryption of {file_name} successful')
+        except:
+            print(f'Unable to decrypt {file_name}')
+            continue
+
+        # copy encrypted file to writer
+        print(f'Decrypting {file_name}...')
+        for page_num in range(pdf_reader.numPages):
+            new_page = pdf_reader.getPage(page_num)
+            pdf_writer.addPage(new_page)
+
+        # write the new name
+        decrypted_name = Path(file).stem + '_decrypted.pdf'
+        new_filepath = os.path.join(Path(file).parent, decrypted_name)
+        with open(new_filepath, 'wb') as decrypted_file:
+            pdf_writer.write(decrypted_file)
+
+        # delete the encrypted file
+        pdf_file.close()
+        os.unlink(file)
+        log.debug(f'**Deleted {file}')
+
+        file_count += 1
+    
+    print(f'{file_count}/{len(files)} encrypted files decrypted')
 
 
-encrypt_pdfs('Chapter 15', 'bananas')
+#encrypt_pdfs('Chapter 15', 'bananas')
+decrypt_pdfs('Chapter 15', 'bananas')
