@@ -4,8 +4,8 @@ Austin Richards 4/3/21
 pdf_paranoia.py contains encrypt_pdfs() to go through
 every .PDF file in a folder and subfolders and encrypt them
 and resave them with the original filename plus a suffix of
-_encrypted.pdf. In addition, decrypt_pdfs does the opposite
-and changes the suffix to _decrypted.pdf
+'_encrypted.pdf'. In addition, decrypt_pdfs does the opposite
+and adds the suffix '_decrypted.pdf'
 '''
 import os
 import PyPDF2 as PyPDF
