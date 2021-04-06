@@ -11,27 +11,36 @@ import docx
 
 def custom_invitation(text_file):
     names_file = open(text_file, 'r')
-    #names = names_file.readlines()
+    names = names_file.readlines()
     names_file.close()
-
-    names = ['Austin']
+    doc = docx.Document()
+    page_break = 4
 
     for name in names:
-        #TODO: write the invitation, with the name
         greeting = 'It would be a pleasure to have the company of\n'
         address = 'at 11010 Memory Lane on the evening of\n'
         date = 'April 1st\n'
         time = "at 7 o'clock"
 
-        doc = docx.Document()
-
         add_greeting = doc.add_paragraph(greeting)
+        add_name = doc.add_paragraph(name, 'Intense Quote')
         add_address = doc.add_paragraph(address)
-        add_date = doc.add_paragraph(date, )
-        add_time = doc.add_paragraph(time, 'Quote')
+        add_date = doc.add_paragraph(date)
+        add_time = doc.add_paragraph(time)
+
+        add_greeting.alignment = 1
+        add_name.alignment = 1
+        add_address.alignment = 1
+        add_date.alignment = 1
         add_time.alignment = 1
 
-        doc.save('invitations.docx')
+        doc.paragraphs[page_break].runs[0].add_break(docx.enum.text.WD_BREAK.PAGE)
+
+        page_break += 5
+
+        #TODO: make font bigger, change style maybe so it's more flashy
+    
+    doc.save('invitations.docx')
 
 
 os.chdir('Chapter 15')
