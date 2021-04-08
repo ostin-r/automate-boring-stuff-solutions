@@ -7,6 +7,7 @@ personalized by reading a .txt file of recipient names.
 '''
 import os
 import docx
+from docx.shared import Pt
 
 
 def custom_invitation(text_file):
@@ -22,11 +23,11 @@ def custom_invitation(text_file):
         date = 'April 1st\n'
         time = "at 7 o'clock"
 
-        add_greeting = doc.add_paragraph(greeting)
+        add_greeting = doc.add_paragraph(greeting, 'Heading 1')
         add_name = doc.add_paragraph(name, 'Intense Quote')
-        add_address = doc.add_paragraph(address)
-        add_date = doc.add_paragraph(date)
-        add_time = doc.add_paragraph(time)
+        add_address = doc.add_paragraph(address, 'Heading 1')
+        add_date = doc.add_paragraph(date, 'Heading 1')
+        add_time = doc.add_paragraph(time, 'Heading 1')
 
         add_greeting.alignment = 1
         add_name.alignment = 1
@@ -37,8 +38,6 @@ def custom_invitation(text_file):
         doc.paragraphs[page_break].runs[0].add_break(docx.enum.text.WD_BREAK.PAGE)
 
         page_break += 5
-
-        #TODO: make font bigger, change style maybe so it's more flashy
     
     doc.save('invitations.docx')
 
