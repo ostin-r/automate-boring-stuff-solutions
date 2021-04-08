@@ -233,3 +233,7 @@ After a bunch of self directed projects, I think it is about time that I started
   - This project contains the function encrypt_pdfs() which walks through a specified file path and encrypts all unencrypted .pdf files and renames them with the suffix 'encrypted.pdf'.  It also contains decrypt_pdfs() which does the opposite and adds the suffix 'decrypted.pdf'
   - Learned how to copy pdf files using the PyPDF2 module
   - One of the biggest projects I've finished thus far and I'm very proud of it.  Copying, encrypting, and checking that it all worked for pdfs was pretty intense.
+
+- Project 2: [custom_invitation.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2015/custom_invitation.py)
+  - A program that creates custom invitations using a .txt supplied list of names.  This puts them all in the same word document on separate pages.
+  - Learned how to use the docx module to add text, change paragraph style and alignment, and add new pages in a word document
