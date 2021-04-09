@@ -131,5 +131,5 @@ def decrypt_pdfs(file_path, passcode):
     print(f'{file_count}/{len(files)} encrypted files decrypted')
 
 
-#encrypt_pdfs('Chapter 15', 'bananas')
-decrypt_pdfs('Chapter 15', 'bananas')
+encrypt_pdfs('Chapter 15', 'APPLE12')
+#decrypt_pdfs('Chapter 15', 'APPLE')
