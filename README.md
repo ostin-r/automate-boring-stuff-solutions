@@ -237,3 +237,7 @@ After a bunch of self directed projects, I think it is about time that I started
 - Project 2: [custom_invitation.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2015/custom_invitation.py)
   - A program that creates custom invitations using a .txt supplied list of names.  This puts them all in the same word document on separate pages.
   - Learned how to use the docx module to add text, change paragraph style and alignment, and add new pages in a word document
+
+- Project 3: [pdf_brute_force.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2015/pdf_brute_force.py)
+  - This program uses a dictionary of all english words and attempts to decrypt a pdf with both lower and upper case versions of each word (A total of about 90k words).  If the function is able to decrypt the pdf, it will print the password to the user.
+  - Combined my knowledge of file reading, dictionaries, and the PyPDF2 module to decrypt a pdf file! Very fun!
