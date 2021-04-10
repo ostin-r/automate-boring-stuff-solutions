@@ -13,3 +13,4 @@ quickstart.py
 *.pickle
 *.pdf
 *.docx
+*.csv
