@@ -5,8 +5,8 @@ excel_to_csv.py automates the conversion of many xlsx
 files into csv files.  This program names the csv file
 in the format <filename>_<sheetname>.csv
 '''
-import os, csv, openpyxl
 import logging
+import os, csv, openpyxl
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s: %(message)s')
 
@@ -21,7 +21,10 @@ def get_all_paths(directory):
 def xl_to_csv(directory):
     directory = os.path.abspath(directory)
     all_paths = [path for path in get_all_paths(directory) if path.endswith('.xlsx')]
-
+    os.makedirs(f'csvFiles_{os.path.basename(directory)}', exist_ok=True)
+    #TODO put the new directory in the directory being edited, save the name of the new directory
+    # so that it can be referenced later when adding files
+    
     for excel_file in all_paths:
         workbook = openpyxl.load_workbook(excel_file)
 
