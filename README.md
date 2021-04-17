@@ -241,3 +241,12 @@ After a bunch of self directed projects, I think it is about time that I started
 - Project 3: [pdf_brute_force.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2015/pdf_brute_force.py)
   - This program uses a dictionary of all english words and attempts to decrypt a pdf with both lower and upper case versions of each word (A total of about 90k words).  If the function is able to decrypt the pdf, it will print the password to the user.
   - Combined my knowledge of file reading, dictionaries, and the PyPDF2 module to decrypt a pdf file! Very fun!
+
+**Chapter 16: Working with CSV files and JSON Data**
+- Follow Along Project: [getOpenWeather.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/follow-along/Chapters%2010-20/getOpenWeather.py)
+  - A fun follow-along project which taught me how to work with JSON data and the openweathermaps API
+  - Learned more about using APIs.  I learned how to store my API key in a seperate file to keep it secret.
+  - Working with JSON data is pretty simple in python (using only the json.loads() and json.dumps() functions) so there weren't any suggested projects for this chapter that use them
+- Project 1: [excel_to_csv.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2016/excel_to_csv.py)
+  - Uses the csv and openpyxl modules to read excel files in a given directory and convert them into csv files.  Since csv files cannot handle multiple sheets, they are stored in individual files in the format excelfilename_sheetname.csv
+  - Learned about the convenience of csv files and how they can be used with python
