@@ -58,3 +58,4 @@ for download_thread in download_threads:
 
 end_time = time.time()
 print(f'Done in {end_time - start_time} seconds')
+# takes about 14 seconds
