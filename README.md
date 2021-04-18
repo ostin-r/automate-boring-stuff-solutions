@@ -250,3 +250,7 @@ After a bunch of self directed projects, I think it is about time that I started
 - Project 1: [excel_to_csv.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2016/excel_to_csv.py)
   - Uses the csv and openpyxl modules to read excel files in a given directory and convert them into csv files.  Since csv files cannot handle multiple sheets, they are stored in individual files in the format excelfilename_sheetname.csv
   - Learned about the convenience of csv files and how they can be used with python
+
+**Chapter 17: Keeping Time, Launching Tasks, and Scheduling Programs**
+- Follow-along project notes:
+  - The first follow-along project involved implementing a previous project, xkcd-download.py, except with threading to make it even faster.  I went ahead and timed the two programs, each downloading the first 40 comics.  The non-threaded version took ~34 seconds, and the threaded version took ~14 seconds.  A pretty simple addition in the code that would save a lot of time if I were to download a couple thousand images.  Very cool!
