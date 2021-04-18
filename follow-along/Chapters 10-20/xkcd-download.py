@@ -1,6 +1,8 @@
 '''
 Another follow-along project in ch. 12 (web scraping)
 This project downloads all comics from xkcd.com
+
+I timed this and it took about 34 seconds to complete.
 '''
 import time
 import requests, os, bs4
