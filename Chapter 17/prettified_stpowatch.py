@@ -5,7 +5,7 @@ prettified_stopwatch.py is an extension of the follow-along
 project from chapter 17.  This version does the same thing
 except it also prints the data in a pretty way (just by
 justifying the text) and copies it to the clipboard so the
-data could be placed in an email or text file.
+data can be placed in an email or text file.
 '''
 import time
 import pyperclip
