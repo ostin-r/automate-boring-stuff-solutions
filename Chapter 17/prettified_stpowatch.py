@@ -9,7 +9,6 @@ data could be placed in an email or text file.
 '''
 import time
 import pyperclip
-import pprint
 
 print('Press ENTER to begin, afterward, press ENTER to click the stopwatch.  Press Ctrl-C to quit')
 input()
