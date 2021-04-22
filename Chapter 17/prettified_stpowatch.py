@@ -19,7 +19,7 @@ start_time = time.time()
 last_time = start_time
 lap_num = 1
 
-data_list = []
+data_string = '\n'
 
 try:
     while True:
@@ -29,13 +29,11 @@ try:
 
         print_string = f'Lap # {lap_num}: {str(total_time).rjust(6)} ({str(lap_time).center(6)})'
         print(print_string, end='')
-        data_list.append(print_string)
+        data_string += print_string + '\n'
 
         lap_num += 1
         last_time = time.time()     
+
 except KeyboardInterrupt:
-    pretty_data = pprint.pformat(data_list)
-    print('\n')
-    print(pretty_data)
-    #TODO: change the data type from a list to a string with newlines between each item.
-    print('\nDone.')
+    pyperclip.copy(data_string)
+    print('\nDone. Data copied to clipboard.')
