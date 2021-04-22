@@ -11,7 +11,7 @@ from contextlib import suppress
 log.basicConfig(level=log.DEBUG, format='%(asctime)s: %(message)s')
 log.disable(log.CRITICAL)
 
-search_term = 'canyon'
+search_term = 'ocean'
 url = 'https://unsplash.com/s/photos/' + search_term
 new_directory = 'unsplash-' + search_term
 
@@ -24,9 +24,9 @@ soup = bs4.BeautifulSoup(res.text, 'html.parser')
 links = soup.select('img')
 
 i = 1
-for link in links[0:4]:
+# only download the first 3 images
+for link in links[:4]:
     with suppress(KeyError):
-
         if link['src'].startswith('https://images'):
             log.debug('downloading... ' + link['src'][:70])
             res = requests.get(link['src'])
