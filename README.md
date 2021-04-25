@@ -115,7 +115,19 @@ After a bunch of self directed projects, I think it is about time that I started
   - This project took a few hours because I am just learning file io.  I am amazed at how little code this is, while still yielding such useful results.  What a fun small project!
 
 **Chapter 10: Organizing Files**
-- Follow along notes: Before talking about my projects for this chapter, I first want to explain that I had quite some difficulty with Al's program for backing up and zipping files from a directory.  His way took me quite some time to understand.  Luckily, I found an example of zipping files on [GeeksForGeeks](https://www.geeksforgeeks.org/working-zip-files-python/) which was much simpler.  I ended up using the extremely useful function get_all_paths() in all of the projects in this chapter.  Turns out it is much easier to separate each problem into (1) getting the paths you want to manipulate and then (2) doing whatever you want with them, instead of doing it all in one loop as Al did.
+- Follow along notes: Before talking about my projects for this chapter, I first want to explain that I had quite some difficulty with Al's program for backing up and zipping files from a directory.  His way took me quite some time to understand.  Luckily, I found an example of zipping files on [GeeksForGeeks](https://www.geeksforgeeks.org/working-zip-files-python/) which was much simpler.  I ended up using the extremely useful function get_all_paths() in all of the projects in this chapter.  Turns out it is much easier to separate each problem into (1) getting the paths you want to manipulate and then (2) doing whatever you want with them, instead of doing it all in one loop as Al did.  For those who would like to copy/paste, the function is as follows:
+
+      def get_all_paths(directory):
+      '''
+      returns the aboslute path of each file within a directory,
+      and every file within each sub-directory, and so on.
+      '''
+      file_paths = []
+      for path, dirs, files in os.walk(directory):
+          for filename in files:
+              filepath = os.path.join(path, filename)
+              file_paths.append(filepath)
+      return file_paths
 
 - Project 1 [selective-copy.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2010/selective-copy.py)
   - After wrestling with the follow-along project, this problem was straight-forward and enjoyable.  selective-copy.py copies all files that match a user specified extension and puts them in the desired folder.
@@ -255,6 +267,11 @@ After a bunch of self directed projects, I think it is about time that I started
 - Follow-along project notes:
   - The first follow-along project involved implementing a previous project, xkcd-download.py, except with threading to make it even faster.  I went ahead and timed the two programs, each downloading the first 40 comics.  The non-threaded version took ~34 seconds, and the threaded version took ~14 seconds.  A pretty simple addition in the code that would save a lot of time if I were to download a couple thousand images.  Very cool!
 
-- Project 1: [prettified_stopwatch.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2017/prettified_stpowatch.py)
+- Project 1: [prettified_stopwatch.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2017/prettified_stopwatch.py)
   - An extension of a follow-along project in the chapter.  After doing the follow along project, this was a pretty simple exercise in using the time module.
   - Learned basics of time keeping with the time module
+
+- Project 2: [scheduled_comic.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2017/scheduled_comic.py)
+  - A fun program that uses the requests and BeautifulSoup modules to download any new comics that appear on the web comic lunarbaboon.com (I just picked a random one).
+  - Using Windows Time Scheduler, this program is run once a day and saves the new files to the desktop so they are easy to see.
+  - Learned how to use the windows time scheduler with Python programs!
