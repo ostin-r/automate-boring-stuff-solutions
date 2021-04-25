@@ -53,7 +53,7 @@ def download_new():
         with open(filepath, 'wb') as file:
             for chunk in res.iter_content(100000):
                 file.write(chunk)
-        print('New comic available!')
+        print('New comic downloaded!')
 
     else:
         print('No new comic')
