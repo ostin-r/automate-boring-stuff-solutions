@@ -122,12 +122,12 @@ After a bunch of self directed projects, I think it is about time that I started
       returns the aboslute path of each file within a directory,
       and every file within each sub-directory, and so on.
       '''
-      file_paths = []
-      for path, dirs, files in os.walk(directory):
-          for filename in files:
-              filepath = os.path.join(path, filename)
-              file_paths.append(filepath)
-      return file_paths
+        file_paths = []
+        for path, dirs, files in os.walk(directory):
+            for filename in files:
+                filepath = os.path.join(path, filename)
+                file_paths.append(filepath)
+        return file_paths
 
 - Project 1 [selective-copy.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2010/selective-copy.py)
   - After wrestling with the follow-along project, this problem was straight-forward and enjoyable.  selective-copy.py copies all files that match a user specified extension and puts them in the desired folder.
