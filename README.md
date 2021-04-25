@@ -265,7 +265,7 @@ After a bunch of self directed projects, I think it is about time that I started
 
 **Chapter 17: Keeping Time, Launching Tasks, and Scheduling Programs**
 - Follow-along project notes:
-  - The first follow-along project involved implementing a previous project, xkcd-download.py, except with threading to make it even faster.  I went ahead and timed the two programs, each downloading the first 40 comics.  The non-threaded version took ~34 seconds, and the threaded version took ~14 seconds.  A pretty simple addition in the code that would save a lot of time if I were to download a couple thousand images.  Very cool!
+  - The first follow-along project involved implementing a previous project, xkcd-download.py, except with threading to make it even faster.  I went ahead and timed the two programs, each downloading the first 40 comics.  The non-threaded version took ~34 seconds, and the threaded version took ~14 seconds.  A pretty simple addition in the code that would save a lot of time if I were to download a couple thousand images.  This project is reminiscent of my parallel GPU project that I worked on in undergrad. Very cool!
 
 - Project 1: [prettified_stopwatch.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2017/prettified_stopwatch.py)
   - An extension of a follow-along project in the chapter.  After doing the follow along project, this was a pretty simple exercise in using the time module.
