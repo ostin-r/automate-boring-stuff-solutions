@@ -13,6 +13,10 @@ log.disable(log.CRITICAL)
 
 
 def get_all_paths(directory):
+    '''
+    returns the aboslute path of each file within a directory,
+    and every file within each sub-directory, and so on.
+    '''
     file_paths = []
     for path, dirs, files in os.walk(directory):
         for filename in files:
