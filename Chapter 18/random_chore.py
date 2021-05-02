@@ -14,7 +14,9 @@ gmail.init()
 # chores, emails, and previous week's chores done
 chores = ['Dishes', 'Vacuum', 'Bathroom', 'Walk Dog']
 emails = {'Austin':'austinjrichards@outlook.com', 'Also Austin':'austin.pythonmagic@gmail.com'}
-prev_chore = {'Austin':'Vacuum', 'Also Austin':'Walk Dog'} #TODO: store this in a separate file to keep a record
+#TODO: store prev_chore in a .txt file to keep a record of what each person has done.  This functionality
+# does not work with this format...
+prev_chore = {'Austin':'Vacuum', 'Also Austin':'Walk Dog'}
 
 for name, email in emails.items():
     # assign chore, check they didn't do it last week, and update the list of what they did
