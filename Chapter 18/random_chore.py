@@ -14,7 +14,7 @@ gmail.init()
 # chores, emails, and previous week's chores done
 chores = ['Dishes', 'Vacuum', 'Bathroom', 'Walk Dog']
 emails = {'Austin':'austinjrichards@outlook.com', 'Also Austin':'austin.pythonmagic@gmail.com'}
-prev_chore = {'Austin':'Vacuum', 'Also Austin':'Walk Dog'}
+prev_chore = {'Austin':'Vacuum', 'Also Austin':'Walk Dog'} #TODO: store this in a separate file to keep a record
 
 for name, email in emails.items():
     # assign chore, check they didn't do it last week, and update the list of what they did
