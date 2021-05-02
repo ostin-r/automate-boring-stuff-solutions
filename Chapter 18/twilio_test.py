@@ -3,12 +3,10 @@ Austin Richards 4/29/21
 
 A program to test twilio out!
 '''
-import os
-from pathlib import Path
 from twilio.rest import Client
 
 
-def text_me(send_string):
+def send_text(send_string):
     '''
     sends a text to my cell.  Must use double quotes for input,
     otherwise twilio just won't send the text and won't throw 
@@ -27,4 +25,4 @@ def text_me(send_string):
                     )
 
 
-#text_me("Hello!!!")
+#text_me("Hi Austin, This is a message from your pal preston, don't forget to buy a snowbird pass!")
