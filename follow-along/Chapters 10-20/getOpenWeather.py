@@ -9,9 +9,11 @@ import logging as log
 log.basicConfig(level=log.DEBUG, format='%(asctime)s: %(message)s')
 log.disable(log.CRITICAL)
 
+
 def convertKF(temp_K):
     temp_F = (temp_K - 273.15) * (9/5) + 32
     return round(temp_F, 2)
+
 
 if len(sys.argv) < 2:
     print('Usage: python getOpenWeather.py city_name')
