@@ -275,3 +275,8 @@ After a bunch of self directed projects, I think it is about time that I started
   - A fun program that uses the requests and BeautifulSoup modules to download any new comics that appear on the web comic lunarbaboon.com (I just picked a random one).
   - Using Windows Time Scheduler, this program is run once a day and saves the new files to the desktop so they are easy to see.
   - Learned how to use the windows time scheduler with Python programs!
+
+**Chapter 18: Sending Email & Text Messages**
+- Project 1: [random_chore.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2018/random_chore.py)
+  - This project takes a random chore from a list of chores and assigns it to a user, then sends an email to that person alerting them which chore they have for the week
+  - Learned how to use the ezgmail module to send emails from my gmail.  This module is much easier to use for basic functions instead of directly working with the google API
