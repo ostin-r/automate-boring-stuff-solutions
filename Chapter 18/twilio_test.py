@@ -23,6 +23,3 @@ def send_text(send_string):
                         from_=twilio_num,
                         to=my_cell
                     )
-
-
-#text_me("Hi Austin, This is a message from your pal preston, don't forget to buy a snowbird pass!")
