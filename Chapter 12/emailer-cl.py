@@ -4,7 +4,7 @@ project on realpython.com !
 '''
 import ssl, smtplib, sys
 
-user_email = 'austin.pythonmagic@gmail.com'
+user_email = 'useremail@gmail.com'
 
 try:
     password = sys.argv[1]

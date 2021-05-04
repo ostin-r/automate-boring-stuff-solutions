@@ -6,7 +6,7 @@ import smtplib, ssl
 import pyinputplus as pyip
 
 port = 465
-user_email = 'austin.pythonmagic@gmail.com'
+user_email = 'user_email@gmail.com'
 password = pyip.inputPassword('Enter your password: ')
 reciever_email = pyip.inputEmail('Enter your recipient\'s email: ')
 message = pyip.inputStr('Enter the message: ')

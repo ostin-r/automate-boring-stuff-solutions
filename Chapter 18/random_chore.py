@@ -15,7 +15,7 @@ gmail.init()
 
 # chores, emails, and previous week's chores done
 chores = ['Dishes', 'Vacuum', 'Bathroom', 'Walk Dog']
-emails = {'Austin':'austinjrichards@outlook.com', 'Also Austin':'austin.pythonmagic@gmail.com'}
+emails = {'Austin':'austin@outlook.com', 'Also Austin':'austin2@gmail.com'}
 print(chore_record.prev_chore)
 
 for name, email in emails.items():
@@ -31,7 +31,7 @@ for name, email in emails.items():
     subject = 'Weekly Chores!'
     body = f'Dear {name},\nYou have been assigned to the following chore this week: {rand_chore}\n\nCheers!'
     print(f'Sending email to {name}. Chore: {rand_chore}')
-    gmail.send(email, subject, body)
+    #gmail.send(email, subject, body)
 
 # write changes to chore record
 data = pprint.pformat(chore_record.prev_chore)
