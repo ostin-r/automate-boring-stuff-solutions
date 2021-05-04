@@ -119,7 +119,7 @@ After a bunch of self directed projects, I think it is about time that I started
 
       def get_all_paths(directory):
         '''
-        returns the aboslute path of each file within a directory,
+        returns the path of each file within a directory,
         and every file within each sub-directory, and so on.
         '''
         file_paths = []
@@ -280,3 +280,7 @@ After a bunch of self directed projects, I think it is about time that I started
 - Project 1: [random_chore.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2018/random_chore.py)
   - This project takes a random chore from a list of chores and assigns it to a user, then sends an email to that person alerting them which chore they have for the week
   - Learned how to use the ezgmail module to send emails from my gmail.  This module is much easier to use for basic functions instead of directly working with the google API
+
+- Project 2: [umbrella_reminder.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2018/umbrella_reminder.py)
+  - Checks the local weather using the getOpenWeather API, then sends me a text reminding me to bring an umbrella if rain is in the forecast
+  - Learned how to use Twilio to create text alerts in my python programs
