@@ -119,7 +119,7 @@ After a bunch of self directed projects, I think it is about time that I started
 
       def get_all_paths(directory):
         '''
-        returns the aboslute path of each file within a directory,
+        returns the path of each file within a directory,
         and every file within each sub-directory, and so on.
         '''
         file_paths = []
