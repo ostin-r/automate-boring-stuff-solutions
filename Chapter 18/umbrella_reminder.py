@@ -20,7 +20,8 @@ res = requests.get(url)
 res.raise_for_status()
 
 weather_data = json.loads(res.text)
-weather = weather_data['weather'][0]['description']
+#weather = weather_data['weather'][0]['description']
+weather = 'light rain' # for testing...
 
 # send a text if it will rain today
 if 'rain' in weather: send_text("Don't forget an umbrella today! Rain is in the forecast.")
