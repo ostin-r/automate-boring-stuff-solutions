@@ -12,11 +12,23 @@ import imaplib
 import webbrowser
 import pyinputplus as pyip
 
-def unsubscribe_all(mailbox='INBOX'):
-    #TODO: for each mail in the INBOX, search for "unsubscribe" - add link to list of links
+def unsubscribe_all(email):
+    '''
+    unsubscribe_all takes an imaplib object that has
+    been logged in and has a folder selected.  It 
+    goes through the folder and finds any unsubscribe
+    links and opens them in a webbrowser for easy
+    access for the user.
+    '''
+    status, mail_data = email.search(None, 'ALL')
+    
+    for num in mail_data[0].split():
+        status, data = email.fetch(num, '(RFC822)')
+        #TODO figure out how to get the HTML and parse for unsubscribe
 
-    #TODO: for each link in the list, open it in the webbrowser
-    pass
+        #TODO add the link to a list, 
+
+    #TODO open all of the links in the webbrowser
 
 
 # login info
@@ -32,3 +44,8 @@ try:
 except imaplib.IMAP4.error:
     print('login failed')
 email.select(folder)
+
+# RUN IT!
+unsubscribe_all(email)
+email.close()
+email.logout()
