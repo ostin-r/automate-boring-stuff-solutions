@@ -10,9 +10,14 @@ all of them.
 import bs4
 import imaplib
 import webbrowser
+import email
 import pyinputplus as pyip
+import logging as log
 
-def unsubscribe_all(email):
+log.basicConfig(level=log.DEBUG, format='%(asctime)s: %(message)s')
+
+
+def unsubscribe_all(mail):
     '''
     unsubscribe_all takes an imaplib object that has
     been logged in and has a folder selected.  It 
@@ -20,13 +25,14 @@ def unsubscribe_all(email):
     links and opens them in a webbrowser for easy
     access for the user.
     '''
-    status, mail_data = email.search(None, 'ALL')
+    result, data = mail.uid('search', None, 'ALL')
+    mail_items = data[0].split()
     
-    for num in mail_data[0].split():
-        status, data = email.fetch(num, '(RFC822)')
-        #TODO figure out how to get the HTML and parse for unsubscribe
+    test_mail = mail_items[0]
+    result2, email_data = mail.uid('fetch', test_mail, '(RFC822)')
 
-        #TODO add the link to a list, 
+    raw_email = email_data[0][1].decode('utf-8')
+    full_email = email.message_from_string(raw_email)
 
     #TODO open all of the links in the webbrowser
 
@@ -37,15 +43,11 @@ password = pyip.inputPassword('Input Password: ')
 folder = 'INBOX'
 
 # login to imap server, select folder
-email = imaplib.IMAP4_SSL('imap.gmail.com')
-try:
-    box = email.login(user, password)
-    print('login successful')
-except imaplib.IMAP4.error:
-    print('login failed')
-email.select(folder)
+mail = imaplib.IMAP4_SSL('imap.gmail.com')
+mail.login(user, password)
+mail.select(folder)
 
 # RUN IT!
-unsubscribe_all(email)
-email.close()
-email.logout()
+unsubscribe_all(mail)
+mail.close()
+mail.logout()
