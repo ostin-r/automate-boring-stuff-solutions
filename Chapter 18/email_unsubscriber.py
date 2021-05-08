@@ -12,9 +12,11 @@ import imaplib
 import webbrowser
 import email
 import pyinputplus as pyip
+from contextlib import suppress
 import logging as log
 
 log.basicConfig(level=log.DEBUG, format='%(asctime)s: %(message)s')
+log.disable(log.CRITICAL)
 
 
 def unsubscribe_all(mail):
@@ -25,14 +27,39 @@ def unsubscribe_all(mail):
     links and opens them in a webbrowser for easy
     access for the user.
     '''
-    result, data = mail.uid('search', None, 'ALL')
-    mail_items = data[0].split()
+    # get all of the email uids that contain the word unsubscribe
+    result, data = mail.uid('search', None, 'TEXT unsubscribe')
+    uids = data[0].split()
     
-    test_mail = mail_items[0]
-    result2, email_data = mail.uid('fetch', test_mail, '(RFC822)')
+    # choose one of the emails to get the data for
+    #TODO: currently only doing one test mail, make this into a loop
+    print(f'links found: {len(uids)}')
 
-    raw_email = email_data[0][1].decode('utf-8')
-    full_email = email.message_from_string(raw_email)
+    for uid in uids:
+        # get email, convert to string data, create email object
+        result2, email_data = mail.uid('fetch', uid, '(RFC822)')
+        raw_email = email_data[0][1].decode('utf-8')
+        msg = email.message_from_string(raw_email)
+        print(msg["From"])
+
+        # get content type and parse if html
+        for part in msg.walk():
+            content_type = part.get_content_type()
+
+            if 'html' in content_type:
+                # get html from the email, create bs4 object
+                log.debug(f'HTML DETECTED: {msg["From"]}\n')
+                html_ = part.get_payload()
+                soup = bs4.BeautifulSoup(html_, 'html.parser')
+
+                # parse the links, look for keyword unsubscribe
+                for link in soup.find_all('a'):
+                    if 'unsubscribe' in str(link.string).lower():
+                        print(f'unsubscribe link found in {msg["From"]}, opening link...')
+                        print(f'link: {link.get("href")}\n')
+                        #webbrowser.open(link.get('href'))
+
+            #TODO get any link labelled with 'unsubscribe'
 
     #TODO open all of the links in the webbrowser
 
