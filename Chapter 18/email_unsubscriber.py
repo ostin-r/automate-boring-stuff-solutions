@@ -12,7 +12,6 @@ import imaplib
 import webbrowser
 import email
 import pyinputplus as pyip
-from contextlib import suppress
 import logging as log
 
 log.basicConfig(level=log.DEBUG, format='%(asctime)s: %(message)s')
@@ -30,10 +29,6 @@ def unsubscribe_all(mail):
     # get all of the email uids that contain the word unsubscribe
     result, data = mail.uid('search', None, 'TEXT unsubscribe')
     uids = data[0].split()
-    
-    # choose one of the emails to get the data for
-    #TODO: currently only doing one test mail, make this into a loop
-    print(f'links found: {len(uids)}')
 
     for uid in uids:
         # get email, convert to string data, create email object
@@ -48,7 +43,6 @@ def unsubscribe_all(mail):
 
             if 'html' in content_type:
                 # get html from the email, create bs4 object
-                log.debug(f'HTML DETECTED: {msg["From"]}\n')
                 html_ = part.get_payload()
                 soup = bs4.BeautifulSoup(html_, 'html.parser')
 
@@ -57,11 +51,7 @@ def unsubscribe_all(mail):
                     if 'unsubscribe' in str(link.string).lower():
                         print(f'unsubscribe link found in {msg["From"]}, opening link...')
                         print(f'link: {link.get("href")}\n')
-                        #webbrowser.open(link.get('href'))
-
-            #TODO get any link labelled with 'unsubscribe'
-
-    #TODO open all of the links in the webbrowser
+                        webbrowser.open(link.get('href'))
 
 
 # login info
