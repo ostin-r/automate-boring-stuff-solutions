@@ -54,17 +54,24 @@ def unsubscribe_all(mail):
                         webbrowser.open(link.get('href'))
 
 
-# login info
-user = open('email_creds.txt').read()
-password = pyip.inputPassword('Input Password: ')
-folder = 'INBOX'
+def mail_login(folder):
+    '''
+    logs in to my email.  Returns IMAP4 object with 'Folder' selected
+    '''
+    # login info
+    user = open('email_creds.txt').read()
+    password = pyip.inputPassword('Input Password: ')
 
-# login to imap server, select folder
-mail = imaplib.IMAP4_SSL('imap.gmail.com')
-mail.login(user, password)
-mail.select(folder)
+    # login to imap server, select folder
+    mail = imaplib.IMAP4_SSL('imap.gmail.com')
+    mail.login(user, password)
+    mail.select(folder)
+
+    return mail
+
 
 # RUN IT!
+mail = mail_login('INBOX')
 unsubscribe_all(mail)
 mail.close()
 mail.logout()
