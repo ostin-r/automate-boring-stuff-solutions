@@ -129,7 +129,7 @@ After a bunch of self directed projects, I think it is about time that I started
                 file_paths.append(filepath)
         return file_paths
 
-- Project 1 [selective-copy.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2010/selective-copy.py)
+- Project 1 [selective_copy.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2010/selective-copy.py)
   - After wrestling with the follow-along project, this problem was straight-forward and enjoyable.  selective-copy.py copies all files that match a user specified extension and puts them in the desired folder.
   - I learned how to write zip files using the 'with' statement to handle any exceptions without creating bugs with writing, and make code more readable. 
 
@@ -284,3 +284,10 @@ After a bunch of self directed projects, I think it is about time that I started
 - Project 2: [umbrella_reminder.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2018/umbrella_reminder.py)
   - Checks the local weather using the getOpenWeather API, then sends me a text reminding me to bring an umbrella if rain is in the forecast
   - Learned how to use Twilio to create text alerts in my python programs
+
+- Project 3: [email_unsubscriber.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2018/email_unsubscriber.py)
+  - Looks through email for any items that contain the word "unsubscribe" then opens the unsubscribe links in the webbrowser so the user can click through each tab and unsubscribe to many emails at once!
+  - Learned how to access email data through the imaplib module.  More practice with Beautiful Soup.  Overall a very rewarding project
+  - **Limitations:** This project had difficulty with some email links and was not able to open all of the ones in my inbox.  I suspect that the diversity of these emails from different companies may be the culprit and I definitely foresaw some issues like this.  That being said, I am going to call this project sufficient in doing it's job and continue on to the next chapter.
+
+**Chapter 19: Manipulating Images**
