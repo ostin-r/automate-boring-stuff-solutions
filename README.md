@@ -129,7 +129,7 @@ After a bunch of self directed projects, I think it is about time that I started
                 file_paths.append(filepath)
         return file_paths
 
-- Project 1 [selective-copy.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2010/selective-copy.py)
+- Project 1 [selective_copy.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2010/selective-copy.py)
   - After wrestling with the follow-along project, this problem was straight-forward and enjoyable.  selective-copy.py copies all files that match a user specified extension and puts them in the desired folder.
   - I learned how to write zip files using the 'with' statement to handle any exceptions without creating bugs with writing, and make code more readable. 
 
