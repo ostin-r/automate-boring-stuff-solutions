@@ -38,6 +38,7 @@ for filename in os.listdir('.'):
         im = im.resize((width, height))
 
     print(f'Adding logo to {filename}...')
+    #TODO figure out why this won't work.  Seems like the logo image is too large.
     im.paste(logo_img, (width - logo_width, height - logo_height), logo_img)
 
     os.makedirs('withLogo', exist_ok=True)
