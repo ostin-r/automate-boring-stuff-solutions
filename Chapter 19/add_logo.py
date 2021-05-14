@@ -36,24 +36,35 @@ def resize_image(size, filename):
 def main():
     SQUARE_FIT_SIZE = 300
     LOGO_FILENAME = 'catlogo.png'
-    LOGO_SIZE = 10 # how many times smaller the logo will be than the image
+    LOGO_SIZE = 10 # logo will be 10x time smaller than image
 
+    # open the logo image and resize
     logo_img = resize_image(int(SQUARE_FIT_SIZE / LOGO_SIZE), LOGO_FILENAME)
     logo_width, logo_height = logo_img.size
 
     for filename in os.listdir('.'):
-        if not (filename.endswith('.png') or filename.endswith('.jpg')) \
+        # skip files that aren't images
+        file_lower = filename.lower()
+        if not (file_lower.endswith('.png') or file_lower.endswith('.jpg') \
+            or file_lower.endswith('.gif') or file_lower.endswith('.bmp')) \
             or filename == LOGO_FILENAME:
                 continue
         
+        # open the image file, resize if necessary
         print(f'Processing {filename}...')
         im = resize_image(SQUARE_FIT_SIZE, filename)
         width, height = im.size
 
+        #TODO check if the image is too small for the logo
+            #TODO: check that ratio of width to logo_width and height to logo_heigth is >= LOGO_SIZE
+                #TODO: change logo_width or logo_height such that width/logowidth = LOGO_SIZE
+                # written as an equation: new_logo_width = width / LOGO_SIZE
+
+        # add the logo to the image
         print(f'Adding logo to {filename}...')
-        #TODO figure out why this won't work.  Seems like the logo image is too large.
         im.paste(logo_img, (width - logo_width, height - logo_height), logo_img)
 
+        # save the results in a new folder labelled "withLogo"
         os.makedirs('withLogo', exist_ok=True)
         im.save(os.path.join('withLogo', filename))
         print()
