@@ -18,19 +18,16 @@ def resize_image(size, filename):
     im = Image.open(filename)
     width, height = im.size
 
-    if width > size and height > size:
-        if width > height:
-            height = int((size / width) * height)
-            width = size
-        else:
-            width = int((size / height) * width)
-            height = size
-
-        print(f'Resizing {filename}...')
-        resized_im = im.resize((width, height))
-        return resized_im
+    if width > height:
+        height = int((size / width) * height)
+        width = size
     else:
-        return im
+        width = int((size / height) * width)
+        height = size
+
+    print(f'Resizing {filename}...')
+    resized_im = im.resize((width, height))
+    return resized_im
 
 
 def main():
@@ -43,24 +40,16 @@ def main():
     logo_width, logo_height = logo_img.size
 
     for filename in os.listdir('.'):
-        #TODO maybe I should just resie the logo for EVERY file????
 
         # skip files that aren't images
+        accepted_file_types = ['.jpg', '.gif', '.png', '.bmp']
         file_lower = filename.lower()
-        if not (file_lower.endswith('.png') or file_lower.endswith('.jpg') \
-            or file_lower.endswith('.gif') or file_lower.endswith('.bmp')) \
-            or filename == LOGO_FILENAME:
-                continue
+        if file_lower[-4:] not in accepted_file_types or filename == LOGO_FILENAME: continue
         
         # open the image file, resize if necessary
         print(f'Processing {filename}...')
         im = resize_image(SQUARE_FIT_SIZE, filename)
         width, height = im.size
-
-        #TODO check if the image is too small for the logo
-            #TODO: check that ratio of width to logo_width and height to logo_heigth is >= LOGO_SIZE
-                #TODO: change logo_width or logo_height such that width/logowidth = LOGO_SIZE
-                # written as an equation: new_logo_width = width / LOGO_SIZE
 
         # add the logo to the image
         print(f'Adding logo to {filename}...')
