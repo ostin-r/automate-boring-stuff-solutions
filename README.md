@@ -291,3 +291,10 @@ After a bunch of self directed projects, I think it is about time that I started
   - **Limitations:** This project had difficulty with some email links and was not able to open all of the ones in my inbox.  I suspect that the diversity of these emails from different companies may be the culprit and I definitely foresaw some issues like this.  That being said, I am going to call this project sufficient in doing it's job and continue on to the next chapter.
 
 **Chapter 19: Manipulating Images**
+- Project 1 / Follow along project: [add_logo.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2019/add_logo.py)
+  - A program that adds a logo to the bottom right corner of every image in the specified directory.  Also resizes all images so that the logo is the same size in the corner.
+  - This is a follow along project that the author suggested adding a few features to as the first project for this chapter.  I created the following changes:
+    - All images are resized such that the logo is 10 times smaller than the selected photos
+    - The function can identify .gif and .bmp files in addition to .jpg and .png
+    - Restructured the program into functions to make it easier to read, and so I can reuse the resize_image function later
+
