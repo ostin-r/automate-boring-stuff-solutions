@@ -43,6 +43,8 @@ def main():
     logo_width, logo_height = logo_img.size
 
     for filename in os.listdir('.'):
+        #TODO maybe I should just resie the logo for EVERY file????
+
         # skip files that aren't images
         file_lower = filename.lower()
         if not (file_lower.endswith('.png') or file_lower.endswith('.jpg') \
