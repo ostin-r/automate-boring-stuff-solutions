@@ -1,7 +1,5 @@
 '''
-Austin Richards 4/29/21
-
-A program to test twilio out!
+A twilio test program.
 '''
 from twilio.rest import Client
 
