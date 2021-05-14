@@ -11,7 +11,7 @@ from PIL import Image
 
 def resize_image(size, filename):
     '''
-    resize_image takes a max size and image filename as arguments
+    resize_image takes a int size and image filename as arguments
     and returns an image object that has resized the file.  This 
     resize function preserves the aspect ratio.
     '''
@@ -33,7 +33,7 @@ def resize_image(size, filename):
 def main():
     SQUARE_FIT_SIZE = 300
     LOGO_FILENAME = 'catlogo.png'
-    LOGO_SIZE = 10 # logo will be 10x time smaller than image
+    LOGO_SIZE = 7 # logo will be 10x time smaller than image
 
     # open the logo image and resize
     logo_img = resize_image(int(SQUARE_FIT_SIZE / LOGO_SIZE), LOGO_FILENAME)
