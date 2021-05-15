@@ -8,7 +8,8 @@ Folders containing more than 50% photo files are considered a
 "photo folder" and are returned to the user.
 
 Please note that the author gave a "skeleton" version of the code
-for this project that I did not use.
+for this project that I did not use.  There are many ways to skin
+a cat I hear.
 '''
 import os
 from pathlib import Path
