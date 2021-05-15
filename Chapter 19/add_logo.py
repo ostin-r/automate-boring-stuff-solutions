@@ -40,13 +40,12 @@ def main():
     logo_width, logo_height = logo_img.size
 
     for filename in os.listdir('.'):
-
         # skip files that aren't images
         accepted_file_types = ['.jpg', '.gif', '.png', '.bmp']
         file_lower = filename.lower()
         if file_lower[-4:] not in accepted_file_types or filename == LOGO_FILENAME: continue
         
-        # open the image file, resize if necessary
+        # open the image file, resize
         print(f'Processing {filename}...')
         im = resize_image(SQUARE_FIT_SIZE, filename)
         width, height = im.size
