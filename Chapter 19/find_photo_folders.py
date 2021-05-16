@@ -1,7 +1,7 @@
 '''
 Austin Richards 5/15/21
 
-find_photo_folders goes through ever folder on the specified
+find_photo_folders goes through every folder on the specified
 directory and looks for image files and specifically sorts out
 whether they are a camera photo or just an image based on size.
 Folders containing more than 50% photo files are considered a
@@ -9,7 +9,7 @@ Folders containing more than 50% photo files are considered a
 
 Please note that the author gave a "skeleton" version of the code
 for this project that I did not use.  There are many ways to skin
-a cat I hear.
+a cat I, hear.
 '''
 import os
 from pathlib import Path
