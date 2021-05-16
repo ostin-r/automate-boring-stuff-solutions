@@ -298,3 +298,8 @@ After a bunch of self directed projects, I think it is about time that I started
     - The function can identify .gif and .bmp files in addition to .jpg and .png
     - Restructured the program into functions to make it easier to read, and so I can reuse the resize_image function later
 
+- Project 2: [find_photo_folders.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2019/find_photo_folders.py)
+  - find_photo_folders.py searches all photos in the given directory and will return the filepath if more than 50% of the files are images that are larger than 500 pixles square
+  - This was a good project and gave me some more practice with structuring dictionaries, and working with the Pillow module.  This was a pretty simple program in all.
+
+
