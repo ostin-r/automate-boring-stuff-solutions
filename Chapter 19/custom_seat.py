@@ -8,10 +8,22 @@ name, generated from guests.txt and will be sized 4in x 5in.
 import os
 from PIL import Image, ImageDraw, ImageFont
 
-#TODO: get the names, for each name:
+os.chdir('Chapter 19')
+os.makedirs('Seating Cards', exist_ok=True)
+names = open('guests.txt').readlines()
+names = [name.rstrip() for name in names]
 
-    #TODO: Add guests name to the invitation using an ImageDraw object
+for name in names:
+    # create a new image and draw object
+    im = Image.new('RGBA', (288, 360), 'white')
+    draw = ImageDraw.Draw(im)
+
+    # create a font object and draw the text
+    font_path = 'C:\\Windows\\Fonts\\arial.ttf'
+    arial_font = ImageFont.truetype(font_path, 32)
+    draw.text((1, 1), name, fill='indigo')
 
     #TODO: Add the decorative art to the invitation (using paste method?)
 
-    #TODO: Save the image to a new folder
+    # save the image with the recipient's name
+    im.save(f'Seating Cards\\{name}.png')
