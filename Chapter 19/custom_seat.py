@@ -7,23 +7,34 @@ name, generated from guests.txt and will be sized 4in x 5in.
 '''
 import os
 from PIL import Image, ImageDraw, ImageFont
+from add_logo import resize_image
 
 os.chdir('Chapter 19')
 os.makedirs('Seating Cards', exist_ok=True)
+
 names = open('guests.txt').readlines()
 names = [name.rstrip() for name in names]
 
+# initialize card size, get the art image and size it
+WIDTH, HEIGHT = (288, 360)
+art_im = resize_image(int(HEIGHT / 2), 'flower_decoration.png').convert('RGBA')
+
 for name in names:
-    # create a new image and draw object
-    im = Image.new('RGBA', (288, 360), 'white')
+    # create a new image with black border
+    im = Image.new('RGBA', (WIDTH, HEIGHT), 'black')
+    fill = Image.new('RGBA', (WIDTH + 4, HEIGHT + 4), 'white')
+    im.paste(fill, (2, 2), fill)
+
+    # create draw object, font object
     draw = ImageDraw.Draw(im)
-
-    # create a font object and draw the text
     font_path = 'C:\\Windows\\Fonts\\arial.ttf'
-    arial_font = ImageFont.truetype(font_path, 32)
-    draw.text((1, 1), name, fill='indigo')
+    arial_font = ImageFont.truetype(font_path, 60)
 
-    #TODO: Add the decorative art to the invitation (using paste method?)
+    # center the text by getting the size of the name
+    name_width, name_height = draw.textsize(name, font=arial_font)
+    name_location = (int((WIDTH - name_width) / 2), HEIGHT - 280)
 
-    # save the image with the recipient's name
+    # draw text, add flower decoration, save image
+    draw.text(name_location, name, fill='indigo', font=arial_font)
+    im.paste(art_im, (80, 210), art_im)
     im.save(f'Seating Cards\\{name}.png')
