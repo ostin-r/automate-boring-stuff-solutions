@@ -59,5 +59,5 @@ def main():
         im.save(os.path.join('withLogo', filename))
         print()
 
-os.chdir('Chapter 19')
-main()
+#os.chdir('Chapter 19')
+#main()
