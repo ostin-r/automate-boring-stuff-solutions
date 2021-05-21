@@ -302,4 +302,6 @@ After a bunch of self directed projects, I think it is about time that I started
   - find_photo_folders.py searches all photos in the given directory and will return the filepath if more than 50% of the files are images that are larger than 500 pixles square
   - This was a good project and gave me some more practice with structuring dictionaries, and working with the Pillow module.  This was a pretty simple program in all.
 
-
+- Project 3: [custom_seat.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2019/custom_seat.py)
+  - This project creates custom PNG files to be used as seating cards for a party.  It gets the names of each attendee from guests.txt and creates an image with their name and a flower decoration.  The image has a black border to assist in cutting once the image is printed out.
+  - Learned how to use the pillow module to add custom text, paste an image onto another, and center text on the page.
