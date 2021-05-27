@@ -305,3 +305,24 @@ After a bunch of self directed projects, I think it is about time that I started
 - Project 3: [custom_seat.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2019/custom_seat.py)
   - This project creates custom PNG files to be used as seating cards for a party.  It gets the names of each attendee from guests.txt and creates an image with their name and a flower decoration.  The image has a black border to assist in cutting once the image is printed out.
   - Learned how to use the pillow module to add custom text, paste an image onto another, and center text on the page.
+
+**Chapter 20: Controlling the Mouse & Keyboard with GUI Automation**
+-Follow-Along Project notes: The follow-along project for this chapter, [form_filler.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2020/form_filler.py) was a very fun exercise in filling out a google form with a bunch of different data.  I simplified some lines of code that I wanted to share here.  The program the author had listed had the following repetitive 'if' block used to fill out a scale of radio button (both code and form pictured below):
+
+![image](https://user-images.githubusercontent.com/52502156/119851476-a755f900-becb-11eb-9255-fee523fd1711.png)
+
+     if person['robocop'] == 1:
+         pyautogui.write([' ', '\t'] , 0.5)
+     elif person['robocop'] == 2:
+         pyautogui.write(['right', '\t'] , 0.5)
+     elif person['robocop'] == 3:
+         pyautogui.write(['right', 'right', '\t'] , 0.5)
+     elif person['robocop'] == 4:
+         pyautogui.write(['right', 'right', 'right', '\t'] , 0.5)
+     elif person['robocop'] == 5:
+         pyautogui.write(['right', 'right', 'right', 'right', '\t'] , 0.5)
+         
+This block is repetitive because it is repeating the the 'right' command depending on the number that is stored in the dictionary.  I figured this could easily be reduced to one line by using the stored number to calculate the amount of times the 'right' command should be passed. I did the following:
+ 
+    pyautogui.write(['\t', ' '] + ['right'] * (person['robocop'] - 1))
+  
