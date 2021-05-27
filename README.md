@@ -307,7 +307,7 @@ After a bunch of self directed projects, I think it is about time that I started
   - Learned how to use the pillow module to add custom text, paste an image onto another, and center text on the page.
 
 **Chapter 20: Controlling the Mouse & Keyboard with GUI Automation**
--Follow-Along Project notes: The follow-along project for this chapter, [form_filler.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2020/form_filler.py) was a very fun exercise in filling out a google form with a bunch of different data.  I simplified some lines of code that I wanted to share here.  The program the author had listed had the following repetitive 'if' block used to fill out a scale of radio button (both code and form pictured below):
+-Follow-Along Project notes: The follow-along project for this chapter, [form_filler.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2020/form_filler.py) was a very fun exercise in filling out a google form with a bunch of different data.  I simplified some lines of code that I wanted to share here.  The program the author had listed had the following repetitive 'if' block used to fill out a scale of radio buttons (both code and form pictured below):
 
 ![image](https://user-images.githubusercontent.com/52502156/119851476-a755f900-becb-11eb-9255-fee523fd1711.png)
 
@@ -326,3 +326,4 @@ This block is repetitive because it is repeating the the 'right' command dependi
  
     pyautogui.write(['\t', ' '] + ['right'] * (person['robocop'] - 1))
   
+Please ignore that my 'tab' command is in a different place than the above code because I wrote my program differently.
