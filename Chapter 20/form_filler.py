@@ -24,7 +24,6 @@ def main():
     # initialization stuff
     pyautogui.PAUSE = 0.5 # this sets the universal pause between functions to half a second
     webbrowser.open('https://autbor.com/form', new=1)
-    submit_another_response = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLScSVDFU76rZvbO_tiIwSt6d9sOK0CZyS9KKMCP6cP5O5W5lVQ/viewform?usp=form_confirm'
 
     for person in formData:
         # give the user a chance to kill the process, wait for webbrowser to load
@@ -47,7 +46,7 @@ def main():
         elif person['source'] == 'money':
             pyautogui.write(['down', 'down', 'down', 'down', 'enter'] , 0.5)
 
-        # Fill out the RoboCop field.
+        # Fill out the RoboCop field. This code
         pyautogui.write(['\t', ' '] + ['right'] * (person['robocop'] - 1))
 
         # Fill out the Additional Comments field
@@ -59,10 +58,14 @@ def main():
         print('Form submitted!')
         pyautogui.sleep(5)
 
-        break #TODO remove this line when done testing
+        # click the "submit another response" button
+        # pixel data: #989,523 77,162,241 #4DA2F1
+        im = pyautogui.screenshot()
+        if im.getpixel((989, 523)) == (77, 162, 241):
+            pyautogui.click(989, 523)
+        else:
+            print('An error occured with the webbrowser.')
+            break
 
-    # TODO: Wait until form page has loaded.
-
-    # TODO: Click the Submit another response link.
 
 main()
