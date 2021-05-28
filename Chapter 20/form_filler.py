@@ -26,6 +26,13 @@ def main():
     webbrowser.open('https://autbor.com/form', new=1)
 
     for person in formData:
+        # make sure that the page loaded correctly by checking a pixel
+        while True:
+            im = pyautogui.screenshot()
+            if im.getpixel((1208, 452)) == (198, 255, 255):
+                print('Webpage loaded correctly, entering data...')
+                break
+
         # give the user a chance to kill the process, wait for webbrowser to load
         print('>>> 5-SECOND PAUSE TO LET USER PRESS CTRL-C <<<')
         pyautogui.sleep(5)
@@ -59,7 +66,6 @@ def main():
         pyautogui.sleep(5)
 
         # click the "submit another response" button
-        # pixel data: #989,523 77,162,241 #4DA2F1
         im = pyautogui.screenshot()
         if im.getpixel((989, 523)) == (77, 162, 241):
             pyautogui.click(989, 523)
