@@ -7,6 +7,7 @@ and automatically enters the data from form_data
 import pyautogui
 import webbrowser
 
+
 def main():
 
     formData = [{'name': 'Alice', 'fear': 'eavesdroppers', 'source': 'wand',
@@ -53,7 +54,7 @@ def main():
         elif person['source'] == 'money':
             pyautogui.write(['down', 'down', 'down', 'down', 'enter'] , 0.5)
 
-        # Fill out the RoboCop field. This code
+        # Fill out the RoboCop field by multiplying by the number stored
         pyautogui.write(['\t', ' '] + ['right'] * (person['robocop'] - 1))
 
         # Fill out the Additional Comments field
