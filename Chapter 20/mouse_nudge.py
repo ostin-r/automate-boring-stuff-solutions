@@ -12,3 +12,4 @@ while True:
     gui.sleep(60)
     gui.move(1, 1)
     gui.move(-1, -1)
+    
