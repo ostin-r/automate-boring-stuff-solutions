@@ -29,13 +29,13 @@ def main():
             im = pyautogui.screenshot()
             if im.getpixel((17, 28)) == (156, 209, 220): break
 
-        #TODO use hotkeys method to do ctrl-a, ctrl-c
+        # use hotkeys method to do ctrl-a, ctrl-c
         pyautogui.moveTo((200, 200))
         pyautogui.click()
         pyautogui.hotkey('ctrl', 'a')
         pyautogui.hotkey('ctrl', 'c')
 
-        #TODO use pyperclip paste method to obtain the text, print it
+        # use pyperclip paste method to obtain the text, print it
         text.append(pyperclip.paste())
         print(text)
         
