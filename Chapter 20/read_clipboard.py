@@ -16,14 +16,28 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s: %(message)s')
 
 def main():
     # select active notepad
-    textbox = pyautogui.getWindowsWithTitle('Notepad')[0]
-    logging.debug(textbox.title)
-    textbox.activate()
-    #TODO check that the window opened correctly
+    textboxes = pyautogui.getWindowsWithTitle('Notepad')
+    text = [] # list for storing string data in each box
 
-    #TODO use hotkeys method to do ctrl-a, ctrl-c
+    for textbox in textboxes:
+        logging.debug(textbox.title)
+        textbox.activate()
+        textbox.maximize() # the activate() method alone was unreliable at opening the window
 
-    #TODO use pyperclip paste method to obtain the text, print it
+        # check that the window opened correctly- this verifies the notepad icon is in the corner
+        while True:
+            im = pyautogui.screenshot()
+            if im.getpixel((17, 28)) == (156, 209, 220): break
 
+        #TODO use hotkeys method to do ctrl-a, ctrl-c
+        pyautogui.moveTo((200, 200))
+        pyautogui.click()
+        pyautogui.hotkey('ctrl', 'a')
+        pyautogui.hotkey('ctrl', 'c')
+
+        #TODO use pyperclip paste method to obtain the text, print it
+        text.append(pyperclip.paste())
+        print(text)
+        
 
 main()
