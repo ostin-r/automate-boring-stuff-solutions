@@ -6,23 +6,24 @@ a notification to a select group of people
 '''
 import webbrowser
 import pyautogui
+import friends
 
 
 def main():
     # open google hangouts
-    webbrowser.open('https://hangouts.google.com/?authuser=4')
+    webbrowser.open('https://hangouts.google.com/')
 
-    # check that the correct user is selected
-    pyautogui.sleep(3) # wait for page to load
-    im = pyautogui.screenshot()
-    if im.getpixel((2595, 254)) != (236, 64, 122):
-        print('Error: wrong user selected.')
-        return
+    # press the new message button, groups button, then enter names
+    # 1245,1011 255,255,255 #FFFFFF
+    pyautogui.sleep(5)
+    pyautogui.click(x=1245, y=1011)
+    pyautogui.press(['tab', 'enter'])
 
-    # press the new message button
-    pyautogui.write(['\t'] * 5 + ['enter'])
-
-    #TODO figure out different paths for users
+    # create a group of friends - this will only work if friends have google accounts
+    # TODO: figure out how to correctly enter names here- seems there is an error occuring
+    for name in friends.names:
+        pyautogui.write(name)
+    pyautogui.press('enter')
 
 
 main()
