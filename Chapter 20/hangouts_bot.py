@@ -7,22 +7,40 @@ a notification to a select group of people
 import webbrowser
 import pyautogui
 import friends
+import os
+
+
+def waitForImage(img_name):
+    '''
+    waitForImage will pause the program until the 
+    passed image file appears on the screen
+    '''
+    while True:
+        element = pyautogui.locateOnScreen(img_name)
+        if element is not None: return
 
 
 def main():
-    # open google hangouts
-    webbrowser.open('https://hangouts.google.com/')
+    # open google hangouts, initialize pyautogui
+    webbrowser.open('https://hangouts.google.com/?authuser=4')
+    pyautogui.PAUSE = 0.5
 
-    # press the new message button, groups button, then enter names
-    # 1245,1011 255,255,255 #FFFFFF
-    pyautogui.sleep(5)
+    # wait until page is loaded, select new message, then new group
+    waitForImage('convo_button.PNG')
     pyautogui.click(x=1245, y=1011)
     pyautogui.press(['tab', 'enter'])
 
     # create a group of friends - this will only work if friends have google accounts
-    # TODO: figure out how to correctly enter names here- seems there is an error occuring
     for name in friends.names:
         pyautogui.write(name)
+        pyautogui.sleep(5)
+        pyautogui.press('enter')
+    pyautogui.press('enter')
+
+    # wait for conversation box to open, then send message!
+    waitForImage('message_box.PNG')
+    msg = 'Hello everyone!'
+    pyautogui.write(msg)
     pyautogui.press('enter')
 
 
