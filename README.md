@@ -341,12 +341,12 @@ After a bunch of self directed projects, I think it is about time that I started
   - This was a challenging program to write.  I ran into many problems with the webbpage not loading fast enough, or different buttons popping up that my program wasn't equipped to detect.  One extremely helpful solution that I implemented was the following function to pause the program until certain page elements appeared.
 
         def waitForImage(img_name):
-        '''
-        waitForImage will pause the program until the 
-        passed image file appears on the screen
-        '''
-        while True:
-            element = pyautogui.locateOnScreen(img_name)
-            if element is not None: return
+          '''
+          waitForImage will pause the program until the 
+          passed image file appears on the screen
+          '''
+          while True:
+              element = pyautogui.locateOnScreen(img_name)
+              if element is not None: return
             
   - Overall, a very fun and challenging project for learning how to use the Pyautogui module.
