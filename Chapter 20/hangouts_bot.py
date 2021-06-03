@@ -7,7 +7,6 @@ a notification to a select group of people
 import webbrowser
 import pyautogui
 import friends
-import os
 
 
 def waitForImage(img_name):
