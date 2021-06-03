@@ -307,23 +307,46 @@ After a bunch of self directed projects, I think it is about time that I started
   - Learned how to use the pillow module to add custom text, paste an image onto another, and center text on the page.
 
 **Chapter 20: Controlling the Mouse & Keyboard with GUI Automation**
-- Follow-Along Project notes: The follow-along project for this chapter, [form_filler.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2020/form_filler.py) was a very fun exercise in automatically filling out a google form with a bunch of different data using GUI automation.  I simplified some lines of code that I wanted to share here.  The program the author had listed had the following repetitive 'if' block used to fill out a scale of radio buttons (both code and form pictured below):
+- Follow-Along Project notes/*Bonus Feature?*: The follow-along project for this chapter, [form_filler.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2020/form_filler.py) was a very fun exercise in automatically filling out a google form with a bunch of different data using GUI automation.  I simplified some lines of code that I wanted to share here.  The program the author had listed had the following repetitive 'if' block used to fill out a scale of radio buttons (both code and form pictured below):
 
-![image](https://user-images.githubusercontent.com/52502156/119851476-a755f900-becb-11eb-9255-fee523fd1711.png)
+  ![image](https://user-images.githubusercontent.com/52502156/119851476-a755f900-becb-11eb-9255-fee523fd1711.png)
 
-     if person['robocop'] == 1:
-         pyautogui.write([' ', '\t'] , 0.5)
-     elif person['robocop'] == 2:
-         pyautogui.write(['right', '\t'] , 0.5)
-     elif person['robocop'] == 3:
-         pyautogui.write(['right', 'right', '\t'] , 0.5)
-     elif person['robocop'] == 4:
-         pyautogui.write(['right', 'right', 'right', '\t'] , 0.5)
-     elif person['robocop'] == 5:
-         pyautogui.write(['right', 'right', 'right', 'right', '\t'] , 0.5)
+       if person['robocop'] == 1:
+           pyautogui.write([' ', '\t'] , 0.5)
+       elif person['robocop'] == 2:
+           pyautogui.write(['right', '\t'] , 0.5)
+       elif person['robocop'] == 3:
+           pyautogui.write(['right', 'right', '\t'] , 0.5)
+       elif person['robocop'] == 4:
+           pyautogui.write(['right', 'right', 'right', '\t'] , 0.5)
+       elif person['robocop'] == 5:
+           pyautogui.write(['right', 'right', 'right', 'right', '\t'] , 0.5)
          
-This block is repetitive because it is repeating the the 'right' command depending on the number that is stored in the dictionary.  I figured this could easily be reduced to one line by using the stored number to calculate the amount of times the 'right' command should be passed. I did the following:
- 
-    pyautogui.write(['\t', ' '] + ['right'] * (person['robocop'] - 1))
+  This block is repetitive because it is repeating the the 'right' command depending on the number that is stored in the dictionary.  I figured this could easily be reduced to one line by using the stored number to calculate the amount of times the 'right' command should be passed. I did the following:
+
+      pyautogui.write(['\t', ' '] + ['right'] * (person['robocop'] - 1))
   
-Please ignore that my 'tab' command is in a different place than the above code because I wrote my program differently.
+  Please ignore that my 'tab' command is in a different place than the above code because I wrote my program differently.
+
+- Project 1: [mouse_nudge.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2020/mouse_nudge.py)
+  - mouse_nudge.py subtly moves the mouse back and forth by one pixel once every minute to keep the user looking busy (on, say, microsoft teams)
+  - This is an extremely simple program to dip my toes in the water with the Pyautogui module.  It is only 5 lines of code, but could be useful in the future.
+
+- Project 2: [read_clipboard.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2020/read_clipboard.py)
+  - pyautogui is useful for entering in data, but what if the user needs to be alerted if data is already in a text box?  read_clipboard.py uses pyperclip and pyautogui to select text in a notepad and obtain the text
+  - learned the basics of pyautogui window methods and clicking methods
+
+- Project 3: [hangouts_bot.py](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2020/hangouts_bot.py)
+  - hangouts_bot.py opens Google Hangouts in a new webbrowser, creates a group of my select friends (I imported their names from a separate file. See: import friends), then sends the group a message
+  - This was a challenging program to write.  I ran into many problems with the webbpage not loading fast enough, or different buttons popping up that my program wasn't equipped to detect.  One extremely helpful solution that I implemented was the following function to pause the program until certain page elements appeared.
+
+        def waitForImage(img_name):
+          '''
+          waitForImage will pause the program until the 
+          passed image file appears on the screen
+          '''
+          while True:
+              element = pyautogui.locateOnScreen(img_name)
+              if element is not None: return
+            
+  - Overall, a very fun and challenging project for learning how to use the Pyautogui module.
