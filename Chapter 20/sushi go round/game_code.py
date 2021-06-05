@@ -3,11 +3,15 @@ main code for the sushi go round bot
 '''
 import webbrowser
 import pyautogui
+import logging as log
+
+log.basicConfig(level=log.DEBUG, format='%(asctime)s: %(message)s')
 
 # globals ------
 x_pad = 227
 y_pad = 599
 # --------------
+
 
 def waitForImage(img_name):
     # pauses program until image is identified (for loading webpages)
@@ -44,16 +48,19 @@ def startGame():
     # click big play button
     waitForPixel((929,940), (253,140,58))
     pyautogui.click()
+    log.debug('click: big play button')
 
     # click play button
     waitForPixel((1226,756), (111,254,101))
     pyautogui.sleep(0.5)
     pyautogui.click()
+    log.debug('click: play button')
 
     # click both continue buttons
     waitForPixel((887,1392), (255,179,246))
     pyautogui.click(x=887, y=1392)
     pyautogui.click()
+    log.debug('click: continue buttons')
 
 def main():
     startGame()
