@@ -16,6 +16,31 @@ y_pad = 599
 # --------------
 
 
+class Cord:
+    f_shrimp = (56, 654)
+    f_rice = (164, 653)
+    f_nori = (48, 757)
+    f_roe = (165, 760)
+    f_salmon = (58, 868)
+    f_unagi = (167, 866)
+
+    plates = [(180, 413),
+        (381, 419),
+        (592, 412),
+        (786, 415),
+        (984, 416),
+        (1186, 416)]
+
+'''
+plate cords:
+[180, 413, (238, 219, 169)]
+[381, 419, (238, 219, 169)]
+[592, 412, (238, 219, 169)]
+[786, 415, (238, 219, 169)]
+[984, 416, (238, 219, 169)]
+[1186, 416, (238, 219, 169)]
+'''
+
 def waitForImage(img_name):
     # pauses program until image is identified (good for loading webpages)
     while True:
@@ -59,20 +84,31 @@ def startGame():
     pyautogui.scroll(-410)
 
     # press big play button
-    # [709, 360, (253, 136, 58)]
+    waitForPixel([709, 360, (253, 136, 58)])
+    pyautogui.click()
 
     # press little play button
-    # [779, 412, (75, 205, 245)]
+    waitForPixel([779, 412, (75, 205, 245)])
+    pyautogui.click()
 
     # press the continue button
-    # [743, 776, (255, 45, 236)]
+    waitForPixel([743, 776, (255, 45, 236)])
+    mousePos((743, 776))
+    pyautogui.click()
 
     # press the skip button (skip tutorial)
-    # [1160, 902, (255, 203, 46)]
+    waitForPixel([1160, 902, (255, 203, 46)])
+    mousePos((1160, 902))
+    pyautogui.click()
 
     # press continue button again
-    # [629, 748, (255, 179, 246)]
+    waitForPixel([629, 748, (255, 179, 246)])
+    mousePos((629, 748))
+    pyautogui.click()
 
+
+def clearTables():
+    pass
 
 def main():
     startGame()
