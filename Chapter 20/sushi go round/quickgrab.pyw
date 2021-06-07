@@ -18,6 +18,9 @@ y_pad = 599
 # --------------
 
 def screenGrab():
+    '''
+    saves an image of the play area to the hard drive
+    '''
     box = (x_pad+1, y_pad+1, x_pad+1280, y_pad+960)
     im = ImageGrab.grab(box)
     im.save(os.getcwd() + '\\full_snap__' + str(int(time.time())) + '.png', 'PNG')
