@@ -1,8 +1,12 @@
 '''
 main code for the sushi go round bot
 '''
+import os
 import webbrowser
 import pyautogui
+from PIL import ImageGrab
+from PIL import ImageOps
+from numpy import *
 import logging as log
 
 log.basicConfig(level=log.DEBUG, format='%(asctime)s: %(message)s')
@@ -16,13 +20,15 @@ y_pad = 599
 # --------------
 
 
-class Cord:
+class Cords:
     f_shrimp = (56, 654)
     f_rice = (164, 653)
     f_nori = (48, 757)
     f_roe = (165, 760)
     f_salmon = (58, 868)
     f_unagi = (167, 866)
+
+    roll = (326, 694)
 
     plates = [(180, 413),
         (381, 419),
@@ -31,15 +37,35 @@ class Cord:
         (984, 416),
         (1186, 416)]
 
-'''
-plate cords:
-[180, 413, (238, 219, 169)]
-[381, 419, (238, 219, 169)]
-[592, 412, (238, 219, 169)]
-[786, 415, (238, 219, 169)]
-[984, 416, (238, 219, 169)]
-[1186, 416, (238, 219, 169)]
-'''
+    phone = (1127, 692)
+    toppings = (1083, 544)
+    menu_rice = (1085, 584)
+    buy_rice = (1093, 560)
+    back = (1119, 662)
+    order = (1000, 583)
+    express = (1172, 590)
+
+    t_shrimp = (985, 440)
+    t_unagi = (1140, 444)
+    t_nori = (995, 550)
+    t_roe = (1154, 551)
+    t_salmon = (992, 671)
+
+    i_rice = [1093, 560, (127, 127, 127)]
+    i_shrimp = [990, 444, (127, 71, 47)]
+    i_unagi = [1161, 439, (94, 49, 8)]
+    i_nori = [970, 545, (33, 30, 11)]
+    i_roe = [1152, 555, (101, 13, 13)]
+    i_salmon = [979, 665, (127, 71, 47)]
+
+def screenGrab():
+    '''
+    saves an image of the play area to the hard drive
+    '''
+    box = (x_pad+1, y_pad+1, x_pad+1280, y_pad+960)
+    im = ImageGrab.grab(box)
+    return im
+
 
 def waitForImage(img_name):
     # pauses program until image is identified (good for loading webpages)
@@ -59,8 +85,9 @@ def waitForPixel(pixel):
 
 
 def mousePos(cords):
-    # moves the mouse within the game play area
+    # moves the mouse within the game play area and clicks
     pyautogui.moveTo(x_pad + cords[0], y_pad + cords[1])
+    pyautogui.click()
 
 
 def gamePixel():
@@ -94,24 +121,55 @@ def startGame():
     # press the continue button
     waitForPixel([743, 776, (255, 45, 236)])
     mousePos((743, 776))
-    pyautogui.click()
 
     # press the skip button (skip tutorial)
     waitForPixel([1160, 902, (255, 203, 46)])
     mousePos((1160, 902))
-    pyautogui.click()
 
     # press continue button again
     waitForPixel([629, 748, (255, 179, 246)])
     mousePos((629, 748))
-    pyautogui.click()
 
 
-def clearTables():
+def clearPlates():
+    # clears every plate
+    for pos in Cords.plates:
+        mousePos(pos)
+
+
+def makeRoll(recipe):
+    if recipe == 'onigiri':
+        mousePos(Cords.f_rice)
+        mousePos(Cords.f_rice)
+        mousePos(Cords.f_nori)
+        mousePos(Cords.roll)
+        # TODO define a function similar to waitForPixel- instead of returning
+        # a color, simply check that it is the same color and return True/False
+    
+    elif recipe == 'california roll':
+        mousePos(Cords.f_rice)
+        mousePos(Cords.f_roe)
+        mousePos(Cords.f_nori)
+        mousePos(Cords.roll)
+
+    elif recipe == 'gunkan maki':
+        mousePos(Cords.f_rice)
+        mousePos(Cords.f_roe)
+        mousePos(Cords.f_roe)
+        mousePos(Cords.f_nori)
+        mousePos(Cords.roll)
+    
+    pyautogui.sleep(1) # allows mat rolling animation to finish
+
+
+def buyFood():
     pass
 
+
 def main():
-    startGame()
+    pass
+
+
 
 if __name__ == '__main__':
     main()
