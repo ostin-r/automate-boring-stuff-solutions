@@ -21,6 +21,7 @@ y_pad = 599
 
 
 class Cords:
+    # food coordinates
     f_shrimp = (56, 654)
     f_rice = (164, 653)
     f_nori = (48, 757)
@@ -37,24 +38,29 @@ class Cords:
         (984, 416),
         (1186, 416)]
 
+    # phone menu options
     phone = (1127, 692)
     toppings = (1083, 544)
     menu_rice = (1085, 584)
     buy_rice = (1093, 560)
+    cancel_rice = (1162, 659)
+    cancel_topping = (1196, 667)
     back = (1119, 662)
     order = (1000, 583)
     express = (1172, 590)
 
+    # toppings coordinates
     t_shrimp = (985, 440)
     t_unagi = (1140, 444)
     t_nori = (995, 550)
     t_roe = (1154, 551)
     t_salmon = (992, 671)
 
+    # inactive buttons colors for checking availablity
     i_rice = [1093, 560, (127, 127, 127)]
     i_shrimp = [990, 444, (127, 71, 47)]
     i_unagi = [1161, 439, (94, 49, 8)]
-    i_nori = [970, 545, (33, 30, 11)]
+    i_nori = [1040, 533, (109, 123, 127)]
     i_roe = [1152, 555, (101, 13, 13)]
     i_salmon = [979, 665, (127, 71, 47)]
 
@@ -77,11 +83,14 @@ def waitForImage(img_name):
 def waitForPixel(pixel):
     # pauses program until correct pixel is identified in play area
     # pixel = [x, y, (R, G, B)]
-    pixel[0] += x_pad
-    pixel[1] += y_pad
     while True:
-        im = pyautogui.screenshot()
+        im = screenGrab()
         if im.getpixel((pixel[0], pixel[1])) == pixel[2]: break
+
+
+def checkPixel(pixel):
+    im = screenGrab()
+    return im.getpixel((pixel[0], pixel[1])) == pixel[2]
 
 
 def mousePos(cords):
@@ -143,8 +152,6 @@ def makeRoll(recipe):
         mousePos(Cords.f_rice)
         mousePos(Cords.f_nori)
         mousePos(Cords.roll)
-        # TODO define a function similar to waitForPixel- instead of returning
-        # a color, simply check that it is the same color and return True/False
     
     elif recipe == 'california roll':
         mousePos(Cords.f_rice)
@@ -162,13 +169,106 @@ def makeRoll(recipe):
     pyautogui.sleep(1) # allows mat rolling animation to finish
 
 
-def buyFood():
-    pass
+def buyFood(food):
+    if food == 'rice':
+        mousePos(Cords.phone)
+        mousePos(Cords.menu_rice)
+        if not checkPixel(Cords.i_rice):
+            # rice is available
+            mousePos(Cords.buy_rice)
+            mousePos(Cords.order)
+            pyautogui.sleep(2.5)
+        else:
+            # rice is not available, try again in 3 seconds
+            mousePos(Cords.cancel_rice)
+            pyautogui.sleep(3)
+            buyFood(food)
+
+    if food == 'nori':
+        mousePos(Cords.phone)
+        mousePos(Cords.toppings)
+        if not checkPixel(Cords.i_nori):
+            # nori is available
+            print('nori is available. buying...')
+            mousePos(Cords.t_nori)
+            mousePos(Cords.order)
+            pyautogui.sleep(2.5)
+        else:
+            # nori is not available, try again in 3 seconds
+            print('nori is not available. trying again...')
+            mousePos(Cords.cancel_topping)
+            pyautogui.sleep(3)
+            buyFood(food)
+
+    if food == 'roe':
+        mousePos(Cords.phone)
+        mousePos(Cords.toppings)
+        if not checkPixel(Cords.i_roe):
+            # nori is available
+            print('roe is available. buying...')
+            mousePos(Cords.t_roe)
+            mousePos(Cords.order)
+            pyautogui.sleep(2.5)
+        else:
+            # nori is not available, try again in 3 seconds
+            print('roe is not available. trying again...')
+            mousePos(Cords.cancel_topping)
+            pyautogui.sleep(3)
+            buyFood(food)
+
+    if food == 'salmon':
+        mousePos(Cords.phone)
+        mousePos(Cords.toppings)
+        if not checkPixel(Cords.i_salmon):
+            # nori is available
+            print('nori is available. buying...')
+            mousePos(Cords.t_salmon)
+            mousePos(Cords.order)
+            pyautogui.sleep(2.5)
+        else:
+            # nori is not available, try again in 3 seconds
+            print('nori is not available. trying again...')
+            mousePos(Cords.cancel_topping)
+            pyautogui.sleep(3)
+            buyFood(food)
+
+    if food == 'shrimp':
+        mousePos(Cords.phone)
+        mousePos(Cords.toppings)
+        if not checkPixel(Cords.i_shrimp):
+            # shrimp is available
+            print('shrimp is available. buying...')
+            mousePos(Cords.t_shrimp)
+            mousePos(Cords.order)
+            pyautogui.sleep(2.5)
+        else:
+            # nori is not available, try again in 3 seconds
+            print('shrimp is not available. trying again...')
+            mousePos(Cords.cancel_topping)
+            pyautogui.sleep(3)
+            buyFood(food)
+            pass
+
+    if food == 'unagi':
+        mousePos(Cords.phone)
+        mousePos(Cords.toppings)
+        if not checkPixel(Cords.i_unagi):
+            # unagi is available
+            print('unagi is available. buying...')
+            mousePos(Cords.t_unagi)
+            mousePos(Cords.order)
+            pyautogui.sleep(2.5)
+        else:
+            # unagi is not available, try again in 3 seconds
+            print('unagi is not available. trying again...')
+            mousePos(Cords.cancel_topping)
+            pyautogui.sleep(3)
+            buyFood(food)
+            pass
 
 
 def main():
-    pass
-
+    startGame()
 
 
 if __name__ == '__main__':
