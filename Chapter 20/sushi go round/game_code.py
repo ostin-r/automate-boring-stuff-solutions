@@ -2,6 +2,7 @@
 main code for the sushi go round bot
 '''
 import os
+import time
 import webbrowser
 import pyautogui
 from PIL import ImageGrab
@@ -19,6 +20,15 @@ y_pad = 599
 # run on is of a different resolution.
 # --------------
 
+# dictionary to track food stock
+foodStock = {
+    'shrimp':5,
+    'rice':10,
+    'nori':10,
+    'roe':10,
+    'salmon':5,
+    'unagi':5
+}
 
 class Cords:
     # food coordinates
@@ -71,6 +81,28 @@ def screenGrab():
     box = (x_pad+1, y_pad+1, x_pad+1280, y_pad+960)
     im = ImageGrab.grab(box)
     return im
+
+
+def sushiGrab():
+    '''
+    captures part of the game screen, grayscales it,
+    then sums every value to get a unique value for 
+    different parts of the game
+    '''
+    box = (x_pad+1, y_pad+1, x_pad+1280, y_pad+960)
+    im = ImageOps.grayscale(ImageGrab.grab(box))
+    a = array(im.getcolors())
+    a = a.sum()
+    return a
+
+
+def get_seat_one():
+    box = (x_pad+52, y_pad+122, x_pad+52+123, y_pad+122+29)
+    im = ImageOps.grayscale(ImageGrab.grab(box))
+    a = array(im.getcolors())
+    a = a.sum()
+    im.save(os.getcwd() + '\\seat_one__' + str(time.time()) + '.png', 'PNG')
+    return a
 
 
 def waitForImage(img_name):
@@ -146,12 +178,22 @@ def clearPlates():
         mousePos(pos)
 
 
+def checkFood():
+    for item, count in foodStock.items():
+        if item in ['rice', 'nori', 'roe'] and count < 3:
+            buyFood(item)
+
+
 def makeRoll(recipe):
     if recipe == 'onigiri':
         mousePos(Cords.f_rice)
         mousePos(Cords.f_rice)
         mousePos(Cords.f_nori)
         mousePos(Cords.roll)
+
+        # account for decreased stock
+        foodStock['rice'] -= 2
+        foodStock['nori'] -= 1
     
     elif recipe == 'california roll':
         mousePos(Cords.f_rice)
@@ -159,12 +201,20 @@ def makeRoll(recipe):
         mousePos(Cords.f_nori)
         mousePos(Cords.roll)
 
+        foodStock['rice'] -= 1
+        foodStock['roe'] -= 1
+        foodStock['nori'] -= 1
+
     elif recipe == 'gunkan maki':
         mousePos(Cords.f_rice)
         mousePos(Cords.f_roe)
         mousePos(Cords.f_roe)
         mousePos(Cords.f_nori)
         mousePos(Cords.roll)
+
+        foodStock['rice'] -= 1
+        foodStock['roe'] -= 2
+        foodStock['nori'] -= 1
     
     pyautogui.sleep(1) # allows mat rolling animation to finish
 
@@ -177,6 +227,7 @@ def buyFood(food):
             # rice is available
             mousePos(Cords.buy_rice)
             mousePos(Cords.order)
+            foodStock['rice'] += 10
             pyautogui.sleep(2.5)
         else:
             # rice is not available, try again in 3 seconds
@@ -192,6 +243,7 @@ def buyFood(food):
             print('nori is available. buying...')
             mousePos(Cords.t_nori)
             mousePos(Cords.order)
+            foodStock['nori'] += 10
             pyautogui.sleep(2.5)
         else:
             # nori is not available, try again in 3 seconds
@@ -208,6 +260,7 @@ def buyFood(food):
             print('roe is available. buying...')
             mousePos(Cords.t_roe)
             mousePos(Cords.order)
+            foodStock['roe'] += 10
             pyautogui.sleep(2.5)
         else:
             # nori is not available, try again in 3 seconds
@@ -216,6 +269,7 @@ def buyFood(food):
             pyautogui.sleep(3)
             buyFood(food)
 
+    #TODO update the rest of the topping features.
     if food == 'salmon':
         mousePos(Cords.phone)
         mousePos(Cords.toppings)
@@ -268,8 +322,7 @@ def buyFood(food):
 
 
 def main():
-    startGame()
-
+    print(sushiGrab())
 
 if __name__ == '__main__':
     main()
