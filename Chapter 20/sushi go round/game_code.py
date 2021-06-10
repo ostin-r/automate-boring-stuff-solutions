@@ -45,6 +45,14 @@ class Blank:
     summed grayscale ids for seats without
     a customer
     '''
+    seats = [
+        9719,
+        8315,
+        13471,
+        12967,
+        9294,
+        11703
+    ]
     seat_1 = 9719
     seat_2 = 8315
     seat_3 = 13471
@@ -126,7 +134,6 @@ def get_seat_one():
     a = array(im.getcolors())
     a = a.sum()
     #im.save(os.getcwd() + '\\seat_1__' + str(time.time()) + '.png', 'PNG')
-    print(f'seat 1: {a}')
     return a
 
 
@@ -138,7 +145,6 @@ def get_seat_two():
     a = array(im.getcolors())
     a = a.sum()
     #im.save(os.getcwd() + '\\seat_2__' + str(time.time()) + '.png', 'PNG')
-    print(f'seat 2: {a}')
     return a
 
 def get_seat_three():
@@ -149,7 +155,6 @@ def get_seat_three():
     a = array(im.getcolors())
     a = a.sum()
     #im.save(os.getcwd() + '\\seat_3__' + str(time.time()) + '.png', 'PNG')
-    print(f'seat 3: {a}')
     return a
 
 
@@ -161,7 +166,6 @@ def get_seat_four():
     a = array(im.getcolors())
     a = a.sum()
     #im.save(os.getcwd() + '\\seat_4__' + str(time.time()) + '.png', 'PNG')
-    print(f'seat 4: {a}')
     return a
 
 
@@ -173,7 +177,6 @@ def get_seat_five():
     a = array(im.getcolors())
     a = a.sum()
     #im.save(os.getcwd() + '\\seat_5__' + str(time.time()) + '.png', 'PNG')
-    print(f'seat 5: {a}')
     return a
 
 
@@ -185,17 +188,18 @@ def get_seat_six():
     a = array(im.getcolors())
     a = a.sum()
     #im.save(os.getcwd() + '\\seat_6__' + str(time.time()) + '.png', 'PNG')
-    print(f'seat 6: {a}')
     return a
 
 
 def get_all_seats():
-    get_seat_one()
-    get_seat_two()
-    get_seat_three()
-    get_seat_four()
-    get_seat_five()
-    get_seat_six()
+    return [
+        get_seat_one(),
+        get_seat_two(),
+        get_seat_three(),
+        get_seat_four(),
+        get_seat_five(),
+        get_seat_six()
+    ]
 
 
 def waitForImage(img_name):
@@ -414,8 +418,30 @@ def buyFood(food):
             pass
 
 
+def play_game():
+    checkFood()
+    seats = get_all_seats()
+
+    # failsafe to make sure the ids work
+    for i in range(6):
+        if seats[i] not in Blank.seats + [5110,5104,5578]: 
+            print(f'Error: seat {i+1} not found')
+            break
+
+    for i in range(6):
+        if seats[i] != Blank.seats[i]:
+            print(f'customer at seat {i + 1} wants {sushiTypes[seats[i]]}...')
+            makeRoll(sushiTypes[seats[i]])
+    else:
+        print(f'seat {i+1} unoccupied')
+    clearPlates()
+    checkFood()
+
+
 def main():
     startGame()
+    while True:
+        play_game()
 
 if __name__ == '__main__':
     main()
