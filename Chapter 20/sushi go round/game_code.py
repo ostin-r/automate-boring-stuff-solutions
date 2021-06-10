@@ -12,13 +12,17 @@ import logging as log
 
 log.basicConfig(level=log.DEBUG, format='%(asctime)s: %(message)s')
 
-# globals ------
+# globals -----------------------------------------------------
 x_pad = 227
 y_pad = 599
 # x_pad and y_pad are the top corner of the game play area
 # these can easily be changed if the computer the bot is being
 # run on is of a different resolution.
-# --------------
+w = 123
+h = 29
+# w and h are the width and height for the sushi "thought bubble"
+# that tells you what the customer wants
+# --------------------------------------------------------------
 
 # dictionary to track food stock
 foodStock = {
@@ -97,12 +101,77 @@ def sushiGrab():
 
 
 def get_seat_one():
-    box = (x_pad+52, y_pad+122, x_pad+52+123, y_pad+122+29)
+    x = 52 + x_pad
+    y = 122 + y_pad
+    box = (x, y, x + w, y + h)
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
-    im.save(os.getcwd() + '\\seat_one__' + str(time.time()) + '.png', 'PNG')
+    im.save(os.getcwd() + '\\seat_1__' + str(time.time()) + '.png', 'PNG')
     return a
+
+
+def get_seat_two():
+    x = 254 + x_pad
+    y = 122 + y_pad
+    box = (x, y, x + w, y + h)
+    im = ImageOps.grayscale(ImageGrab.grab(box))
+    a = array(im.getcolors())
+    a = a.sum()
+    im.save(os.getcwd() + '\\seat_2__' + str(time.time()) + '.png', 'PNG')
+    return a
+
+def get_seat_three():
+    x = 456 + x_pad
+    y = 122 + y_pad
+    box = (x, y, x + w, y + h)
+    im = ImageOps.grayscale(ImageGrab.grab(box))
+    a = array(im.getcolors())
+    a = a.sum()
+    im.save(os.getcwd() + '\\seat_3__' + str(time.time()) + '.png', 'PNG')
+    return a
+
+
+def get_seat_four():
+    x = 658 + x_pad
+    y = 122 + y_pad
+    box = (x, y, x + w, y + h)
+    im = ImageOps.grayscale(ImageGrab.grab(box))
+    a = array(im.getcolors())
+    a = a.sum()
+    im.save(os.getcwd() + '\\seat_4__' + str(time.time()) + '.png', 'PNG')
+    return a
+
+
+def get_seat_five():
+    x = 860 + x_pad
+    y = 122 + y_pad
+    box = (x, y, x + w, y + h)
+    im = ImageOps.grayscale(ImageGrab.grab(box))
+    a = array(im.getcolors())
+    a = a.sum()
+    im.save(os.getcwd() + '\\seat_5__' + str(time.time()) + '.png', 'PNG')
+    return a
+
+
+def get_seat_six():
+    x = 1062 + x_pad
+    y = 122 + y_pad
+    box = (x, y, x + w, y + h)
+    im = ImageOps.grayscale(ImageGrab.grab(box))
+    a = array(im.getcolors())
+    a = a.sum()
+    im.save(os.getcwd() + '\\seat_6__' + str(time.time()) + '.png', 'PNG')
+    return a
+
+
+def get_all_seats():
+    get_seat_one()
+    get_seat_two()
+    get_seat_three()
+    get_seat_four()
+    get_seat_five()
+    get_seat_six()
 
 
 def waitForImage(img_name):
@@ -322,7 +391,7 @@ def buyFood(food):
 
 
 def main():
-    print(sushiGrab())
+    startGame()
 
 if __name__ == '__main__':
     main()
