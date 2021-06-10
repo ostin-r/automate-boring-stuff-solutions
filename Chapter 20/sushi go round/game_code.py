@@ -34,6 +34,12 @@ foodStock = {
     'unagi':5
 }
 
+sushiTypes = {
+    5110:'gunkan maki',
+    5104:'onigiri',
+    5578:'california roll'
+}
+
 class Cords:
     # food coordinates
     f_shrimp = (56, 654)
@@ -107,7 +113,8 @@ def get_seat_one():
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
-    im.save(os.getcwd() + '\\seat_1__' + str(time.time()) + '.png', 'PNG')
+    #im.save(os.getcwd() + '\\seat_1__' + str(time.time()) + '.png', 'PNG')
+    print(f'seat 1: {a}')
     return a
 
 
@@ -118,7 +125,8 @@ def get_seat_two():
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
-    im.save(os.getcwd() + '\\seat_2__' + str(time.time()) + '.png', 'PNG')
+    #im.save(os.getcwd() + '\\seat_2__' + str(time.time()) + '.png', 'PNG')
+    print(f'seat 2: {a}')
     return a
 
 def get_seat_three():
@@ -128,7 +136,8 @@ def get_seat_three():
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
-    im.save(os.getcwd() + '\\seat_3__' + str(time.time()) + '.png', 'PNG')
+    #im.save(os.getcwd() + '\\seat_3__' + str(time.time()) + '.png', 'PNG')
+    print(f'seat 3: {a}')
     return a
 
 
@@ -139,7 +148,8 @@ def get_seat_four():
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
-    im.save(os.getcwd() + '\\seat_4__' + str(time.time()) + '.png', 'PNG')
+    #im.save(os.getcwd() + '\\seat_4__' + str(time.time()) + '.png', 'PNG')
+    print(f'seat 4: {a}')
     return a
 
 
@@ -150,7 +160,8 @@ def get_seat_five():
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
-    im.save(os.getcwd() + '\\seat_5__' + str(time.time()) + '.png', 'PNG')
+    #im.save(os.getcwd() + '\\seat_5__' + str(time.time()) + '.png', 'PNG')
+    print(f'seat 5: {a}')
     return a
 
 
@@ -161,7 +172,8 @@ def get_seat_six():
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
-    im.save(os.getcwd() + '\\seat_6__' + str(time.time()) + '.png', 'PNG')
+    #im.save(os.getcwd() + '\\seat_6__' + str(time.time()) + '.png', 'PNG')
+    print(f'seat 6: {a}')
     return a
 
 
