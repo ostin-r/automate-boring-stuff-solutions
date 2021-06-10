@@ -40,6 +40,18 @@ sushiTypes = {
     5578:'california roll'
 }
 
+class Blank:
+    '''
+    summed grayscale ids for seats without
+    a customer
+    '''
+    seat_1 = 9719
+    seat_2 = 8315
+    seat_3 = 13471
+    seat_4 = 12967
+    seat_5 = 9294
+    seat_6 = 11703
+
 class Cords:
     # food coordinates
     f_shrimp = (56, 654)
