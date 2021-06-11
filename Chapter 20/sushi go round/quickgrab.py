@@ -13,8 +13,8 @@ import os
 import time
 
 # globals ------
-x_pad = 227
-y_pad = 599
+x_pad = 39
+y_pad = 618
 # --------------
 
 def screenGrab():
