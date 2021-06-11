@@ -363,4 +363,5 @@ After a bunch of self directed projects, I think it is about time that I started
     - You're good to go! Please reach out if you would like to try it out or have any issues
 
 **Conclusion**
+
 Doing every suggested project in "Automate the Boring Stuff with Python" by Al Sweigart was both challenging and rewarding.  I feel that I have been properly introduced to Python now- I can read and write files, edit images, scrape the web, and more.  In addition to these skills, I was often forced to look at the bigger picture as a programmer often has to do: break the problem down into workable chunks, evaluate how those fit into the minimally viable product, and then execute.  After reading through this book, I've come to the point that many beginners often do: the realization that there is so much more to learn.  Being hungry for even more, I have a small stack of textbooks so that I can continue my education in OOP principles, data structures & algorithms, and powerful frameworks used by Python.  Thank you everyone for your support in my software journey.
