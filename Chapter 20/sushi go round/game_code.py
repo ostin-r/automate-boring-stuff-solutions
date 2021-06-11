@@ -21,7 +21,10 @@ y_pad = 599
 w = 123
 h = 29
 # w and h are the width and height for the sushi "thought bubble"
-# that tells you what the customer wants
+# that tells the bot what the customer wants
+cw = 95
+ch = 28
+# cw and ch are the height and width for the customer area
 # --------------------------------------------------------------
 
 # dictionary to track food stock
@@ -34,6 +37,7 @@ foodStock = {
     'unagi':5
 }
 
+# summed grayscale IDs for sushi types
 sushiTypes = {
     5110:'gunkan maki',
     5104:'onigiri',
@@ -45,7 +49,7 @@ class Blank:
     summed grayscale ids for seats without
     a customer
     '''
-    seats = [
+    orders = [
         9719,
         8315,
         13471,
@@ -53,12 +57,9 @@ class Blank:
         9294,
         11703
     ]
-    seat_1 = 9719
-    seat_2 = 8315
-    seat_3 = 13471
-    seat_4 = 12967
-    seat_5 = 9294
-    seat_6 = 11703
+
+    seat = 2745
+
 
 class Cords:
     # food coordinates
@@ -106,7 +107,7 @@ class Cords:
 
 def screenGrab():
     '''
-    saves an image of the play area to the hard drive
+    returns an image of the play area
     '''
     box = (x_pad+1, y_pad+1, x_pad+1280, y_pad+960)
     im = ImageGrab.grab(box)
@@ -126,7 +127,85 @@ def sushiGrab():
     return a
 
 
-def get_seat_one():
+def check_seat_one():
+    '''
+    checks if there is a customer at the seat
+    '''
+    x = 100 + x_pad
+    y = 333 + y_pad
+    box = (x, y, x + cw, y + ch)
+    im = ImageOps.grayscale(ImageGrab.grab(box))
+    a = array(im.getcolors())
+    a = a.sum()
+    return a
+
+
+def check_seat_two():
+    '''
+    checks if there is a customer at the seat
+    '''
+    x = 302 + x_pad
+    y = 333 + y_pad
+    box = (x, y, x + cw, y + ch)
+    im = ImageOps.grayscale(ImageGrab.grab(box))
+    a = array(im.getcolors())
+    a = a.sum()
+    return a
+
+
+def check_seat_three():
+    '''
+    checks if there is a customer at the seat
+    '''
+    x = 504 + x_pad
+    y = 333 + y_pad
+    box = (x, y, x + cw, y + ch)
+    im = ImageOps.grayscale(ImageGrab.grab(box))
+    a = array(im.getcolors())
+    a = a.sum()
+    return a
+
+
+def check_seat_four():
+    '''
+    checks if there is a customer at the seat
+    '''
+    x = 706 + x_pad
+    y = 333 + y_pad
+    box = (x, y, x + cw, y + ch)
+    im = ImageOps.grayscale(ImageGrab.grab(box))
+    a = array(im.getcolors())
+    a = a.sum()
+    return a
+
+
+def check_seat_five():
+    '''
+    checks if there is a customer at the seat
+    '''
+    x = 908 + x_pad
+    y = 333 + y_pad
+    box = (x, y, x + cw, y + ch)
+    im = ImageOps.grayscale(ImageGrab.grab(box))
+    a = array(im.getcolors())
+    a = a.sum()
+    return a
+
+
+def check_seat_six():
+    '''
+    checks if there is a customer at the seat
+    '''
+    x = 1110 + x_pad
+    y = 333 + y_pad
+    box = (x, y, x + cw, y + ch)
+    im = ImageOps.grayscale(ImageGrab.grab(box))
+    a = array(im.getcolors())
+    a = a.sum()
+    return a
+
+
+def get_order_one():
     x = 52 + x_pad
     y = 122 + y_pad
     box = (x, y, x + w, y + h)
@@ -137,7 +216,7 @@ def get_seat_one():
     return a
 
 
-def get_seat_two():
+def get_order_two():
     x = 254 + x_pad
     y = 122 + y_pad
     box = (x, y, x + w, y + h)
@@ -147,7 +226,7 @@ def get_seat_two():
     #im.save(os.getcwd() + '\\seat_2__' + str(time.time()) + '.png', 'PNG')
     return a
 
-def get_seat_three():
+def get_order_three():
     x = 456 + x_pad
     y = 122 + y_pad
     box = (x, y, x + w, y + h)
@@ -158,7 +237,7 @@ def get_seat_three():
     return a
 
 
-def get_seat_four():
+def get_order_four():
     x = 658 + x_pad
     y = 122 + y_pad
     box = (x, y, x + w, y + h)
@@ -169,7 +248,7 @@ def get_seat_four():
     return a
 
 
-def get_seat_five():
+def get_order_five():
     x = 860 + x_pad
     y = 122 + y_pad
     box = (x, y, x + w, y + h)
@@ -180,7 +259,7 @@ def get_seat_five():
     return a
 
 
-def get_seat_six():
+def get_order_six():
     x = 1062 + x_pad
     y = 122 + y_pad
     box = (x, y, x + w, y + h)
@@ -191,14 +270,25 @@ def get_seat_six():
     return a
 
 
-def get_all_seats():
+def get_all_orders():
     return [
-        get_seat_one(),
-        get_seat_two(),
-        get_seat_three(),
-        get_seat_four(),
-        get_seat_five(),
-        get_seat_six()
+        get_order_one(),
+        get_order_two(),
+        get_order_three(),
+        get_order_four(),
+        get_order_five(),
+        get_order_six()
+    ]
+
+
+def check_all_seats():
+    return[
+        check_seat_one(),
+        check_seat_two(),
+        check_seat_three(),
+        check_seat_four(),
+        check_seat_five(),
+        check_seat_six()
     ]
 
 
@@ -277,7 +367,7 @@ def clearPlates():
 
 def checkFood():
     for item, count in foodStock.items():
-        if item in ['rice', 'nori', 'roe'] and count < 3:
+        if item in ['rice', 'nori', 'roe'] and count < 2:
             buyFood(item)
 
 
@@ -325,7 +415,7 @@ def buyFood(food):
             mousePos(Cords.buy_rice)
             mousePos(Cords.order)
             foodStock['rice'] += 10
-            pyautogui.sleep(2.5)
+            pyautogui.sleep(5)
         else:
             # rice is not available, try again in 3 seconds
             mousePos(Cords.cancel_rice)
@@ -341,7 +431,7 @@ def buyFood(food):
             mousePos(Cords.t_nori)
             mousePos(Cords.order)
             foodStock['nori'] += 10
-            pyautogui.sleep(2.5)
+            pyautogui.sleep(5)
         else:
             # nori is not available, try again in 3 seconds
             print('nori is not available. trying again...')
@@ -358,7 +448,7 @@ def buyFood(food):
             mousePos(Cords.t_roe)
             mousePos(Cords.order)
             foodStock['roe'] += 10
-            pyautogui.sleep(2.5)
+            pyautogui.sleep(5)
         else:
             # nori is not available, try again in 3 seconds
             print('roe is not available. trying again...')
@@ -420,28 +510,25 @@ def buyFood(food):
 
 def play_game():
     checkFood()
-    seats = get_all_seats()
-
-    # failsafe to make sure the ids work
-    for i in range(6):
-        if seats[i] not in Blank.seats + [5110,5104,5578]: 
-            print(f'Error: seat {i+1} not found')
-            break
+    orders = get_all_orders()
+    seats = check_all_seats()
+    log.debug(orders)
+    log.debug(seats)
 
     for i in range(6):
-        if seats[i] != Blank.seats[i]:
-            print(f'customer at seat {i + 1} wants {sushiTypes[seats[i]]}...')
-            makeRoll(sushiTypes[seats[i]])
-    else:
-        print(f'seat {i+1} unoccupied')
+        if orders[i] != Blank.orders[i]:
+            print(f'customer at seat {i + 1} wants {sushiTypes[orders[i]]}...')
+            checkFood()
+            makeRoll(sushiTypes[orders[i]])
+
     clearPlates()
-    checkFood()
-
+    time.sleep(7)
 
 def main():
     startGame()
     while True:
         play_game()
+
 
 if __name__ == '__main__':
     main()
