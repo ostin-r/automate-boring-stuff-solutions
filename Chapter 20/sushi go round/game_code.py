@@ -8,13 +8,14 @@ import pyautogui
 from PIL import ImageGrab
 from PIL import ImageOps
 from numpy import *
+from contextlib import suppress
 import logging as log
 
 log.basicConfig(level=log.DEBUG, format='%(asctime)s: %(message)s')
 
 # globals -----------------------------------------------------
-x_pad = 227
-y_pad = 599
+x_pad = 39
+y_pad = 618
 # x_pad and y_pad are the top corner of the game play area
 # these can easily be changed if the computer the bot is being
 # run on is of a different resolution.
@@ -25,7 +26,6 @@ h = 29
 cw = 95
 ch = 28
 # cw and ch are the height and width for the customer area
-# --------------------------------------------------------------
 
 # dictionary to track food stock
 foodStock = {
@@ -39,10 +39,25 @@ foodStock = {
 
 # summed grayscale IDs for sushi types
 sushiTypes = {
-    5110:'gunkan maki',
-    5104:'onigiri',
-    5578:'california roll'
+    4411:'gunkan maki',
+    4405:'onigiri',
+    5050:'california roll'
 }
+
+# list for storing if a customer is present & eating
+isEating = [
+    False,
+    False,
+    False,
+    False,
+    False,
+    False
+]
+
+# list for storing how long a customer is eating for
+eatingTime = [time.time()] * 6
+# --------------------------------------------------------------
+
 
 class Blank:
     '''
@@ -50,12 +65,12 @@ class Blank:
     a customer
     '''
     orders = [
-        9719,
+        10477,
         8315,
-        13471,
-        12967,
-        9294,
-        11703
+        13310,
+        12542,
+        8931,
+        11823
     ]
 
     seat = 2745
@@ -121,84 +136,6 @@ def sushiGrab():
     different parts of the game
     '''
     box = (x_pad+1, y_pad+1, x_pad+1280, y_pad+960)
-    im = ImageOps.grayscale(ImageGrab.grab(box))
-    a = array(im.getcolors())
-    a = a.sum()
-    return a
-
-
-def check_seat_one():
-    '''
-    checks if there is a customer at the seat
-    '''
-    x = 100 + x_pad
-    y = 333 + y_pad
-    box = (x, y, x + cw, y + ch)
-    im = ImageOps.grayscale(ImageGrab.grab(box))
-    a = array(im.getcolors())
-    a = a.sum()
-    return a
-
-
-def check_seat_two():
-    '''
-    checks if there is a customer at the seat
-    '''
-    x = 302 + x_pad
-    y = 333 + y_pad
-    box = (x, y, x + cw, y + ch)
-    im = ImageOps.grayscale(ImageGrab.grab(box))
-    a = array(im.getcolors())
-    a = a.sum()
-    return a
-
-
-def check_seat_three():
-    '''
-    checks if there is a customer at the seat
-    '''
-    x = 504 + x_pad
-    y = 333 + y_pad
-    box = (x, y, x + cw, y + ch)
-    im = ImageOps.grayscale(ImageGrab.grab(box))
-    a = array(im.getcolors())
-    a = a.sum()
-    return a
-
-
-def check_seat_four():
-    '''
-    checks if there is a customer at the seat
-    '''
-    x = 706 + x_pad
-    y = 333 + y_pad
-    box = (x, y, x + cw, y + ch)
-    im = ImageOps.grayscale(ImageGrab.grab(box))
-    a = array(im.getcolors())
-    a = a.sum()
-    return a
-
-
-def check_seat_five():
-    '''
-    checks if there is a customer at the seat
-    '''
-    x = 908 + x_pad
-    y = 333 + y_pad
-    box = (x, y, x + cw, y + ch)
-    im = ImageOps.grayscale(ImageGrab.grab(box))
-    a = array(im.getcolors())
-    a = a.sum()
-    return a
-
-
-def check_seat_six():
-    '''
-    checks if there is a customer at the seat
-    '''
-    x = 1110 + x_pad
-    y = 333 + y_pad
-    box = (x, y, x + cw, y + ch)
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
@@ -281,17 +218,6 @@ def get_all_orders():
     ]
 
 
-def check_all_seats():
-    return[
-        check_seat_one(),
-        check_seat_two(),
-        check_seat_three(),
-        check_seat_four(),
-        check_seat_five(),
-        check_seat_six()
-    ]
-
-
 def waitForImage(img_name):
     # pauses program until image is identified (good for loading webpages)
     while True:
@@ -334,17 +260,17 @@ def gamePixel():
 def startGame():
     # move the mouse then scroll
     webbrowser.open('https://www.miniclip.com/games/sushi-go-round/en/#')
-    waitForImage('miniclip_menu.PNG')
-    pyautogui.moveTo(x=1000, y=1000) # moved mouse here because args not working for scroll method
+    waitForImage('miniclip_loaded.PNG')
+    pyautogui.moveTo(x=500, y=1000) # moved mouse here because args not working for scroll method
     pyautogui.scroll(-410)
 
     # press big play button
-    waitForPixel([709, 360, (253, 136, 58)])
+    waitForPixel([500, 374, (253, 132, 58)])
     pyautogui.click()
 
     # press little play button
     waitForPixel([779, 412, (75, 205, 245)])
-    pyautogui.click()
+    mousePos((779, 412))
 
     # press the continue button
     waitForPixel([743, 776, (255, 45, 236)])
@@ -355,8 +281,8 @@ def startGame():
     mousePos((1160, 902))
 
     # press continue button again
-    waitForPixel([629, 748, (255, 179, 246)])
-    mousePos((629, 748))
+    waitForPixel([644, 754, (255, 45, 236)])
+    mousePos((644, 754))
 
 
 def clearPlates():
@@ -366,8 +292,9 @@ def clearPlates():
 
 
 def checkFood():
+    # checks the current stock of food
     for item, count in foodStock.items():
-        if item in ['rice', 'nori', 'roe'] and count < 2:
+        if item in ['rice', 'nori', 'roe'] and count < 3:
             buyFood(item)
 
 
@@ -415,7 +342,7 @@ def buyFood(food):
             mousePos(Cords.buy_rice)
             mousePos(Cords.order)
             foodStock['rice'] += 10
-            pyautogui.sleep(5)
+            pyautogui.sleep(3)
         else:
             # rice is not available, try again in 3 seconds
             mousePos(Cords.cancel_rice)
@@ -431,7 +358,7 @@ def buyFood(food):
             mousePos(Cords.t_nori)
             mousePos(Cords.order)
             foodStock['nori'] += 10
-            pyautogui.sleep(5)
+            pyautogui.sleep(3)
         else:
             # nori is not available, try again in 3 seconds
             print('nori is not available. trying again...')
@@ -448,7 +375,7 @@ def buyFood(food):
             mousePos(Cords.t_roe)
             mousePos(Cords.order)
             foodStock['roe'] += 10
-            pyautogui.sleep(5)
+            pyautogui.sleep(3)
         else:
             # nori is not available, try again in 3 seconds
             print('roe is not available. trying again...')
@@ -508,26 +435,32 @@ def buyFood(food):
             pass
 
 
-def play_game():
-    checkFood()
+def playGame():
     orders = get_all_orders()
-    seats = check_all_seats()
-    log.debug(orders)
-    log.debug(seats)
+    clearPlates()
 
     for i in range(6):
-        if orders[i] != Blank.orders[i]:
-            print(f'customer at seat {i + 1} wants {sushiTypes[orders[i]]}...')
-            checkFood()
-            makeRoll(sushiTypes[orders[i]])
+        # if the customer is ordering something and is not currently eating, make the roll
+        if orders[i] != Blank.orders[i] and not isEating[i]:
+            # make the roll, check ingredients
+            with suppress(KeyError): # pixels from "customer payment" occasionaly throw this off, so suppress KeyErrors
+                print(f'customer at seat {i + 1} wants {sushiTypes[orders[i]]}...')
+                checkFood()
+                makeRoll(sushiTypes[orders[i]])
+                # set eat tracking parameters
+                isEating[i] = True
+                eatingTime[i] = time.time()
 
-    clearPlates()
-    time.sleep(7)
+        # reset customer seat after 15 seconds
+        elif time.time() - eatingTime[i] > 10:
+            print(f'customer at {i+1} is done eating.')
+            isEating[i] = False
+
 
 def main():
     startGame()
     while True:
-        play_game()
+        playGame()
 
 
 if __name__ == '__main__':
