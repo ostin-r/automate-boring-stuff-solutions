@@ -16,3 +16,4 @@ quickstart.py
 *.csv
 *.wav
 friends.py
+!miniclip_loaded.png
