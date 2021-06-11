@@ -350,3 +350,14 @@ After a bunch of self directed projects, I think it is about time that I started
               if element is not None: return
             
   - Overall, a very fun and challenging project for learning how to use the Pyautogui module.
+
+- Project 4: [Sushi Go Round Bot](https://github.com/ostin-r/automate-boring-stuff-solutions/blob/main/Chapter%2020/sushi%20go%20round/game_code.py)
+  - This was a great way to finish the textbook.  This program uses Pyautogui (and more) to make a bot that can play [Sushi Go Round](https://www.miniclip.com/games/sushi-go-round/en/#privacy-settings) and was made with the help of [this](https://code.tutsplus.com/tutorials/how-to-build-a-python-bot-that-can-play-web-games--active-11117) tutorial.
+  - I learned a lot going through this project.  First off, this is my first real project where I am dipping my toes into true OOP principles.  I used classes to improve readibility and created a bunch of functions that were then executed in a more beautiful structure than my single function scripts from the previous chapters.  Please note that this program may be a bit messy for this reason.  I organized it in the following manner: globals, classes, functions, main script.
+  - I greatly improved the performance of the bot by adding a timing mechanism which would keep track of customers who had already been served.  The bot in the tutorial just made a roll for every customer that requested one and because of the delay in the roll reaching them, it would make the same roll too many times.
+  - Limitations: my bot is only built to work through the first level.  More logic is required for those that would like to extend the bot to the next levels.
+  - **Usage**:
+    - Run the setup() method- this will open a browser and scroll down a specific distance on the webpage
+    - Determine the pixel location of the top-left corner of the game play area.  Put those values into x_pad and y_pad. This can be done by easily running pyautogui.mouseInfo()
+    - Make sure you have miniclip_loaded.png saved to the same directory as the .py file
+    - You're good to go! Please reach out if you would like to try it out or have any issues
