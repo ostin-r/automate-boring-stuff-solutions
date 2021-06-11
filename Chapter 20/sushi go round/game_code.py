@@ -278,6 +278,13 @@ def startGame():
     mousePos((644, 754))
 
 
+def setup():
+    webbrowser.open('https://www.miniclip.com/games/sushi-go-round/en/#')
+    pyautogui.sleep(4)
+    pyautogui.moveTo(x=500, y=1000) # moved mouse here because args not working for scroll method
+    pyautogui.scroll(-410)
+
+
 def clearPlates():
     # clears every plate
     for pos in Cords.plates:
@@ -451,9 +458,12 @@ def playGame():
 
 
 def main():
+    setup()
+    '''
     startGame()
     while True:
         playGame()
+    '''
 
 
 if __name__ == '__main__':
