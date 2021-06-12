@@ -19,13 +19,6 @@ y_pad = 618
 # x_pad and y_pad are the top corner of the game play area
 # these can easily be changed if the computer the bot is being
 # run on is of a different resolution.
-w = 123
-h = 29
-# w and h are the width and height for the sushi "thought bubble"
-# that tells the bot what the customer wants
-cw = 95
-ch = 28
-# cw and ch are the height and width for the customer area
 
 # dictionary to track food stock
 foodStock = {
@@ -285,6 +278,13 @@ def startGame():
     mousePos((644, 754))
 
 
+def setup():
+    webbrowser.open('https://www.miniclip.com/games/sushi-go-round/en/#')
+    pyautogui.sleep(4)
+    pyautogui.moveTo(x=500, y=1000) # moved mouse here because args not working for scroll method
+    pyautogui.scroll(-410)
+
+
 def clearPlates():
     # clears every plate
     for pos in Cords.plates:
@@ -458,9 +458,12 @@ def playGame():
 
 
 def main():
+    setup()
+    '''
     startGame()
     while True:
         playGame()
+    '''
 
 
 if __name__ == '__main__':
