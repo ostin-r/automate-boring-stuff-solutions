@@ -260,7 +260,7 @@ def gamePixel():
 def startGame():
     # move the mouse then scroll
     webbrowser.open('https://www.miniclip.com/games/sushi-go-round/en/#')
-    waitForImage('miniclip_loaded.PNG')
+    pyautogui.sleep(10)
     pyautogui.moveTo(x=500, y=1000) # moved mouse here because args not working for scroll method
     pyautogui.scroll(-410)
 
@@ -452,7 +452,7 @@ def playGame():
                 eatingTime[i] = time.time()
 
         # reset customer seat after 15 seconds
-        elif time.time() - eatingTime[i] > 10:
+        elif time.time() - eatingTime[i] > 15:
             print(f'customer at {i+1} is done eating.')
             isEating[i] = False
 
