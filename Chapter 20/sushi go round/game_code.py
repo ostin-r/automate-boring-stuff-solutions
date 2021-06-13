@@ -114,7 +114,6 @@ def get_order_one():
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
-    # im.save(os.getcwd() + '\\seat_1__' + str(time.time()) + '.png', 'PNG')
     return a
 
 
@@ -125,7 +124,6 @@ def get_order_two():
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
-    # im.save(os.getcwd() + '\\seat_2__' + str(time.time()) + '.png', 'PNG')
     return a
 
 
@@ -136,7 +134,6 @@ def get_order_three():
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
-    # im.save(os.getcwd() + '\\seat_3__' + str(time.time()) + '.png', 'PNG')
     return a
 
 
@@ -147,7 +144,6 @@ def get_order_four():
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
-    # im.save(os.getcwd() + '\\seat_4__' + str(time.time()) + '.png', 'PNG')
     return a
 
 
@@ -158,7 +154,6 @@ def get_order_five():
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
-    # im.save(os.getcwd() + '\\seat_5__' + str(time.time()) + '.png', 'PNG')
     return a
 
 
@@ -169,7 +164,6 @@ def get_order_six():
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
-    # im.save(os.getcwd() + '\\seat_6__' + str(time.time()) + '.png', 'PNG')
     return a
 
 
