@@ -36,10 +36,9 @@ eatingTime = [time.time()] * 6
 
 class Blank:
     """
-    summed grayscale ids for seats without
-    a customer
+    summed grayscale ids for blank "thought bubbles" and blank
+    seats
     """
-
     orders = [10477, 8315, 13310, 12542, 8931, 11823]
 
     seat = 2745
@@ -54,8 +53,10 @@ class Cords:
     f_salmon = (58, 868)
     f_unagi = (167, 866)
 
+    # where to click when done with recipe
     roll = (326, 694)
 
+    # where to click to clear all plates
     plates = [(180, 413), (381, 419), (592, 412), (786, 415), (984, 416), (1186, 416)]
 
     # phone menu options
@@ -415,7 +416,7 @@ def playGame():
     for i in range(6):
         # if the customer is ordering something and is not currently eating, make the roll
         if orders[i] != Blank.orders[i] and not isEating[i]:
-            # make the roll, check ingredients
+            # check ingredients, make roll
             with suppress(
                 KeyError
             ):  # pixels from "customer payment" occasionaly throw this off, so suppress KeyErrors
