@@ -115,7 +115,7 @@ After a bunch of self directed projects, I think it is about time that I started
   - This project took a few hours because I am just learning file io.  I am amazed at how little code this is, while still yielding such useful results.  What a fun small project!
 
 **Chapter 10: Organizing Files**
-- Follow along notes: Before talking about my projects for this chapter, I first want to explain that I had quite some difficulty with Al's program for backing up and zipping files from a directory.  His way took me quite some time to understand.  Luckily, I found an example of zipping files on [GeeksForGeeks](https://www.geeksforgeeks.org/working-zip-files-python/) which was much simpler.  I ended up using the extremely useful function get_all_paths() in all of the projects in this chapter.  Turns out it is much easier to separate each problem into (1) getting the paths you want to manipulate and then (2) doing whatever you want with them, instead of doing it all in two or threee for loops using os.walk() as Al did.  For those who would like to copy/paste, the function is as follows:
+- Follow along notes: Before talking about my projects for this chapter, I first want to explain that I had quite some difficulty with Al's program for backing up and zipping files from a directory.  His way took me quite some time to understand.  Luckily, I found an example of zipping files on [GeeksForGeeks](https://www.geeksforgeeks.org/working-zip-files-python/) which was much simpler.  I ended up using the extremely useful function get_all_paths() in all of the projects in this chapter.  Turns out it is much easier to separate each problem into (1) getting the paths you want to manipulate and then (2) doing whatever you want with them, instead of doing it all in two or three for loops using os.walk() as Al did.  For those who would like to copy/paste, the function is as follows:
 
       def get_all_paths(directory):
         '''
@@ -359,7 +359,6 @@ After a bunch of self directed projects, I think it is about time that I started
   - **Usage**:
     - Run the setup() method- this will open a browser and scroll down a specific distance on the webpage
     - Determine the pixel location of the top-left corner of the game play area.  Put those values into x_pad and y_pad. This can be done by easily running pyautogui.mouseInfo()
-    - Make sure you have miniclip_loaded.png saved to the same directory as the .py file
     - You're good to go! Please reach out if you would like to try it out or have any issues
 
 **Conclusion**
