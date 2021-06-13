@@ -359,7 +359,6 @@ After a bunch of self directed projects, I think it is about time that I started
   - **Usage**:
     - Run the setup() method- this will open a browser and scroll down a specific distance on the webpage
     - Determine the pixel location of the top-left corner of the game play area.  Put those values into x_pad and y_pad. This can be done by easily running pyautogui.mouseInfo()
-    - Make sure you have miniclip_loaded.png saved to the same directory as the .py file
     - You're good to go! Please reach out if you would like to try it out or have any issues
 
 **Conclusion**
