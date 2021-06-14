@@ -14,8 +14,10 @@ import logging as log
 log.basicConfig(level=log.DEBUG, format="%(asctime)s: %(message)s")
 
 # globals -----------------------------------------------------
-x_pad = 39
-y_pad = 618
+x_pad = 37
+y_pad = 605
+
+# width and height of customer order
 ORDER_WIDTH = 123
 ORDER_HEIGHT = 29
 
@@ -114,6 +116,7 @@ def get_order_one():
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
+    im.save('order_1_.png', 'PNG')
     return a
 
 
@@ -229,12 +232,12 @@ def startGame():
     pyautogui.scroll(-410)
 
     # press big play button
-    waitForPixel([499, 406, (253, 122, 59)])
+    waitForPixel([500, 374, (253, 132, 58)])
     pyautogui.click()
 
     # press little play button
-    waitForPixel([684, 400, (75, 215, 245)])
-    mousePos((684, 400))
+    waitForPixel([779, 412, (75, 205, 245)])
+    mousePos((779, 412))
 
     # press the continue button
     waitForPixel([743, 776, (255, 45, 236)])
@@ -252,9 +255,7 @@ def startGame():
 def setup():
     webbrowser.open("https://www.miniclip.com/games/sushi-go-round/en/#")
     pyautogui.sleep(4)
-    pyautogui.moveTo(
-        x=500, y=1000
-    )  # moved mouse here because args not working for scroll method
+    pyautogui.moveTo(x=500, y=1000)  # moved mouse here because args not working for scroll method
     pyautogui.scroll(-410)
 
 
@@ -417,14 +418,13 @@ def playGame():
         # if the customer is ordering something and is not currently eating, make the roll
         if order != Blank.orders[i] and not isEating[i]:
             # check ingredients, make roll
-            with suppress(KeyError):  # pixels from "customer payment" upredictably & rarely throw this off, so suppress KeyErrors
-                print(f"customer at seat {i + 1} wants {sushiTypes[order]}...")
-                checkFood()
-                makeRoll(sushiTypes[order])
+            print(f"customer at seat {i + 1} wants {sushiTypes[order]}...")
+            checkFood()
+            makeRoll(sushiTypes[order])
 
-                # set eat tracking parameters
-                isEating[i] = True
-                eatingTime[i] = time.time()
+            # set eat tracking parameters
+            isEating[i] = True
+            eatingTime[i] = time.time()
 
         # reset customer seat after 15 seconds
         elif time.time() - eatingTime[i] > 15:
