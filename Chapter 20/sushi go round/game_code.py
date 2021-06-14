@@ -14,8 +14,8 @@ import logging as log
 log.basicConfig(level=log.DEBUG, format="%(asctime)s: %(message)s")
 
 # globals -----------------------------------------------------
-x_pad = 37
-y_pad = 605
+x_pad = 39
+y_pad = 618
 
 # width and height of customer order
 ORDER_WIDTH = 123
@@ -254,7 +254,7 @@ def startGame():
 
 def setup():
     webbrowser.open("https://www.miniclip.com/games/sushi-go-round/en/#")
-    pyautogui.sleep(4)
+    pyautogui.sleep(10)
     pyautogui.moveTo(x=500, y=1000)  # moved mouse here because args not working for scroll method
     pyautogui.scroll(-410)
 
@@ -417,14 +417,19 @@ def playGame():
 
         # if the customer is ordering something and is not currently eating, make the roll
         if order != Blank.orders[i] and not isEating[i]:
-            # check ingredients, make roll
-            print(f"customer at seat {i + 1} wants {sushiTypes[order]}...")
-            checkFood()
-            makeRoll(sushiTypes[order])
+            try:
+                # check ingredients, make roll
+                print(f"customer at seat {i + 1} wants {sushiTypes[order]}...")
+                checkFood()
+                makeRoll(sushiTypes[order])
 
-            # set eat tracking parameters
-            isEating[i] = True
-            eatingTime[i] = time.time()
+                # set eat tracking parameters
+                isEating[i] = True
+                eatingTime[i] = time.time()
+
+            except KeyError:
+                # KeyError rarely occurs when the customer's payment floats through the order area
+                print(f'Warning: unknown order at seat{i + 1}')
 
         # reset customer seat after 15 seconds
         elif time.time() - eatingTime[i] > 15:
@@ -433,7 +438,6 @@ def playGame():
 
 
 def main():
-    startGame()
     while True:
         playGame()
 
