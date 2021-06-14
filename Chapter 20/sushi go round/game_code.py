@@ -16,9 +16,8 @@ log.basicConfig(level=log.DEBUG, format="%(asctime)s: %(message)s")
 # globals -----------------------------------------------------
 x_pad = 39
 y_pad = 618
-# x_pad and y_pad are the top corner of the game play area
-# these can easily be changed if the computer the bot is being
-# run on is of a different resolution.
+ORDER_WIDTH = 123
+ORDER_HEIGHT = 29
 
 # dictionary to track food stock
 foodStock = {"shrimp": 5, "rice": 10, "nori": 10, "roe": 10, "salmon": 5, "unagi": 5}
@@ -111,7 +110,7 @@ def sushiGrab():
 def get_order_one():
     x = 52 + x_pad
     y = 122 + y_pad
-    box = (x, y, x + w, y + h)
+    box = (x, y, x + ORDER_WIDTH, y + ORDER_HEIGHT)
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
@@ -121,7 +120,7 @@ def get_order_one():
 def get_order_two():
     x = 254 + x_pad
     y = 122 + y_pad
-    box = (x, y, x + w, y + h)
+    box = (x, y, x + ORDER_WIDTH, y + ORDER_HEIGHT)
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
@@ -131,7 +130,7 @@ def get_order_two():
 def get_order_three():
     x = 456 + x_pad
     y = 122 + y_pad
-    box = (x, y, x + w, y + h)
+    box = (x, y, x + ORDER_WIDTH, y + ORDER_HEIGHT)
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
@@ -141,7 +140,7 @@ def get_order_three():
 def get_order_four():
     x = 658 + x_pad
     y = 122 + y_pad
-    box = (x, y, x + w, y + h)
+    box = (x, y, x + ORDER_WIDTH, y + ORDER_HEIGHT)
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
@@ -151,7 +150,7 @@ def get_order_four():
 def get_order_five():
     x = 860 + x_pad
     y = 122 + y_pad
-    box = (x, y, x + w, y + h)
+    box = (x, y, x + ORDER_WIDTH, y + ORDER_HEIGHT)
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
@@ -161,7 +160,7 @@ def get_order_five():
 def get_order_six():
     x = 1062 + x_pad
     y = 122 + y_pad
-    box = (x, y, x + w, y + h)
+    box = (x, y, x + ORDER_WIDTH, y + ORDER_HEIGHT)
     im = ImageOps.grayscale(ImageGrab.grab(box))
     a = array(im.getcolors())
     a = a.sum()
@@ -230,12 +229,12 @@ def startGame():
     pyautogui.scroll(-410)
 
     # press big play button
-    waitForPixel([500, 374, (253, 132, 58)])
+    waitForPixel([499, 406, (253, 122, 59)])
     pyautogui.click()
 
     # press little play button
-    waitForPixel([779, 412, (75, 205, 245)])
-    mousePos((779, 412))
+    waitForPixel([684, 400, (75, 215, 245)])
+    mousePos((684, 400))
 
     # press the continue button
     waitForPixel([743, 776, (255, 45, 236)])
@@ -413,16 +412,16 @@ def playGame():
     orders = get_all_orders()
     clearPlates()
 
-    for i in range(6):
+    for i, order in enumerate(orders):
+
         # if the customer is ordering something and is not currently eating, make the roll
-        if orders[i] != Blank.orders[i] and not isEating[i]:
+        if order != Blank.orders[i] and not isEating[i]:
             # check ingredients, make roll
-            with suppress(
-                KeyError
-            ):  # pixels from "customer payment" occasionaly throw this off, so suppress KeyErrors
-                print(f"customer at seat {i + 1} wants {sushiTypes[orders[i]]}...")
+            with suppress(KeyError):  # pixels from "customer payment" upredictably & rarely throw this off, so suppress KeyErrors
+                print(f"customer at seat {i + 1} wants {sushiTypes[order]}...")
                 checkFood()
-                makeRoll(sushiTypes[orders[i]])
+                makeRoll(sushiTypes[order])
+
                 # set eat tracking parameters
                 isEating[i] = True
                 eatingTime[i] = time.time()
@@ -434,12 +433,9 @@ def playGame():
 
 
 def main():
-    setup()
-    """
     startGame()
     while True:
         playGame()
-    """
 
 
 if __name__ == "__main__":
