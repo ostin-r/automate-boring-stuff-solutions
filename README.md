@@ -3,7 +3,7 @@ My solutions to problems posed in "Automate The Boring Stuff with Python" by Al 
 
 After a bunch of self directed projects, I think it is about time that I started following a book on the important components of coding in python.  This was prompted by my overzealous attempt to take on multiple projects that were too big for me to handle.  This file will be used as a short description of each project, bonus features that I may have added, and notes about what I learned from each project.
 
-For those leafing through my code: this is largely a collection of my progress as a python programmer.  The early projects may contain incorrect styling and a lack of comments and docstrings.  My later projects are a much better representation of where I am in my development path.
+For those leafing through my code: this is largely a collection of my progress as a python programmer.  The early projects may contain incorrect styling and a lack of comments and docstrings.  I also have messed up some nomenclature where I called "functions" "methods" and vice versa.  My later projects are a much better representation of where I am in my development path.
 
 **Chapter 3: Functions**
 
